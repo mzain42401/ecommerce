@@ -3,7 +3,7 @@ import React from 'react'
 const index = () => {
   return (
     <>
-      zain
+      about us
     </>
   )
 }
