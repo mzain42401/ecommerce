@@ -3,3 +3,33 @@
 @tailwind utilities;
 
 
+
+@media screen and (max-width: 720px) {
+
+    .navToggleBtn{
+        display: block;
+
+    }
+.navbar ul  {
+    position: fixed;
+    top: 64px;
+    right:  -100%;
+    width: 40%;
+    height: 90vh;
+    display: flex;
+    justify-content: flex-start;
+
+    flex-direction: column;
+    background-color: #2b2c2c;
+    transition: all 0.9s ease;
+    padding-top: 20px;
+  }
+  .navbar ul li{
+    margin-bottom   : 30px;
+  }
+  .navbar ul.active {
+    right: 0%;
+margin-right: 0px;
+
+  }
+}
