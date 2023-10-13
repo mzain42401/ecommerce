@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <>
     <div className='bg-black h-8 flex justify-between items-center'>
-<div className='text-white mx-5 bg-red-500'>runing text</div>
+<div className=' text-white mx-5 h-6   overflow-hidden'> <marquee  > WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.3000/-</marquee></div>
 <div className='flex justify-between items-center text-white'>
   
   <div className='px-1 cursor-pointer'><BsTelephoneFill/></div>
@@ -27,7 +27,7 @@ const Header = () => {
 </div>
 
     </div>
-      <nav className='navbar flex justify-between items-center px-5 h-16 z-20	 bg-orange-700'>
+      <nav className='navbar flex justify-between items-center px-5 h-16 z-20	 shadow-lg'>
         <div className='navToggleBtn hidden text-xl cursor-pointer' onClick={toggleIcons}>
           {initial ? <FaBars /> : <AiOutlineClose />}
         </div>
