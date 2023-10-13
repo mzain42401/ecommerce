@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { AiOutlineShoppingCart, AiOutlineUser, AiOutlineClose } from 'react-icons/ai'
 import { FaBars } from 'react-icons/fa'
-import {BsWhatsapp,BsTelephoneFill} from 'react-icons/bs'
+import { BsWhatsapp, BsTelephoneFill } from 'react-icons/bs'
 import Link from 'next/link'
 const Header = () => {
   const [initial, setInitial] = useState(true)
@@ -17,16 +17,18 @@ const Header = () => {
 
   return (
     <>
-    <div className='bg-black h-8 flex justify-between items-center'>
-<div className=' text-white mx-5 h-6   overflow-hidden'> <marquee  > WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.3000/-</marquee></div>
-<div className='flex justify-between items-center text-white'>
-  
-  <div className='px-1 cursor-pointer'><BsTelephoneFill/></div>
-  <div className='px-3 cursor-pointer'><BsWhatsapp/></div>
-  <div className='px-2 border-l-2 mr-5 cursor-pointer'>Contact us</div>
-</div>
+      <div className='bg-black h-8 flex justify-between items-center'>
+        <marquee className='text-white w-max overflow-hidden ml-2 '>
+        WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.3000/-
+        </marquee>
+        <div className='flex justify-between items-center text-white'>
 
-    </div>
+          <div className='px-1 cursor-pointer'><BsTelephoneFill /></div>
+          <div className='px-3 cursor-pointer'><BsWhatsapp /></div>
+          <div className='px-2 border-l-2 mr-5 cursor-pointer'>Contact us</div>
+        </div>
+
+      </div>
       <nav className='navbar flex justify-between items-center px-5 h-16 z-20	 shadow-lg'>
         <div className='navToggleBtn hidden text-xl cursor-pointer' onClick={toggleIcons}>
           {initial ? <FaBars /> : <AiOutlineClose />}

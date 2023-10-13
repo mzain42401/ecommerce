@@ -6,55 +6,31 @@
 body{
     background-color: #f2f2f2;
 }
-.scrolling-text-container {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-}
 
-.scrolling-text {
-    display: inline-block;
-    animation: scroll 10s linear infinite;
-}
-@keyframes scroll {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
-.moving-text{
-    white-space: nowrap;
-    width: 300px;
-    text-align:initial;
-    animation: move 10s linear infinite;
-}
-@keyframes move {
-    0%{
-        transform: translate(0,0);
-    }
-    100%{
-        transform: translate(-100%,0);
-    }
-}
 .heading{
     font-size: 25px;
     font-weight: bolder;
 position: relative;
-/* background-color: red; */
 }
+.heading span{
+    display: block;
+    width: 300px;
+    z-index: 10;
 
+}
 .heading::after{
     position: absolute;
     content: '';
     height: 1px ;
-    width: 80%;
+    width: calc(100% - 300px);
     border: 1px solid #e0e0e0;
     top: calc(50% - 0.5px);
     /* left: 0; */
+    z-index: 1;
+
     right: 0;
 }
+
 @media screen and (max-width: 720px) {
 
     .navToggleBtn {

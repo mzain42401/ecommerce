@@ -7,6 +7,7 @@ import ProductCard from './components/productCard/ProductCard';
 import Footer from './components/footer/Footer';
 import Contact from './contact/Contact';
 import ImageSlider from './components/imageslider/ImageSlider';
+import Category from './components/category/Category';
 
 const index = () => {
   
@@ -33,9 +34,13 @@ const index = () => {
     </div> */}
     <ImageSlider/>
     {/* CardSection */}
-    
     <section className='mt-20  '>
-      <h1 className='heading px-4'> <span>Populor Categories</span></h1>
+    <h1 className='heading px-4'> <span>POPULAR CATEGORIES</span></h1>
+
+      <Category/>
+    </section>
+    <section className='mt-20  '>
+      <h1 className='heading px-4'> <span>POPULAR PRODUCTS </span></h1>
     <div className='flex justify-center items-center flex-wrap mt-2'>
       
      <ProductCard/>
