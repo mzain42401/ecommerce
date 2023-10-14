@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import Link  from 'next/link'
+import Header from '../components/header/Header'
 
 const login = () => {
     // const [emailError, setemailError] = useState('')
@@ -23,7 +24,8 @@ const login = () => {
             {/* <div className='bg-white shadow text-2xl font-bold p-2  shadow-gray-400'>
         <h1>Signup</h1>
       </div> */}
-            <div className="flex min-h-full flex-1 flex-col justify-center   lg:px-8">
+      <Header/>
+            <div className="flex min-h-full flex-1 flex-col justify-center mt-20  lg:px-8">
 
 
                 <div className="p-6 bg-white  border border-gray-200  border-solid rounded-xl   sm:mx-auto sm:w-full sm:max-w-sm">

@@ -1,9 +1,13 @@
+import Footer from '@/pages/components/footer/Footer'
+import Header from '@/pages/components/header/Header'
 import React from 'react'
 
 const index = () => {
   return (
     <>
-      daynamic
+      <Header/>
+      
+      <Footer/>
     </>
   )
 }
