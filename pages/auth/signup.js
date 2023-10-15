@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react'
 import Link  from 'next/link'
 import Header from '../components/header/Header'
-
+import { auth } from '../../firebase/firebase'
+import { createUserWithEmailAndPassword,updateProfile } from 'firebase/auth'
 const Signup = () => {
     const [firstNameError, setfirstNameError] = useState('')
     const [lastNameError, setlastNameError] = useState('')
@@ -23,6 +24,15 @@ const Signup = () => {
         const email = emailRef.current.value
         const password = passwordRef.current.value
         const repeatpassword = repeatpasswordRef.current.value
+
+        try{
+const user=await createUserWithEmailAndPassword(auth,email,password)
+await updateProfile(auth.currentUser,{
+    displayName:firstName+lastName
+})
+        }catch(err){
+console.log('error' + err);
+        }
     }
 
 

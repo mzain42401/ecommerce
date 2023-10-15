@@ -1,6 +1,10 @@
 import React, { useRef } from 'react'
-import Link  from 'next/link'
+import Link from 'next/link'
 import Header from '../components/header/Header'
+import { FcGoogle } from "react-icons/fc"
+import { auth } from '@/firebase/firebase'
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+const provider = new GoogleAuthProvider()
 
 const login = () => {
     // const [emailError, setemailError] = useState('')
@@ -14,24 +18,38 @@ const login = () => {
         e.preventDefault()
         const email = emailRef.current.value
         const password = passwordRef.current.value
-        
+        try{
+             const user = await signInWithEmailAndPassword(auth, email, password)
+        console.log(user);
+        }catch(err){
+console.log(err);
+        }
+       
     }
 
+    const signInWithGoogle = async () => {
+        try {
+            const user = await signInWithPopup(auth, provider)
+            console.log(user);
+        } catch (err) {
+            console.log(err);
+        }
 
+    }
 
     return (
         <>
             {/* <div className='bg-white shadow text-2xl font-bold p-2  shadow-gray-400'>
         <h1>Signup</h1>
       </div> */}
-      <Header/>
-            <div className="flex min-h-full flex-1 flex-col justify-center mt-20  lg:px-8">
+            <Header />
+            <div className="flex min-h-full flex-1 flex-col justify-center  mt-20  lg:px-8">
 
 
-                <div className="p-6 bg-white  border border-gray-200  border-solid rounded-xl   sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="p-6 bg-white   border border-gray-200  border-solid rounded-xl   sm:mx-auto sm:w-full sm:max-w-sm">
 
                     <form className="space-y-6" onSubmit={onFormSubmit} >
-                                                <div>
+                        <div>
 
                             <div className="mt-2">
                                 <input
@@ -64,9 +82,9 @@ const login = () => {
 
                         </div>
                         <div className='text-sm mt-5 text-gray-500'>
-                              <Link href='/auth/signup'>If you don't have an account, <span className='text-[#ff7900]'> Signup</span></Link>
-                            </div>
-                       
+                            <Link href='/auth/signup'>If you don't have an account, <span className='text-[#ff7900]'> Signup</span></Link>
+                        </div>
+
                         <div className='flex justify-center'>
                             <button
                                 type="submit"
@@ -77,6 +95,16 @@ const login = () => {
                             </button>
                         </div>
                     </form>
+                </div>
+                <div className='flex justify-center' onClick={signInWithGoogle}>
+                    <button
+                        type="submit"
+
+                        className="flex  mt-5   justify-center items-center rounded-md bg-white  px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:shadow-lg  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700  sm:mx-auto sm:w-full sm:max-w-sm "
+                    >
+                        <span className='mx-5 text-2xl' ><FcGoogle /></span>
+                        Login with Google
+                    </button>
                 </div>
             </div>
 

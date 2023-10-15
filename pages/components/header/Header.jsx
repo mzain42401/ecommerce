@@ -19,13 +19,13 @@ const Header = () => {
     <>
       <div className='bg-black h-8 flex justify-between items-center'>
         <marquee className='text-white w-max overflow-hidden ml-2 '>
-        WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.3000/-
+          WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.3000/-
         </marquee>
         <div className='flex justify-between items-center text-white'>
 
           <div className='px-1 cursor-pointer'><BsTelephoneFill /></div>
           <div className='px-3 cursor-pointer'><BsWhatsapp /></div>
-          <div className='px-2 border-l-2 mr-5 cursor-pointer'>Contact us</div>
+          <div className='px-2 border-l-2 mr-5 cursor-pointer'><Link href='/contact'> Contact us</Link></div>
         </div>
 
       </div>
@@ -46,6 +46,11 @@ const Header = () => {
           <div className='px-2 text-2xl cursor-pointer'>
             <Link href='/profile'>
               <AiOutlineUser />
+            </Link>
+          </div>
+          <div className='px-2  cursor-pointer'>
+            <Link href='/auth/login'>
+              login
             </Link>
           </div>
           <div className='px-1 text-2xl cursor-pointer relative'>

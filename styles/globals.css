@@ -39,16 +39,17 @@ position: relative;
 
     .navbar ul {
         position: fixed;
-        top: 64px;
+        top: 95px;
         right: -100%;
-        width: 40%;
+        width: 50%;
         height: 90vh;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
-        background-color: #2b2c2c;
+        background-color: #fff;
         transition: all 0.9s ease;
         padding-top: 20px;
+        z-index: 9999;
     }
 
     .navbar ul li {

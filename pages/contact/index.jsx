@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer';
 // import NavBar from '../components/Navbar/NavBar';
 // import Footer from '../components/Footer';
 // import {useDocTitle} from '../components/CustomHook';
@@ -28,54 +30,11 @@ const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
-        // document.getElementById('submitBtn').disabled = true;
-        // document.getElementById('submitBtn').innerHTML = 'Loading...';
-        // let fData = new FormData();
-        // fData.append('first_name', firstName)
-        // fData.append('last_name', lastName)
-        // fData.append('email', email)
-        // fData.append('phone_number', phone)
-        // fData.append('message', message)
-
-        // axios({
-        //     method: "post",
-        //     url: process.env.REACT_APP_CONTACT_API,
-        //     data: fData,
-        //     headers: {
-        //         'Content-Type':  'multipart/form-data'
-        //     }
-        // })
-        // .then(function (response) {
-        //     document.getElementById('submitBtn').disabled = false;
-        //     document.getElementById('submitBtn').innerHTML = 'send message';
-        //     clearInput()
-        //     //handle success
-        //     Notiflix.Report.success(
-        //         'Success',
-        //         response.data.message,
-        //         'Okay',
-        //     );
-        // })
-        // .catch(function (error) {
-        //     document.getElementById('submitBtn').disabled = false;
-        //     document.getElementById('submitBtn').innerHTML = 'send message';
-        //     //handle error
-        //     const { response } = error;
-        //     if(response.status === 500) {
-        //         Notiflix.Report.failure(
-        //             'An error occurred',
-        //             response.data.message,
-        //             'Okay',
-        //         );
-        //     }
-        //     if(response.data.errors !== null) {
-        //         setErrors(response.data.errors)
-        //     }
-            
-        // });
+     
     }
     return (
         <>
+        <Header/>
             
             <div className="flex justify-center items-center  w-full bg-white ">
                 <div className="container mx-auto my-8 px-4 lg:px-20" data-aos="zoom-in">
@@ -211,7 +170,7 @@ const Contact = () => {
                 </div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
 
 
