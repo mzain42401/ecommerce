@@ -1,9 +1,23 @@
-import React, { useRef, useState } from 'react'
-import Link  from 'next/link'
+import React, { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import Header from '../components/header/Header'
 import { auth } from '../../firebase/firebase'
-import { createUserWithEmailAndPassword,updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { useAuth } from '@/firebase/authContext'
+import {  useRouter } from 'next/router'
+import Loader from '../components/loader/Loader'
+
+
+
 const Signup = () => {
+    const route=useRouter()
+const {authUser, isLoading,setAuthUser}=useAuth()
+
+    useEffect(()=>{
+        if (!isLoading && authUser) {
+            route.push("/")
+        }
+    },[authUser,isLoading])
     const [firstNameError, setfirstNameError] = useState('')
     const [lastNameError, setlastNameError] = useState('')
     const [emailError, setemailError] = useState('')
@@ -25,24 +39,31 @@ const Signup = () => {
         const password = passwordRef.current.value
         const repeatpassword = repeatpasswordRef.current.value
 
-        try{
-const user=await createUserWithEmailAndPassword(auth,email,password)
-await updateProfile(auth.currentUser,{
-    displayName:firstName+lastName
-})
-        }catch(err){
-console.log('error' + err);
+        try {
+            const user = await createUserWithEmailAndPassword(auth, email, password)
+            await updateProfile(auth.currentUser, {
+                displayName: firstName + lastName
+            })
+            setAuthUser({
+                uid:user.uid,
+                email:user.email,
+                username:firstName+lastName
+
+
+            })
+        } catch (err) {
+            console.log('error' + err);
         }
     }
 
 
 
-    return (
+    return  isLoading || (!isLoading && !!authUser) ? (
+        <Loader />
+    ) :   (
         <>
-            {/* <div className='bg-white shadow text-2xl font-bold p-2  shadow-gray-400'>
-        <h1>Signup</h1>
-      </div> */}
-      <Header/>
+
+            <Header />
 
             <div className="flex min-h-full flex-1 flex-col justify-center  lg:px-8">
 
@@ -129,7 +150,7 @@ console.log('error' + err);
                             </div>
                             {/* <div>{repeatpasswordError && <p className='text-red-500 text-xs mt-1'>{repeatpasswordError}</p>}</div> */}
                             <div className='text-sm mt-5 text-gray-500'>
-                              <Link href='/auth/login'>If you have an account, <span className='text-[#ff7900]'> Login</span></Link>
+                                <Link href='/auth/login'>If you have an account, <span className='text-[#ff7900]'> Login</span></Link>
                             </div>
 
                         </div>

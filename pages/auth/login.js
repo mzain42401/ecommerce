@@ -1,15 +1,24 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Header from '../components/header/Header'
 import { FcGoogle } from "react-icons/fc"
 import { auth } from '@/firebase/firebase'
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { useAuth } from '@/firebase/authContext'
+import {  useRouter } from 'next/router'
+import Loader from '../components/loader/Loader'
 const provider = new GoogleAuthProvider()
-
 const login = () => {
-    // const [emailError, setemailError] = useState('')
-    // const [passwordError, setpasswordError] = useState('')
+    const route=useRouter()
+    const [emailError, setemailError] = useState(null)
+    const [passwordError, setpasswordError] = useState(null)
+const {authUser, isLoading}=useAuth()
 
+useEffect(()=>{
+    if (!isLoading && authUser) {
+        route.push("/")
+    }
+},[authUser,isLoading])
 
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -37,7 +46,9 @@ console.log(err);
 
     }
 
-    return (
+    return isLoading || (!isLoading && !!authUser) ? (
+        <Loader />
+    ) :  (
         <>
             {/* <div className='bg-white shadow text-2xl font-bold p-2  shadow-gray-400'>
         <h1>Signup</h1>
@@ -62,7 +73,7 @@ console.log(err);
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900]  sm:text-sm sm:leading-6"
                                 />
                             </div>
-                            {/* <div>{emailError && <p className='text-red-500 text-xs mt-1'>{emailError}</p>}</div> */}
+                            <div>{emailError && <p className='text-red-500 text-xs mt-1'>{emailError}</p>}</div>
                         </div>
 
                         <div>
@@ -78,7 +89,7 @@ console.log(err);
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900] sm:text-sm sm:leading-6"
                                 />
                             </div>
-                            {/* <div>{passwordError && <p className='text-red-500 text-xs mt-1'>{passwordError}</p>}</div> */}
+                            <div>{passwordError && <p className='text-red-500 text-xs mt-1'>{passwordError}</p>}</div>
 
                         </div>
                         <div className='text-sm mt-5 text-gray-500'>
