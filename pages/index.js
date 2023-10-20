@@ -8,9 +8,11 @@ import Footer from './components/footer/Footer';
 import Contact from './contact';
 import ImageSlider from './components/imageslider/ImageSlider';
 import Category from './components/category/Category';
+import { useAuth } from '@/firebase/authContext';
 
 const index = () => {
   
+  const {authUser,isLoading,signOut,setAuthUse}=useAuth()
   const settings = {
     dots: true,
     infinite: true,
@@ -20,7 +22,7 @@ const index = () => {
   };
   return (
     <>
-    <Header/>
+    <Header authUser={authUser}/>
     {/* <div>
       <h2>Custom Slides</h2>
       <Slider {...settings}>

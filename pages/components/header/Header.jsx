@@ -3,8 +3,10 @@ import { AiOutlineShoppingCart, AiOutlineUser, AiOutlineClose } from 'react-icon
 import { FaBars } from 'react-icons/fa'
 import { BsWhatsapp, BsTelephoneFill } from 'react-icons/bs'
 import Link from 'next/link'
-const Header = () => {
+
+const Header = ({authUser}) => {
   const [initial, setInitial] = useState(true)
+  
   const navRef = useRef()
   const toggleIcons = () => {
     setInitial(!initial)
@@ -41,6 +43,7 @@ const Header = () => {
           <li className='px-5 cursor-pointer'><Link href='/aboutus'>About</Link></li>
           <li className='px-5 cursor-pointer'><Link href='/products'>Shop</Link></li>
           <li className='px-5 cursor-pointer'><Link href='/contact'>Contact</Link></li>
+         
         </ul>
         <div className='flex  items-center font-bold'>
           <div className='px-2 text-2xl cursor-pointer'>
@@ -49,9 +52,15 @@ const Header = () => {
             </Link>
           </div>
           <div className='px-2  cursor-pointer'>
-            <Link href='/auth/login'>
-              login
-            </Link>
+          {
+            authUser?
+          <p className='px-5 cursor-pointer'>signOut</p>
+          : <Link href='/auth/login'>
+          login
+        </Link>
+
+          }
+            
           </div>
           <div className='px-1 text-2xl cursor-pointer relative'>
             <Link href='/cart'>
