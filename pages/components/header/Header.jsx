@@ -4,9 +4,9 @@ import { FaBars } from 'react-icons/fa'
 import { BsWhatsapp, BsTelephoneFill } from 'react-icons/bs'
 import Link from 'next/link'
 
-const Header = ({authUser}) => {
+const Header = ({ authUser, signOut }) => {
   const [initial, setInitial] = useState(true)
-  
+
   const navRef = useRef()
   const toggleIcons = () => {
     setInitial(!initial)
@@ -43,7 +43,7 @@ const Header = ({authUser}) => {
           <li className='px-5 cursor-pointer'><Link href='/aboutus'>About</Link></li>
           <li className='px-5 cursor-pointer'><Link href='/products'>Shop</Link></li>
           <li className='px-5 cursor-pointer'><Link href='/contact'>Contact</Link></li>
-         
+
         </ul>
         <div className='flex  items-center font-bold'>
           <div className='px-2 text-2xl cursor-pointer'>
@@ -52,15 +52,8 @@ const Header = ({authUser}) => {
             </Link>
           </div>
           <div className='px-2  cursor-pointer'>
-          {
-            authUser?
-          <p className='px-5 cursor-pointer'>signOut</p>
-          : <Link href='/auth/login'>
-          login
-        </Link>
 
-          }
-            
+
           </div>
           <div className='px-1 text-2xl cursor-pointer relative'>
             <Link href='/cart'>
@@ -68,8 +61,16 @@ const Header = ({authUser}) => {
               <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
             </Link>
           </div>
+          {
+            authUser ?
+              <p onClick={() => signOut()} className='m-[40px] cursor-pointer'>signOut</p>
+              : <Link href='/auth/login'>
+                login
+              </Link>
 
+          }
         </div>
+
       </nav>
 
     </>
