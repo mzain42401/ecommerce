@@ -1,9 +1,18 @@
 import React from 'react'
 import Header from '../components/header/Header'
+import { useAuth } from '@/firebase/authContext'
+import Loader from '../components/loader/Loader'
 // import { PaperClipIcon } from '@heroicons/react/20/solid'
 // import myImage from '../../public/profilepic'
 const index = () => {
-  return (
+const {authUser, isLoading,setAuthUser}=useAuth()
+console.log(isLoading);
+// const {username,email,uid}=authUser;
+// console.log(username);
+
+  return isLoading || (!isLoading && !authUser) ? (
+    <Loader />
+) :   (
     <>
     <Header/>
 
@@ -18,12 +27,12 @@ const index = () => {
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster</dd>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{authUser.username}</dd>
           </div>
        
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
+            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{authUser.email}</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>

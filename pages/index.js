@@ -22,7 +22,7 @@ const index = () => {
   };
   return (
     <>
-    <Header authUser={authUser} signOut={signOut} />
+    <Header  />
     {/* <div>
       <h2>Custom Slides</h2>
       <Slider {...settings}>

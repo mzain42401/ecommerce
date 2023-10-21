@@ -4,9 +4,12 @@ import { FaBars } from 'react-icons/fa'
 import {GoSignOut} from 'react-icons/go'
 import { BsWhatsapp, BsTelephoneFill } from 'react-icons/bs'
 import Link from 'next/link'
+import { useAuth } from '@/firebase/authContext'
 
-const Header = ({ authUser, signOut }) => {
+const Header = () => {
   const [initial, setInitial] = useState(true)
+  const {authUser,isLoading,signOut,setAuthUse}=useAuth()
+
 
   const navRef = useRef()
   const toggleIcons = () => {
