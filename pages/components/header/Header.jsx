@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { AiOutlineShoppingCart, AiOutlineUser, AiOutlineClose } from 'react-icons/ai'
 import { FaBars } from 'react-icons/fa'
+import {GoSignOut} from 'react-icons/go'
 import { BsWhatsapp, BsTelephoneFill } from 'react-icons/bs'
 import Link from 'next/link'
 
@@ -46,29 +47,35 @@ const Header = ({ authUser, signOut }) => {
 
         </ul>
         <div className='flex  items-center font-bold'>
-          <div className='px-2 text-2xl cursor-pointer'>
-            <Link href='/profile'>
-              <AiOutlineUser />
-            </Link>
-          </div>
-          <div className='px-2  cursor-pointer'>
-
-
-          </div>
-          <div className='px-1 text-2xl cursor-pointer relative'>
-            <Link href='/cart'>
-              <AiOutlineShoppingCart />
-              <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
-            </Link>
-          </div>
           {
             authUser ?
-              <p onClick={() => signOut()} className='m-[40px] cursor-pointer'>signOut</p>
-              : <Link href='/auth/login'>
-                login
-              </Link>
+              <>
+                <div className='px-2 text-2xl cursor-pointer'>
+                  <Link href='/profile'>
+                    <AiOutlineUser />
+                  </Link>
+                </div>
+
+                <div className='px-1 text-2xl cursor-pointer relative'>
+                  <Link href='/cart'>
+                    <AiOutlineShoppingCart />
+                    <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
+                  </Link>
+                </div>
+                <p onClick={() => signOut()} className='ml-[20px] text-2xl cursor-pointer'><GoSignOut/></p>
+              </>
+              :
+
+
+              <div className='px-3 cursor-pointer'>
+                <Link href='/auth/login'>
+                  login
+                </Link>
+              </div>
 
           }
+
+
         </div>
 
       </nav>
