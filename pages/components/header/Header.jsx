@@ -3,10 +3,12 @@ import { AiOutlineShoppingCart, AiOutlineUser, AiOutlineClose } from 'react-icon
 import { FaBars } from 'react-icons/fa'
 import {GoSignOut} from 'react-icons/go'
 import { BsWhatsapp, BsTelephoneFill } from 'react-icons/bs'
+import {  useRouter } from 'next/router'
 import Link from 'next/link'
 import { useAuth } from '@/firebase/authContext'
 
 const Header = () => {
+  const route=useRouter()
   const [initial, setInitial] = useState(true)
   const {authUser,isLoading,signOut,setAuthUse}=useAuth()
 
@@ -21,6 +23,11 @@ const Header = () => {
     navRef.current.classList.toggle('active')
   }
 
+  const signOutFunction=()=>{
+    signOut()
+    route.push("/")
+
+  }
   return (
     <>
       <div className='bg-black h-8 flex justify-between items-center'>
@@ -65,7 +72,7 @@ const Header = () => {
                     <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
                   </Link>
                 </div>
-                <p onClick={() => signOut()} className='ml-[20px] text-2xl cursor-pointer'><GoSignOut/></p>
+                <p onClick={() => signOutFunction()} className='ml-[20px] text-2xl cursor-pointer'><GoSignOut/></p>
               </>
               :
 

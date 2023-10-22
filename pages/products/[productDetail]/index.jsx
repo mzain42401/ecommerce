@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 import Footer from '@/pages/components/footer/Footer'
+import { useAuth } from '@/firebase/authContext'
 import Header from '@/pages/components/header/Header'
 
 const product = {
@@ -51,7 +52,15 @@ function classNames(...classes) {
 export default function index() {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0])
   // const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+const {authUser, isLoading,setAuthUser}=useAuth()
 
+  const addtoCart=(e)=>{
+    e.preventDefault()
+    if (!authUser) {
+      alert("login now")
+    }
+    alert('add to cart')
+  }
   return (
     <>
     <Header/>
@@ -135,14 +144,24 @@ export default function index() {
               </div>
             </div>
 
-            <form className="mt-10">
+            <form onSubmit={(e)=>addtoCart(e)} className="mt-10">
               
 
               <button
                 type="submit"
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                Add to bag
+                Add to Cart
+              </button>
+            </form>
+            <form  className="mt-10">
+              
+
+              <button
+                type="submit"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              >
+                Order Now
               </button>
             </form>
           </div>

@@ -1,8 +1,17 @@
 import React from 'react';
 import {BsFillCartPlusFill} from 'react-icons/bs'
 import Link from 'next/link'
+import { useAuth } from '@/firebase/authContext'
+import Swal from 'sweetalert2';
 const ProductCard = () => {
+const {authUser, isLoading,setAuthUser}=useAuth()
+
   const addToCart=()=>{
+    if (!authUser) {
+      // alert("sign in now")
+      Swal.fire('Please login youor account!')
+      return;
+    }
     alert("add")
   }
   return (
