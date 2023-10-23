@@ -20,7 +20,7 @@ console.log(isLoading);
     <div className='w-3/4 m-auto mt-4'>
       <div className="px-4 sm:px-0">
         <div>
-          <img className='h-36 w-36 rounded-full border-2 border-gray-300 ' src='https://zainali.vercel.app/static/media/zain.6b831df31f091fe9aac2.png' alt="" />
+          <img className='h-36 w-36 rounded-full border-2 border-gray-300 ' src='https://cdn-icons-png.flaticon.com/512/2815/2815428.png' alt="" />
         </div>
       </div>
       <div className="mt-6 border-t border-gray-300">

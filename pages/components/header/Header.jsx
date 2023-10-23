@@ -34,7 +34,7 @@ const Header = () => {
         <marquee className='text-white w-max overflow-hidden ml-2 '>
           WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.3000/-
         </marquee>
-        <div className='flex justify-between items-center text-white'>
+        <div className='flex justify-between items-center top-header text-white'>
 
           <div className='px-1 cursor-pointer'><BsTelephoneFill /></div>
           <div className='px-3 cursor-pointer'><BsWhatsapp /></div>

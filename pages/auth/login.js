@@ -107,7 +107,7 @@ console.log(err);
                         </div>
                     </form>
                 </div>
-                <div className='flex justify-center' onClick={signInWithGoogle}>
+                {/* <div className='flex justify-center' onClick={signInWithGoogle}>
                     <button
                         type="submit"
 
@@ -116,7 +116,7 @@ console.log(err);
                         <span className='mx-5 text-2xl' ><FcGoogle /></span>
                         Login with Google
                     </button>
-                </div>
+                </div> */}
             </div>
 
         </>
