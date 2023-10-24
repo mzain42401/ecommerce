@@ -46,8 +46,24 @@ const Signup = () => {
 
             })
         } catch (err) {
-            console.log("1- " + err.code);
-            console.log("2- " + err.message);
+            if (err.code==="auth/email-already-in-use") {
+                setemailError("User already exists.")
+                setTimeout(()=>{
+                    setemailError('')
+                }, 3000)
+                return;
+            }
+            
+            else if(err.code==='auth/weak-password'){
+                setpasswordError("must have 6 character")
+                setTimeout(()=>{
+                    setpasswordError('')
+                }, 3000)
+                
+            }
+            else{
+                alert("susscess")
+            }
 
         }
     }
