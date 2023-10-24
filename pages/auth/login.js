@@ -10,8 +10,7 @@ import Loader from '../components/loader/Loader'
 const provider = new GoogleAuthProvider()
 const login = () => {
     const route=useRouter()
-    const [emailError, setemailError] = useState(null)
-    const [passwordError, setpasswordError] = useState(null)
+    const [Error, setError] = useState('')
 const {authUser, isLoading}=useAuth()
 
 useEffect(()=>{
@@ -31,7 +30,13 @@ useEffect(()=>{
              const user = await signInWithEmailAndPassword(auth, email, password)
         console.log(user);
         }catch(err){
-console.log(err);
+            if (err.code=== "auth/invalid-login-credentials") {
+                setError('Wrong email or password')
+                setTimeout(()=>{
+                    setError('')
+                }, 3000)
+                return;
+            }
         }
        
     }
@@ -73,7 +78,6 @@ console.log(err);
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900]  sm:text-sm sm:leading-6"
                                 />
                             </div>
-                            <div>{emailError && <p className='text-red-500 text-xs mt-1'>{emailError}</p>}</div>
                         </div>
 
                         <div>
@@ -89,7 +93,7 @@ console.log(err);
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900] sm:text-sm sm:leading-6"
                                 />
                             </div>
-                            <div>{passwordError && <p className='text-red-500 text-xs mt-1'>{passwordError}</p>}</div>
+                            <div>{Error && <p className='text-red-500 text-xs mt-1'>{Error}</p>}</div>
 
                         </div>
                         <div className='text-sm mt-5 text-gray-500'>

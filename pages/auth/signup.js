@@ -61,9 +61,7 @@ const Signup = () => {
                 }, 3000)
                 
             }
-            else{
-                alert("susscess")
-            }
+           
 
         }
     }
