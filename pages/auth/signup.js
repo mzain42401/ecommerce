@@ -4,50 +4,44 @@ import Header from '../components/header/Header'
 import { auth } from '../../firebase/firebase'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useAuth } from '@/firebase/authContext'
-import {  useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import Loader from '../components/loader/Loader'
 
 
 
 const Signup = () => {
-    const route=useRouter()
-const {authUser, isLoading,setAuthUser}=useAuth()
+    const route = useRouter()
+    const { authUser, isLoading, setAuthUser } = useAuth()
 
-    useEffect(()=>{
+    useEffect(() => {
         if (!isLoading && authUser) {
             route.push("/")
         }
-    },[authUser,isLoading])
-    const [firstNameError, setfirstNameError] = useState('')
-    const [lastNameError, setlastNameError] = useState('')
+    }, [authUser, isLoading])
+    const [NameError, setNameError] = useState('')
     const [emailError, setemailError] = useState('')
     const [passwordError, setpasswordError] = useState('')
-    const [repeatpasswordError, setrepeatpasswordError] = useState('')
 
 
-    const firstNameRef = useRef()
-    const lastNameRef = useRef()
+    const fullNameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
-    const repeatpasswordRef = useRef()
 
     const onFormSubmit = async (e) => {
         e.preventDefault()
-        const firstName = firstNameRef.current.value
-        const lastName = lastNameRef.current.value
+        const fullName = fullNameRef.current.value
         const email = emailRef.current.value
         const password = passwordRef.current.value
-        const repeatpassword = repeatpasswordRef.current.value
 
         try {
             const user = await createUserWithEmailAndPassword(auth, email, password)
             await updateProfile(auth.currentUser, {
-                displayName: firstName + lastName
+                displayName: fullName
             })
             setAuthUser({
-                uid:user.uid,
-                email:user.email,
-                username:firstName+lastName
+                uid: user.uid,
+                email: user.email,
+                username: firstName + lastName
 
 
             })
@@ -58,17 +52,17 @@ const {authUser, isLoading,setAuthUser}=useAuth()
 
 
 
-    return  isLoading || (!isLoading && !!authUser) ? (
+    return isLoading || (!isLoading && !!authUser) ? (
         <Loader />
-    ) :   (
+    ) : (
         <>
 
             <Header />
 
-            <div className="flex min-h-full flex-1 flex-col justify-center  lg:px-8">
+            <div className="flex  min-h-full flex-1 flex-col justify-center  lg:px-8">
 
 
-                <div className="p-6 bg-white  border border-gray-200  border-solid rounded-xl  mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="p-6 bg-white  border border-gray-200  border-solid rounded-xl mx-4  mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
 
                     <form className="space-y-6" onSubmit={onFormSubmit} >
                         <div>
@@ -76,33 +70,18 @@ const {authUser, isLoading,setAuthUser}=useAuth()
                             <div className="mt-2">
                                 <input
                                     id="text"
-                                    placeholder='First Name'
+                                    placeholder='Full Name'
                                     name="text"
                                     type="text"
-                                    ref={firstNameRef}
+                                    ref={fullNameRef}
                                     required
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900]  sm:text-sm sm:leading-6"
                                 />
                             </div>
-                            <div>{firstNameError && <p className='text-red-500 text-xs mt-1'>{firstNameError}</p>}</div>
+                            <div>{NameError && <p className='text-red-500 text-xs mt-1'>{NameError}</p>}</div>
 
                         </div>
-                        <div>
 
-                            <div className="mt-2">
-                                <input
-                                    id="text"
-                                    name="text"
-                                    placeholder='Last Name'
-                                    type="text"
-                                    ref={lastNameRef}
-                                    required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900]  sm:text-sm sm:leading-6"
-                                />
-                            </div>
-                            <div>{lastNameError && <p className='text-red-500 text-xs mt-1'>{lastNameError}</p>}</div>
-
-                        </div>
                         <div>
 
                             <div className="mt-2">
@@ -132,28 +111,12 @@ const {authUser, isLoading,setAuthUser}=useAuth()
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900] sm:text-sm sm:leading-6"
                                 />
                             </div>
-                            {/* <div>{passwordError && <p className='text-red-500 text-xs mt-1'>{passwordError}</p>}</div> */}
+                            <div>{passwordError && <p className='text-red-500 text-xs mt-1'>{passwordError}</p>}</div>
 
                         </div>
-                        <div>
-
-                            <div className="mt-2">
-                                <input
-                                    id="repeatpassword"
-                                    ref={repeatpasswordRef}
-                                    name="repeatpassword"
-                                    type="password"
-                                    placeholder='Repeat Password'
-                                    required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900]  sm:text-sm sm:leading-6"
-                                />
-                            </div>
-                            {/* <div>{repeatpasswordError && <p className='text-red-500 text-xs mt-1'>{repeatpasswordError}</p>}</div> */}
-                            <div className='text-sm mt-5 text-gray-500'>
+                        <div className='text-sm mt-5 text-gray-500'>
                                 <Link href='/auth/login'>If you have an account, <span className='text-[#ff7900]'> Login</span></Link>
                             </div>
-
-                        </div>
                         <div className='flex justify-center'>
                             <button
                                 type="submit"

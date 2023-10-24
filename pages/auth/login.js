@@ -57,7 +57,7 @@ console.log(err);
             <div className="flex min-h-full flex-1 flex-col justify-center  mt-20  lg:px-8">
 
 
-                <div className="p-6 bg-white   border border-gray-200  border-solid rounded-xl   sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="p-6 bg-white mx-4  border border-gray-200  border-solid rounded-xl   sm:mx-auto sm:w-full sm:max-w-sm">
 
                     <form className="space-y-6" onSubmit={onFormSubmit} >
                         <div>
