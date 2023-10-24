@@ -46,7 +46,9 @@ const Signup = () => {
 
             })
         } catch (err) {
-            console.log('error' + err);
+            console.log("1- " + err.code);
+            console.log("2- " + err.message);
+
         }
     }
 
