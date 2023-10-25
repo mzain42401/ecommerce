@@ -39,7 +39,7 @@ function ImageSlider() {
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-  const sliderTomeout = setTimeout(sliderFunc, 8000);
+  const sliderTomeout = setTimeout(sliderFunc, 4000);
   function sliderFunc() {
     setCurrentIndex(newIndex)
   }
