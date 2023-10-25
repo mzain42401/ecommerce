@@ -32,7 +32,24 @@ position: relative;
 }
 
 @media screen and (max-width: 720px) {
+.categoryDiv{
+    width: 100%;
+}
+.categoryimg{
+    width: 48px;
+    height: 48px;
 
+}
+.categoryName{
+    width: 60px;
+    height: max-content;
+    font-size: 12px;
+    font-weight: lighter;
+}
+    .category{
+        width: 64px ;
+        height: 70px;
+    }
     .navToggleBtn {
         display: block;
     }

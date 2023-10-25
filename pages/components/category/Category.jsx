@@ -39,19 +39,19 @@ const Category = () => {
     ]
     return (
         <>
-            <div className='mt-10 flex justify-center flex-wrap items-center w-[65%] m-auto border border-[#e0e0e0] '>
+            <div className=' categoryDiv mt-10 flex justify-center flex-wrap items-center w-[65%] m-auto border border-[#e0e0e0] '>
 
                 {
                     arry.map((elem) => {
                         return (
-                            <div className=' h-[156px] w-[106px]   m-4  flex flex-col justify-center items-center '>
+                            <div className='category h-[156px] w-[106px]   m-4  flex flex-col justify-center items-center '>
 
                                 <Link className='h-[156px] w-[106px]' href='/'>
                                     <div className='flex justify-center flex-col items-center h-[156px] w-[106px]'>
                                         <div className=' hover:scale-110 transition-[900ms]'>
-                                            <img className='h-[88px] w-[88px]' src={elem.imageSrc} alt="" />
+                                            <img className='h-[88px] w-[88px] categoryimg' src={elem.imageSrc} alt="" />
                                         </div>
-                                        <span className='text-center font-bold w-[7.6rem] h-[106px]'>{elem.categoryName}</span>
+                                        <span className='text-center font-bold categoryName w-[7.6rem] h-[106px]'>{elem.categoryName}</span>
                                     </div>
                                 </Link>
                             </div>
