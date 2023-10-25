@@ -46,6 +46,9 @@ position: relative;
     font-size: 12px;
     font-weight: lighter;
 }
+.productCard{
+    width: 170px;
+}
     .category{
         width: 64px ;
         height: 70px;
