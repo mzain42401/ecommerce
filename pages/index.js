@@ -37,12 +37,13 @@ const index = () => {
     <ImageSlider/>
     {/* CardSection */}
     <section className='mt-20  '>
-    <h1 className='heading px-4'> <span>POPULAR CATEGORIES</span></h1>
+    <h1 className='heading text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> POPULAR CATEGORIES</h1>
 
       <Category/>
     </section>
     <section className='mt-20  '>
-      <h1 className='heading px-4'> <span>POPULAR PRODUCTS </span></h1>
+    <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> POPULAR PRODUCTS</h1>
+
     <div className='flex justify-center items-center flex-wrap mt-2'>
       
      <ProductCard/>
@@ -56,7 +57,8 @@ const index = () => {
      <ProductCard/>
      <ProductCard/>
      </div>
-     <h1 className='heading px-4'> <span> OUR BEST SELLERS</span></h1>
+     <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> OUR BEST SELLS</h1>
+
 
      <div className='flex justify-center items-center flex-wrap mt-2'>
       

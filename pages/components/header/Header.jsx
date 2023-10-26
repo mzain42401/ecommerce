@@ -88,7 +88,7 @@ const Header = () => {
               </div>
 
               {isOpen && (
-                <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <div  className="dropDown origin-top-right  absolute  mt-2 w-max rounded-md shadow-lg bg-white px-2 ring-1 ring-black ring-opacity-5">
                   <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                   <Link href='/privacy/PrivacyPolicy'
                         

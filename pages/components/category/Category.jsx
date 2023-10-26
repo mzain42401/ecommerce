@@ -39,7 +39,7 @@ const Category = () => {
     ]
     return (
         <>
-            <div className=' categoryDiv mt-10 flex justify-center flex-wrap items-center w-[65%] m-auto border border-[#e0e0e0] '>
+            <div className=' categoryDiv mt-10 flex justify-center flex-wrap items-center w-[95%] m-auto border rounded-2xl bg-white'>
 
                 {
                     arry.map((elem) => {
@@ -51,7 +51,7 @@ const Category = () => {
                                         <div className=' hover:scale-110 transition-[900ms]'>
                                             <img className='h-[88px] w-[88px] categoryimg' src={elem.imageSrc} alt="" />
                                         </div>
-                                        <span className='text-center font-bold categoryName w-[7.6rem] h-[106px]'>{elem.categoryName}</span>
+                                        <span className='text-center  categoryName w-[7.6rem] h-[106px]'>{elem.categoryName}</span>
                                     </div>
                                 </Link>
                             </div>
