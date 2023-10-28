@@ -24,17 +24,7 @@ const index = () => {
     <>
     {/* <Header  /> */}
     <Navbar/>
-    {/* <div>
-      <h2>Custom Slides</h2>
-      <Slider {...settings}>
-        <CustomSlide index={1} />
-        <CustomSlide index={2} />
-        <CustomSlide index={3} />
-        <CustomSlide index={4} />
-        <CustomSlide index={5} />
-        <CustomSlide index={6} />
-      </Slider>
-    </div> */}
+    
     <ImageSlider/>
     {/* CardSection */}
     <section className='mt-20  '>
@@ -71,7 +61,7 @@ const index = () => {
      </div>
     </section>
 
-    {/* <Contact/> */}
+    <Contact/>
     <Footer/> 
     </>
   );
