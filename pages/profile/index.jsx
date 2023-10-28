@@ -2,8 +2,6 @@ import React from 'react'
 import Header from '../components/header/Header'
 import { useAuth } from '@/firebase/authContext'
 import Loader from '../components/loader/Loader'
-// import { PaperClipIcon } from '@heroicons/react/20/solid'
-// import myImage from '../../public/profilepic'
 const index = () => {
 const {authUser, isLoading,setAuthUser}=useAuth()
 console.log(isLoading);

@@ -79,32 +79,32 @@ const Header = () => {
                     id="options-menu"
                     aria-expanded="true"
                     aria-haspopup="listbox"
-                    
+
                   >
                     About us
                   </button>
-                    <AiOutlineCaretDown />
+                  <AiOutlineCaretDown />
                 </span>
               </div>
 
               {isOpen && (
-                <div  className="dropDown origin-top-right  absolute  mt-2 w-max rounded-md shadow-lg bg-white px-2 ring-1 ring-black ring-opacity-5">
+                <div className="dropDown origin-top-right  absolute  mt-2 w-max rounded-md shadow-lg bg-white px-2 ring-1 ring-black ring-opacity-5">
                   <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                  <Link href='/privacy/PrivacyPolicy'
-                        
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                        
-                      >
-                        Privacy Policy
-                      </Link>
-                      <Link href='/privacy/shoppingPolicy'
-                        
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                        
-                      >
-                        shopping Policy
-                        
-                      </Link>
+                    <Link href='/privacy/PrivacyPolicy'
+
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+
+                    >
+                      Privacy Policy
+                    </Link>
+                    <Link href='/privacy/shoppingPolicy'
+
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+
+                    >
+                      shopping Policy
+
+                    </Link>
                   </div>
                 </div>
               )}

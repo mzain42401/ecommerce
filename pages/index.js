@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from './components/header/Header'
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import ProductCard from './components/productCard/ProductCard';
@@ -9,6 +8,7 @@ import Contact from './contact';
 import ImageSlider from './components/imageslider/ImageSlider';
 import Category from './components/category/Category';
 import { useAuth } from '@/firebase/authContext';
+import Navbar from './components/Navbar/Navbar';
 
 const index = () => {
   
@@ -22,7 +22,8 @@ const index = () => {
   };
   return (
     <>
-    <Header  />
+    {/* <Header  /> */}
+    <Navbar/>
     {/* <div>
       <h2>Custom Slides</h2>
       <Slider {...settings}>

@@ -36,10 +36,10 @@ function ImageSlider() {
   }
 
   return (
-    <div className='max-w-[1400px] h-[400px] w-full m-auto mt-4  px-4 relative group'>
+    <div className=' h-[90vh] w-full   '>
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
+        className='w-full h-full  bg-center bg-cover duration-500'
       ></div>
       {/* Left Arrow */}
       {/* <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>

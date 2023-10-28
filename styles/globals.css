@@ -17,6 +17,21 @@ body{
     width: 98%;
 padding-top: 10px;
 }
+.seacrhdiv{
+    width: 50%;
+    margin: 0px;
+}
+.seacrhdiv>input{
+    font-size: normal;
+}
+.categorysearchBtn>button{
+    padding: 8px 6px;
+    
+}
+
+.searchBtn {
+    width: max-content;
+}
 .categoryimg{
     width: 57px;
     height: 57px;
