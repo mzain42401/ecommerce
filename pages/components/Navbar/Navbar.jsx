@@ -30,11 +30,11 @@ const Navbar = () => {
     <nav className="bg-white">
       <div className="flex items-center  font-medium justify-around">
         <div className="z-50 px-2 md:w-auto w-full flex justify-between">
-          <div className="flex justify-center items-center"><Image src={logo} className=" md:cursor-pointer  h-[70px] w-24" />
+          <div className="mylogo flex justify-center   items-center"><Image src={logo} className=" md:cursor-pointer  h-[70px] w-24" />
           <Image src={mylogo} className=" md:cursor-pointer  h-[70px]" /></div>
 
-          <div className="text-3xl flex items-center md:hidden" onClick={() => setOpen(!open)}>
-          {open?<GrClose/>:<FaBars/>}
+          <div className="text-3xl  flex items-center md:hidden" onClick={() => setOpen(!open)}>
+          <FaBars/>
           </div>
         </div>
         <ul className="md:flex font-sans   hidden uppercase items-center gap-8">
@@ -57,10 +57,12 @@ const Navbar = () => {
         {/* Mobile nav */}
         <ul
           className={`
-        md:hidden bg-white fixed w-full top-0 z-[48] overflow-y-auto bottom-0 py-24 pl-4
+        md:hidden  bg-white  w-full top-0 z-[99] overflow-y-auto fixed bottom-0 pt-24 pl-4
         duration-500 ${open ? "left-0" : "left-[-100%]"}
         `}
         >
+          <div onClick={() => setOpen(!open)} className="absolute top-8 right-4 text-3xl"><GrClose/></div>
+          <div onClick={() => setOpen(!open)} className="absolute top-4 left-4 w-24 "> <Image src={logo} className=" md:cursor-pointer  h-[70px]" /></div>
           <li>
             <Link href="/" className="py-7 px-3 inline-block">
               Home

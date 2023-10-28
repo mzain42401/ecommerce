@@ -13,6 +13,9 @@ body{
 
 
 @media screen and (max-width: 720px) {
+    .mylogo{
+        z-index: 9;
+    }
 .categoryDiv{
     width: 98%;
 padding-top: 10px;
