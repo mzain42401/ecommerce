@@ -250,7 +250,7 @@ const NavLinks = () => {
                     }`}
                   >
                     {slinks.sublink.map((slink) => (
-                      <li className="py-3 w-[50%]  shadow-lg  m-auto text-center rounded-lg my-2">
+                      <li className="py-3 w-[80%]  shadow-lg  m-auto text-center rounded-lg my-2">
                         <Link href={slink.link}>{slink.name}</Link>
                       </li>
                     ))}
