@@ -61,7 +61,7 @@ const index = () => {
      </div>
     </section>
 
-    <Contact/>
+    {/* <Contact/> */}
     <Footer/> 
     </>
   );
