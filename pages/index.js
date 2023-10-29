@@ -12,7 +12,8 @@ import Navbar from './components/Navbar/Navbar';
 
 const index = () => {
   
-  const {authUser,isLoading,signOut,setAuthUse}=useAuth()
+  const {authUser,isLoading,signOut,setAuthUse,products}=useAuth()
+  
   const settings = {
     dots: true,
     infinite: true,
@@ -36,17 +37,13 @@ const index = () => {
     <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> POPULAR PRODUCTS</h1>
 
     <div className='flex justify-center items-center flex-wrap mt-2'>
+      {
+        products.map((elem)=>{
+          return  <ProductCard Category={elem.category} Name={elem.name}/>
       
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
+        })
+      }
+     
      </div>
      <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> OUR BEST SELLS</h1>
 

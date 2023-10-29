@@ -7,7 +7,7 @@ const links = [
     submenu: true,
     sublinks: [
       {
-        Head: "Customize Product ",
+        Head: "Customize Product",
         sublink: [
           { name: "Locket", link: "/" },
           { name: "Bracelet", link: "/" },
@@ -17,6 +17,8 @@ const links = [
           { name: "Bottle", link: "/" },
           { name: "Pen", link: "/" },
           { name: "Table Clock", link: "/" },
+          { name: "Others", link: "/" },
+
 
         ],
       },
@@ -32,6 +34,8 @@ const links = [
           { name: "Covers", link: "/" },
           { name: "Storage & Organizers", link: "/" },
           { name: "Bags", link: "/" },
+          { name: "Others", link: "/" },
+
 
         ],
       },
@@ -47,6 +51,8 @@ const links = [
           { name: "Mugs & Cups", link: "/" },
           { name: "Spice Containers", link: "/" },
           { name: "Cutlery Holders", link: "/" },
+          { name: "Others", link: "/" },
+
           
         ],
       },
@@ -54,12 +60,14 @@ const links = [
       {
         Head: "Cleaning Products",
         sublink: [
-          { name: "Washing Machine ", link: "/" },
+          { name: "Washing Machine", link: "/" },
           { name: "Mop", link: "/" },
           { name: "Brush", link: "/" },
           { name: "Scrubber", link: "/" },
           { name: "Towel", link: "/" },
           { name: "Duster", link: "/" },
+          { name: "Others", link: "/" },
+
 
         ],
       },
@@ -74,13 +82,15 @@ const links = [
           { name: "Drawer", link: "/" },
           { name: "Cloths", link: "/" },
           { name: "Shoe", link: "/" },
+          { name: "Others", link: "/" },
+
 
 
         ],
       },
      
       {
-        Head: " Mobile Accessories",
+        Head: "Mobile Accessories",
         sublink: [
           { name: "Mobile Holder & Stand", link: "/" },
           { name: "Cable Clip", link: "/" },
@@ -88,11 +98,13 @@ const links = [
           { name: "Cleaning Brush", link: "/" },
           { name: "Hand Free", link: "/" },
           { name: "Bluetooth", link: "/" },
+          { name: "Others", link: "/" },
+
 
         ],
       },
       {
-        Head: " Women's Fashion",
+        Head: "Women's Fashion",
         sublink: [
           { name: "Cosmetic Accessories", link: "/" },
           { name: "Perfumes", link: "/" },
@@ -100,21 +112,25 @@ const links = [
           { name: "Watches", link: "/" },
           { name: "Makeup Organizers", link: "/" },
           { name: "Health & Fitness", link: "/" },
+          { name: "Others", link: "/" },
+
 
           
 
         ],
       },
       {
-        Head: " Men's Fashion",
+        Head: "Men's Fashion",
         sublink: [
           { name: "Watches", link: "/" },
           { name: "Wallet", link: "/" },
+          { name: "Others", link: "/" },
+
         ],
       },
       
       {
-        Head: " Jewellery",
+        Head: "Jewellery",
         sublink: [
           { name: "Earrings", link: "/" },
           { name: "Necklaces", link: "/" },
@@ -123,6 +139,8 @@ const links = [
           { name: "Hair Accessories", link: "/" },
           { name: "Anklets", link: "/" },
           { name: "Sets", link: "/" },
+          { name: "Others", link: "/" },
+
 
         ],
       },
@@ -132,16 +150,30 @@ const links = [
           { name: "Wall Stickers", link: "/" },
           { name: "Lighting", link: "/" },
           { name: "Home Décor", link: "/" },
+          { name: "Others", link: "/" },
+
         ],
       },
       {
-        Head: "Electronic Accessories        ",
+        Head: "Electronic Accessories",
         sublink: [
           { name: "Machines", link: "/" },
           { name: "Cleaning Brush", link: "/" },
           { name: "Mouse Pad", link: "/" },
           { name: "Lights & Bulbs", link: "/" },
           { name: "Car Accessories", link: "/" },
+          { name: "Others", link: "/" },
+
+        ],
+      },
+      {
+        Head: "Baby, Kids & Toys",
+        sublink: [
+  
+          { name: "Baby Products", link: "/" },
+          { name: "Education Toys", link: "/" },
+          { name: "Books", link: "/" },
+          { name: "Others", link: "/" },
         ],
       },
     ],

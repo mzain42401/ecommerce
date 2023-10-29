@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
+import logo from '../../public/logo.png'
+import Image from 'next/image'
 const people = [
   {
     name: 'Leslie Alexander',
@@ -57,9 +59,9 @@ const people = [
 const index = () => {
   return (
     <>
-<nav className='flex justify-between items-center shadow-lg shadow-gray-300 px-4 h-14'>
-<div>logo</div>
-<div><Link href='/'>back to home</Link> </div>
+<nav className='flex justify-between items-center shadow-lg shadow-gray-300 px-4 '>
+<div><Image src={logo} className='w-24 h-24'/></div>
+<div className='bg-red-900 text-white px-6 py-2 rounded-full'><Link href='/'>back to home</Link> </div>
 </nav>
 
     <div>

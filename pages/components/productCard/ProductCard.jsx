@@ -3,7 +3,7 @@ import {BsFillCartPlusFill} from 'react-icons/bs'
 import Link from 'next/link'
 import { useAuth } from '@/firebase/authContext'
 import Swal from 'sweetalert2';
-const ProductCard = () => {
+const ProductCard = ({Category,Name}) => {
 const {authUser, isLoading,setAuthUser}=useAuth()
 
   const addToCart=()=>{
@@ -25,7 +25,7 @@ const {authUser, isLoading,setAuthUser}=useAuth()
         <div className='font-bold text-center text-lg mt-2'>Rs.99/-</div>
 
         <div className='absolute bottom-3   w-full px-6 flex justify-between'>
-         <Link href="/products/productCategory/aa"> <button  className='bg-[#013289] hover:bg-transparent hover:text-[#013289] hover:border hover:border-[#013289] text-white rounded-lg px-4 py-1 text-base'>More</button></Link>
+         <Link href={`/products/${Category}/${Name}`}> <button  className='bg-[#013289] hover:bg-transparent hover:text-[#013289] hover:border hover:border-[#013289] text-white rounded-lg px-4 py-1 text-base'>More</button></Link>
           <button onClick={()=>addToCart()} className='  border border-[#013289] px-2 py-2 text-[#013289] rounded-3xl text-xl hover:bg-[#013289] hover:text-white'><BsFillCartPlusFill/></button>
 
         </div>
