@@ -1,12 +1,14 @@
 import React from 'react'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
+import Navbar from '../components/Navbar/Navbar'
 
 const shoppingPolicy = () => {
   return (
     <>
       
-      <Header/>
+      {/* <Header/> */}
+      <Navbar/>
 
       <div className="bg-gray-200 min-h-screen py-10">
       <div className="container mx-auto p-6">

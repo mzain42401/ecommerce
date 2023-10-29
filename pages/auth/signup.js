@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useAuth } from '@/firebase/authContext'
 import { useRouter } from 'next/router'
 import Loader from '../components/loader/Loader'
+import Navbar from '../components/Navbar/Navbar'
 
 
 
@@ -73,7 +74,8 @@ const Signup = () => {
     ) : (
         <>
 
-            <Header />
+            {/* <Header /> */}
+            <Navbar/>
 
             <div className="flex  min-h-full flex-1 flex-col justify-center  lg:px-8">
 

@@ -12,9 +12,11 @@ body{
 }
 
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 770px) {
     .mylogo{
         z-index: 9;
+    }.navBarLinks{
+        display: none;
     }
 .categoryDiv{
     width: 98%;

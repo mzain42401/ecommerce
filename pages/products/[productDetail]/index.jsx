@@ -5,6 +5,7 @@ import { RadioGroup } from '@headlessui/react'
 import Footer from '@/pages/components/footer/Footer'
 import { useAuth } from '@/firebase/authContext'
 import Header from '@/pages/components/header/Header'
+import Navbar from '@/pages/components/Navbar/Navbar'
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -63,7 +64,8 @@ const {authUser, isLoading,setAuthUser}=useAuth()
   }
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
+    <Navbar/>
     <div className="bg-white">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">

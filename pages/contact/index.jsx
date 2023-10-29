@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
+import Navbar from '../components/Navbar/Navbar';
 // import NavBar from '../components/Navbar/NavBar';
 // import Footer from '../components/Footer';
 // import {useDocTitle} from '../components/CustomHook';
@@ -34,7 +35,8 @@ const Contact = () => {
     }
     return (
         <>
-        <Header/>
+        {/* <Header/> */}
+        <Navbar/>
             
             <div className="flex justify-center items-center  w-full bg-white ">
                 <div className="container mx-auto my-8 px-4 lg:px-20" data-aos="zoom-in">

@@ -14,11 +14,7 @@ const Header = () => {
   const [selectedOption, setSelectedOption] = useState("Select an option");
   const { authUser, isLoading, signOut, setAuthUse } = useAuth()
 
-  const options = [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-  ];
+ 
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);

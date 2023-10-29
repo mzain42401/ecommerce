@@ -3,6 +3,7 @@ import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import ProductCard from '../components/productCard/ProductCard'
 import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi'
+import Navbar from '../components/Navbar/Navbar'
 const index = () => {
   const [drop, setDrop] = useState(false)
 
@@ -11,7 +12,8 @@ const index = () => {
   }
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
+      <Navbar/>
       <div className='h-16 bg-white  flex items-center justify-between       my-4 mr-4 '>
         <div className='w-[70%] seacrhdiv mx-2'>
           <input className='w-[100%] text-xl py-2 px-2 rounded-lg bg-gray-100' type="search" placeholder='search products' />

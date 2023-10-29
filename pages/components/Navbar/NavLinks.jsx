@@ -38,16 +38,14 @@ const links = [
       {
         Head: "Kitchen Accessories",
         sublink: [
-          { name: "Egg Box", link: "/" },
+
+
           { name: "Glass & Mug Stand", link: "/" },
           { name: "Food Storage & Dispensers", link: "/" },
           { name: "Cooking Tools", link: "/" },
-          { name: "Chopper, Peelers & Graters", link: "/" },
+          { name: "Chopper & Graters", link: "/" },
           { name: "Mugs & Cups", link: "/" },
-          { name: "Oil Bottles", link: "/" },
-          { name: "Kitchen Utensils", link: "/" },
           { name: "Spice Containers", link: "/" },
-          { name: "Knives & Accessories ", link: "/" },
           { name: "Cutlery Holders", link: "/" },
           
         ],
@@ -175,7 +173,7 @@ const NavLinks = () => {
     <>
       {links.map((link) => (
         <div>
-          <div className="px-3  text-left md:cursor-pointer group">
+          <div className="px-3   text-left md:cursor-pointer group">
             <h1
               className="py-7  flex justify-between items-center md:pr-0 pr-5 group"
               onClick={() => {
@@ -196,7 +194,7 @@ const NavLinks = () => {
                     mt-1 bg-white rotate-45"
                     ></div>
                   </div>
-                  <div className="bg-white font-sans  p-5 grid grid-cols-5 gap-10">
+                  <div className="bg-white font-sans  p-5 grid grid-cols-4 gap-10">
                     {link.sublinks.map((mysublinks) => (
                       <div>
                         <h1 className=" cursor-pointer text-xs font-bold">
@@ -206,7 +204,7 @@ const NavLinks = () => {
                           <li className=" text-gray-600 text-xs font-serif my-2.5">
                             <Link
                               href={slink.link}
-                              className=" cursor-pointer hover:text-gray-900 font-sans "
+                              className=" cursor-pointer hover:text-gray-900 hover:underline font-sans "
                             >
                               {slink.name}
                             </Link>

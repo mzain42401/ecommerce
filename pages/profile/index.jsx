@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/header/Header'
 import { useAuth } from '@/firebase/authContext'
 import Loader from '../components/loader/Loader'
+import Navbar from '../components/Navbar/Navbar'
 const index = () => {
 const {authUser, isLoading,setAuthUser}=useAuth()
 console.log(isLoading);
@@ -12,8 +13,8 @@ console.log(isLoading);
     <Loader />
 ) :   (
     <>
-    <Header/>
-
+    {/* <Header/> */}
+<Navbar/>
 
     <div className='w-3/4 m-auto mt-4'>
       <div className="px-4 sm:px-0">

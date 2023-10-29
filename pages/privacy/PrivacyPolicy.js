@@ -1,11 +1,13 @@
 import React from 'react'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
+import Navbar from '../components/Navbar/Navbar'
 
 const PrivacyPolicy = () => {
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
+    <Navbar/>
     <div className="bg-gray-200 min-h-screen py-10">
       <div className="container mx-auto p-6">
         <h1 className="text-2xl font-semibold mb-4">Privacy Policy</h1>

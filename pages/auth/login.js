@@ -7,6 +7,7 @@ import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 
 import { useAuth } from '@/firebase/authContext'
 import {  useRouter } from 'next/router'
 import Loader from '../components/loader/Loader'
+import Navbar from '../components/Navbar/Navbar'
 const provider = new GoogleAuthProvider()
 const login = () => {
     const route=useRouter()
@@ -58,7 +59,8 @@ useEffect(()=>{
             {/* <div className='bg-white shadow text-2xl font-bold p-2  shadow-gray-400'>
         <h1>Signup</h1>
       </div> */}
-            <Header />
+            {/* <Header /> */}
+            <Navbar/>
             <div className="flex min-h-full flex-1 flex-col justify-center  mt-20  lg:px-8">
 
 
