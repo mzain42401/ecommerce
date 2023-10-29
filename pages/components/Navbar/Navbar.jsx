@@ -92,13 +92,19 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
-            <NavLinks />
 
+            <NavLinks />
+            <li>
+              <Link href='/products' className="py-7 px-3 inline-block">
+                Products
+              </Link>
+            </li>
             <li>
               <Link href='/contact' className="py-7 px-3 inline-block">
                 Contact
               </Link>
             </li>
+
           </ul>
           <div className="navBarLinks ">
           {
