@@ -1,40 +1,83 @@
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
+import menFashion from "../../../public/menFashion.png"
+import womenFashion from "../../../public/womenFashion.png"
+import MobileElectronics from "../../../public/MobileElectronics.png"
+import Kitchen from '../../../public/Kitchen.png'
+import cleaning from '../../../public/cleaning.png'
+import organser from '../../../public/organser.png'
+import home from '../../../public/home.png'
+import mobile from '../../../public/mobile.png'
+import customize from '../../../public/customize.png'
+import decor from '../../../public/decor.png'
+import jewllery from '../../../public/jewllery.png'
+import baby from '../../../public/baby.png'
+
+
+
 
 const Category = () => {
     const arry = [
-       
         {
-            imageSrc:'https://www.olx.com.pk/assets/fashion-beauty.dd2cf7638c29b0e5c084a6673dd94dd7.png',
-            categoryName:"Fashion & Beauty"
+            imageSrc:menFashion,
+            categoryName:"Men's Fashion",
+            URL:'products/categoty'
         },
         {
-            imageSrc:'https://www.olx.com.pk/assets/business-industrial-agriculture.704a6ffb9081bc94b11c102cc613670f.png',
-            categoryName:" Industrial & Agriculture"
-        },{
-            imageSrc:'https://www.olx.com.pk/assets/property-for-sale.e3a00dbfdaa69fe5f713665f1069502f.png',
-            categoryName:"Property For Sale"
-        },{
-            imageSrc:'https://www.olx.com.pk/assets/mobiles.8c768c96bfde33f18fcf5af2a8b9cf71.png',
-            categoryName:"Mobiles"
-        },{
-            imageSrc:'https://www.olx.com.pk/assets/vehicles.29fb808d5118f0db56f68a39ce5392e2.png',
-            categoryName:"vehicles"
-        },{
-            imageSrc:'https://www.olx.com.pk/assets/property-for-rent.8436595fbaa90d47f0178006f57090a8.png',
-            categoryName:"property"
-        },{
-            imageSrc:'https://www.olx.com.pk/assets/electronics-home-appliances.46e034dd8adca44625c2c70e4d1b5984.png',
-            categoryName:"electronics"
-        },{
-            imageSrc:'https://www.olx.com.pk/assets/bikes.4dcd02c49b2b83aa5b4d629d1e2b383e.png',
-            categoryName:"bikes"
-        },{
-            imageSrc:'https://www.olx.com.pk/assets/jobs.79e6136dda02111cf8e7afe26b9e0f93.png',
-            categoryName:"jobs"
-        },{
-            imageSrc:'https://www.olx.com.pk/assets/books-sports-hobbies.6fee8d841b332d65a10f050f4a2ee1c8.png',
-            categoryName:"books"
+            imageSrc:womenFashion,
+            categoryName:"Women's Fashion",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:MobileElectronics,
+            categoryName:"Electronics Accessories",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:Kitchen,
+            categoryName:"Kitchen Accessories",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:cleaning,
+            categoryName:"Cleaning Products",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:organser,
+            categoryName:"Organizer's",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:home,
+            categoryName:"Home & Living",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:mobile,
+            categoryName:"Mobile Accessories",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:customize,
+            categoryName:"Customize Products",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:decor,
+            categoryName:"Decor",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:jewllery,
+            categoryName:"jewellery",
+            URL:'products/categoty'
+        },
+        {
+            imageSrc:baby,
+            categoryName:"Baby, Kids & Toys",
+            URL:'products/categoty'
         },
     ]
     return (
@@ -46,10 +89,10 @@ const Category = () => {
                         return (
                             <div className='category h-[156px] w-[106px]   m-4  flex flex-col justify-center items-center '>
 
-                                <Link className='h-[156px] w-[106px]' href='/'>
+                                <Link className='h-[156px] w-[106px]' href={elem.URL}>
                                     <div className='flex justify-center flex-col items-center h-[156px] w-[106px]'>
                                         <div className=' hover:scale-110 transition-[900ms]'>
-                                            <img className='h-[88px] w-[88px] categoryimg' src={elem.imageSrc} alt="" />
+                                            <Image src={elem.imageSrc} className='h-[88px] w-[88px] categoryimg'   alt="" />
                                         </div>
                                         <span className='text-center  categoryName w-[7.6rem] h-[106px]'>{elem.categoryName}</span>
                                     </div>
