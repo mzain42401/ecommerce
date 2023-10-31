@@ -4,7 +4,7 @@ import Image from 'next/image'
 import menFashion from "../../../public/menFashion.png"
 import womenFashion from "../../../public/womenFashion.png"
 import MobileElectronics from "../../../public/MobileElectronics.png"
-import Kitchen from '../../../public/Kitchen.png'
+// import Kitchen from '../../../public/Kitchen.png'
 import cleaning from '../../../public/cleaning.png'
 import organser from '../../../public/organser.png'
 import home from '../../../public/home.png'
@@ -34,11 +34,11 @@ const Category = () => {
             categoryName:"Electronic Accessories",
             URL:'products/categoty'
         },
-        {
-            imageSrc:Kitchen,
-            categoryName:"Kitchen Accessories",
-            URL:'products/categoty'
-        },
+        // {
+        //     imageSrc:Kitchen,
+        //     categoryName:"Kitchen Accessories",
+        //     URL:'products/categoty'
+        // },
         {
             imageSrc:cleaning,
             categoryName:"Cleaning Products",
