@@ -31,7 +31,7 @@ const Category = () => {
         },
         {
             imageSrc:MobileElectronics,
-            categoryName:"Electronics Accessories",
+            categoryName:"Electronic Accessories",
             URL:'products/categoty'
         },
         {
