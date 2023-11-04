@@ -13,14 +13,14 @@ const ProductCard = ({ Category, Name, productName, productPrice, productCoverIm
 
   const { authUser } = useAuth()
   const { getImageURL } = useData()
-  const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
 
     async function mydata() {
-      await getImageURL(productCoverImage).then((url) => setUrl(url))
+      const imgUrl=await productCoverImage
+      await getImageURL(imgUrl).then((url) => setUrl(url))
     }
-    // mydata()
+    mydata()
   }, [])
 
   const addToCart = () => {
