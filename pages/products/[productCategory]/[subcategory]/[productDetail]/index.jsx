@@ -1,11 +1,11 @@
-
-import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
-import { RadioGroup } from '@headlessui/react'
 import Footer from '@/pages/components/footer/Footer'
 import { useAuth } from '@/firebase/authContext'
-import Header from '@/pages/components/header/Header'
 import Navbar from '@/pages/components/Navbar/Navbar'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { useData } from '@/firebase/dataContext'
+import Loader from '@/pages/components/loader/Loader'
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -51,9 +51,27 @@ function classNames(...classes) {
 }
 
 export default function index() {
-  // const [selectedColor, setSelectedColor] = useState(product.colors[0])
-  // const [selectedSize, setSelectedSize] = useState(product.sizes[2])
-const {authUser, isLoading,setAuthUser}=useAuth()
+  // console.log(productDetail);
+  
+  const router=useRouter()
+  const {productDetail}=router.query
+  const [getter,setter]=useState([])
+  const {getdata}=useData()
+
+  useEffect(()=>{
+    async function fetchData() {
+      
+      const data=await getdata()
+setter(data)
+    }
+    fetchData()
+  },[])
+
+  const qureydata=getter.find((elem)=>{
+    return elem.id===+productDetail
+  })
+
+const {authUser}=useAuth()
 
   const addtoCart=(e)=>{
     e.preventDefault()
@@ -64,12 +82,36 @@ const {authUser, isLoading,setAuthUser}=useAuth()
   }
   return (
     <>
-    {/* <Header/> */}
-    <Navbar/>
+
+    {
+      !qureydata?<Loader />:
+   <>
+   
+   <Navbar/>
     <div className="bg-white">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
+          
           <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+          {product.breadcrumbs.map((breadcrumb) => (
+              <li key={breadcrumb.id}>
+                <div className="flex items-center">
+                  <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
+                    {breadcrumb.name}
+                  </a>
+                  <svg
+                    width={16}
+                    height={20}
+                    viewBox="0 0 16 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    className="h-5 w-4 text-gray-300"
+                  >
+                    <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                  </svg>
+                </div>
+              </li>
+            ))}
             <li className="text-sm">
               <a href={product.href} aria-current="page" className="font-medium text-gray-500 hover:text-gray-600">
                 {product.name }
@@ -115,13 +157,13 @@ const {authUser, isLoading,setAuthUser}=useAuth()
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{qureydata.productName}</h1>
           </div>
 
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{product.price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">Rs.{qureydata.Price}/-</p>
 
             {/* Reviews */}
             <div className="mt-6">
@@ -174,7 +216,7 @@ const {authUser, isLoading,setAuthUser}=useAuth()
               <h3 className="sr-only">Description</h3>
 
               <div className="space-y-6">
-                <p className="text-base text-gray-900">{product.description}</p>
+                <p className="text-base text-gray-900">{qureydata.Description}</p>
               </div>
             </div>
 
@@ -204,7 +246,16 @@ const {authUser, isLoading,setAuthUser}=useAuth()
       </div>
     </div>
     <Footer/>
+   </>
+   
+    
+  }
     </>
   )
 }
 
+// export function getServerSideProps({ params }) {
+//   const { productDetail } = params
+  
+//   return { props: {  productDetail } }
+// }

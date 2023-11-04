@@ -22,64 +22,65 @@ const Category = () => {
         {
             imageSrc:menFashion,
             categoryName:"Men's Fashion",
-            URL:'products/categoty'
+            URL:"products/Men's Fashion"
         },
         {
             imageSrc:womenFashion,
             categoryName:"Women's Fashion",
-            URL:'products/categoty'
+            URL:"products/Women's Fashion"
         },
         {
             imageSrc:MobileElectronics,
             categoryName:"Electronic Accessories",
-            URL:'products/categoty'
+            URL:'products/Electronic Accessories'
         },
         {
             imageSrc:mykitchen,
             categoryName:"Kitchen Accessories",
-            URL:'products/categoty'
+            URL:'products/Kitchen Accessories'
         },
         {
             imageSrc:cleaning,
             categoryName:"Cleaning Products",
-            URL:'products/categoty'
+            URL:'products/Cleaning Products'
         },
         {
             imageSrc:organser,
             categoryName:"Organizer's",
-            URL:'products/categoty'
+            URL:"products/Organizer's"
         },
         {
             imageSrc:home,
             categoryName:"Home & Living",
-            URL:'products/categoty'
+            URL:'products/Home & Living'
         },
         {
             imageSrc:mobile,
             categoryName:"Mobile Accessories",
-            URL:'products/categoty'
+            URL:'products/Mobile Accessories'
         },
         {
             imageSrc:customize,
-            categoryName:"Customize Products",
-            URL:'products/categoty'
+            categoryName:"Customize Product",
+            URL:'products/Customize Product'
         },
         {
-            imageSrc:decor,
-            categoryName:"Decor",
-            URL:'products/categoty'
+            imageSrc:decor, 
+            categoryName:"Décor",
+            URL:'products/Décor'
         },
         {
             imageSrc:jewllery,
-            categoryName:"jewellery",
-            URL:'products/categoty'
+            categoryName:"Jewellery",
+            URL:'products/Jewellery'
         },
         {
             imageSrc:baby,
             categoryName:"Baby, Kids & Toys",
-            URL:'products/categoty'
+            URL:'products/Baby, Kids & Toys'
         },
     ]
+   
     return (
         <>
             <div className=' categoryDiv mt-10 flex justify-center flex-wrap items-center w-[95%] m-auto border rounded-2xl bg-white'>

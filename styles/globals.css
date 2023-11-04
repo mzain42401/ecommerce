@@ -22,6 +22,9 @@ body{
     width: 98%;
 padding-top: 10px;
 }
+.cartdiv{
+    width: 95%;
+}
 .seacrhdiv{
     width: 50%;
     margin: 0px;

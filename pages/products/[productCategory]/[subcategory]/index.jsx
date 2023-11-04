@@ -3,12 +3,11 @@ import Navbar from '@/pages/components/Navbar/Navbar'
 import Loader from '@/pages/components/loader/Loader'
 import ProductCard from '@/pages/components/productCard/ProductCard'
 import { useRouter } from 'next/router'
-// import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 
 const index = () => {
   const router=useRouter()
-  const {productCategory}=router.query
+  const {subcategory}=router.query
   
   const [getter,setter]=useState([])
   const {getdata}=useData()
@@ -23,28 +22,24 @@ setter(data)
   },[])
 
   const qureydata=getter.filter((elem)=>{
-    return elem.mainCategory ===productCategory
+    return elem.subCategory ===subcategory
   })
-  console.log(qureydata);
-  // const router = useRouter()
   return (
     <>
     {
       qureydata.length===0?<Loader/>:
-      <>
+      <div>
       <Navbar/>
       <div className='flex justify-center items-center  mt-16 flex-wrap'>
 
       {qureydata.map((elem)=>{
-        return <ProductCard productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} />
+        return <ProductCard productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}/>
       })}
-      </div></>
+      </div>
+    </div>
     }
-    
-      
     </>
   )
 }
 
 export default index
-

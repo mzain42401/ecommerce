@@ -1,17 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import ProductCard from '../components/productCard/ProductCard'
 import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi'
 import Navbar from '../components/Navbar/Navbar'
+import { useData } from '@/firebase/dataContext'
+import Loader from '../components/loader/Loader'
 const index = () => {
+  const [getter,setter]=useState([])
+  const {getdata}=useData()
+
+  useEffect(()=>{
+    async function fetchData() {
+      
+      const data=await getdata()
+setter(data)
+    }
+    fetchData()
+  },[])
   const [drop, setDrop] = useState(false)
 
   const dropCategory = () => {
     setDrop(!drop)
   }
   return (
-    <div>
+    <>
+    {
+      getter.length===0?<Loader/>:
+      <div>
       {/* <Header /> */}
       <Navbar />
       <div className='h-16 bg-white  flex items-center justify-between       my-4 mr-4 '>
@@ -45,18 +61,16 @@ const index = () => {
       </div>
 
       <div className='flex justify-center items-center  mt-16 flex-wrap'>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+      {getter.map((elem)=>{
+        return <ProductCard productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} />
+      })}
+        
       </div>
       <Footer />
     </div>
+    }
+    
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './components/header/Header'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -9,11 +9,21 @@ import ImageSlider from './components/imageslider/ImageSlider';
 import Category from './components/category/Category';
 import { useAuth } from '@/firebase/authContext';
 import Navbar from './components/Navbar/Navbar';
+import { useData } from '@/firebase/dataContext';
 
 const index = () => {
-  
+  const [getter,setter]=useState([])
   const {authUser,isLoading,signOut,setAuthUse,products}=useAuth()
-  
+   const {getdata}=useData()
+   
+  useEffect(()=>{
+    async function fetchData() {
+      
+      const data=await getdata()
+setter(data)
+    }
+    fetchData()
+  },[])
   const settings = {
     dots: true,
     infinite: true,
@@ -37,12 +47,15 @@ const index = () => {
     <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> POPULAR PRODUCTS</h1>
 
     <div className='flex justify-center items-center flex-wrap mt-2'>
-      {
+      {/* {
         products.map((elem)=>{
           return  <ProductCard Category={elem.category} Name={elem.name}/>
       
         })
-      }
+      } */}
+      {getter.map((elem)=>{
+        return <ProductCard productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} />
+      })}
      
      </div>
      <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> OUR BEST SELLS</h1>
@@ -50,10 +63,11 @@ const index = () => {
 
      <div className='flex justify-center items-center flex-wrap mt-2'>
       
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
-     <ProductCard/>
+      {getter.map((elem)=>{
+        return <ProductCard productName={elem.productName}/>
+      })}
+     
+    
      
      </div>
     </section>
