@@ -58,8 +58,6 @@ export default function useDataFunc() {
     // getImageURL================
 
     const getImageURL=(path)=>{
-        const aa=path
-        console.log(aa);
         
         return getDownloadURL(ref(myStorage,path))
     }

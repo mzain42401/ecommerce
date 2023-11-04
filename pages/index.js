@@ -14,7 +14,7 @@ import { useData } from '@/firebase/dataContext';
 const index = () => {
   const [getter,setter]=useState([])
   const {authUser,isLoading,signOut,setAuthUse,products}=useAuth()
-   const {getdata}=useData()
+   const {getdata,getImageURL}=useData()
    
   useEffect(()=>{
     async function fetchData() {
@@ -23,6 +23,9 @@ const index = () => {
 setter(data)
     }
     fetchData()
+
+
+
   },[])
   const settings = {
     dots: true,
@@ -31,6 +34,7 @@ setter(data)
     slidesToShow: 1,
     slidesToScroll: 1
   };
+  
   return (
     <>
     {/* <Header  /> */}
@@ -64,7 +68,7 @@ setter(data)
      <div className='flex justify-center items-center flex-wrap mt-2'>
       
       {getter.map((elem)=>{
-        return <ProductCard productName={elem.productName}/>
+        return <ProductCard productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} />
       })}
      
     
