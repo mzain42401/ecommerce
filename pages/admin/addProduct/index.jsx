@@ -47,7 +47,7 @@ const {publishDoc}=  useData()
       </nav>
 
 
-      <form onSubmit={addProduct} className=' w-[90%] sm:w-[70%] border p-4 border-gray-300 rounded-lg mb-4 m-auto mt-10'>
+      <form onSubmit={addProduct} className=' w-[90%] sm:w-[70%] border p-4 border-gray-300 rounded-lg mb-20 m-auto mt-10'>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-900">Add Product</h2>
