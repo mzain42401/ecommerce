@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, query } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { createContext, useContext, useState, useEffect } from "react";
 import { db, myStorage } from "./firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -22,7 +22,7 @@ export default function useDataFunc() {
         const pic3Ref = ref(myStorage, `images/${Date.now()}-${pic3.name}`)
         const pic3path = await uploadBytes(pic3Ref, pic3)
         try {
-            const data = await addDoc(collection(db, "productsData"), {
+            const data = await addDoc(collection(db, "productsData",Date.now()), {
                 productName,
                 Price,
                 Description,
@@ -62,11 +62,23 @@ export default function useDataFunc() {
         return getDownloadURL(ref(myStorage,path))
     }
     
+    const  getSpecificData=async (productDetail)=>{
+        const q = query(collection(db, "productsData"), where("id", "==", +productDetail));
+
+        const querySnapshot = await getDocs(q);
+        var productsData ;
+        querySnapshot.forEach(data =>
+            productsData={ ...data.data() }
+
+        );
+        return productsData
+    }
 
     return{
         getdata,
         publishDoc,
-        getImageURL
+        getImageURL,
+        getSpecificData
     }
 }
 

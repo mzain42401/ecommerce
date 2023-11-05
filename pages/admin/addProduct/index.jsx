@@ -8,8 +8,11 @@ export default function Example() {
 const {publishDoc}=  useData()
   const [productName, setProductName] = useState('')
   const [price,setPrice]=useState()
+  const [Discount,setDiscount]=useState()
+
   const [productDiscription, setProductDiscription] = useState('')
   const [mainCategory, setMainCategory] = useState()
+
   const [subCategory, setSubCategory] = useState()
   const [CoverPic,setCoverPic]=useState()
   const [Pic1,setPic1]=useState()
@@ -32,7 +35,7 @@ const {publishDoc}=  useData()
       alert("Select Categgories")
       return
     }
-    await publishDoc(productName,price,productDiscription,mainCategory,subCategory,CoverPic,Pic1,Pic2,Pic3)
+    await publishDoc(productName,price,productDiscription,mainCategory,subCategory,CoverPic,Pic1,Pic2,Pic3,Discount)
     
 
 
@@ -100,9 +103,9 @@ const {publishDoc}=  useData()
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
               </div>
-              <div className="col-span-full">
+              <div className="sm:col-span-3">
                 <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
-                  Product Discription
+                  Product Price
                 </label>
                 <div className="mt-2">
                   <input
@@ -115,7 +118,24 @@ const {publishDoc}=  useData()
                     required
                   />
                 </div>
-                <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
+                <p className="mt-3 text-sm leading-6 text-gray-600">Write product price.</p>
+              </div>
+              <div className="sm:col-span-3">
+                <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
+                  Discount %
+                </label>
+                <div className="mt-2">
+                  <input
+                  type='number'
+                    className="block px-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+
+                    value={Discount}
+                    onChange={(e) => setDiscount(e.target.value)}
+                    placeholder='Discount %'
+                    required
+                  />
+                </div>
+                <p className="mt-3 text-sm leading-6 text-gray-600">Optional.</p>
               </div>
               <div className="sm:col-span-3">
                 <label htmlFor="country" className="block text-sm font-medium leading-6 text-gray-900">

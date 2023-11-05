@@ -15,7 +15,7 @@ import Loader from './components/loader/Loader';
 const index = () => {
   const [getter, setter] = useState([])
   const { authUser, isLoading, signOut, setAuthUse, products } = useAuth()
-  const { getdata, getImageURL } = useData()
+  const { getdata } = useData()
 
   useEffect(() => {
     async function fetchData() {
@@ -60,7 +60,7 @@ const index = () => {
         })
       } */}
             {getter.map((elem) => {
-              return <ProductCard productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} />
+              return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} />
             })}
 
           </div>
@@ -70,7 +70,7 @@ const index = () => {
           <div className='flex justify-center items-center flex-wrap mt-2'>
 
             {getter.map((elem) => {
-              return <ProductCard productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} />
+              return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
             })}
 
 
