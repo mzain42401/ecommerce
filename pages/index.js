@@ -57,7 +57,7 @@ const index = () => {
 
           <div className='flex justify-center items-center flex-wrap mt-2'>
 
-            { getter.slice(0, 9).map((elem) => {
+            { getter.slice(0, 10).map((elem) => {
               return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
             })}
 
