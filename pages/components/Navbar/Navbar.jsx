@@ -160,6 +160,11 @@ const Navbar = () => {
             </li>
             <NavLinks />
             <li>
+              <Link href='/products' className="py-7 px-3 inline-block">
+                Products
+              </Link>
+            </li>
+            <li>
               <Link href="/" className="py-7 px-3 inline-block">
                 contact
               </Link>
