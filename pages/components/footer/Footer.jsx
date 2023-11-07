@@ -101,14 +101,9 @@ const Footer = () => {
 
                     <div className="flex flex-wrap items-center md:justify-between justify-center mx-auto px-4">
                 <div className="w-full md:w-4/12 px-4 mx-auto text-center py-2">
-                    <div className="text-sm text-gray-200 font-semibold py-1">
+                    <div className="text-sm text-gray-400 font-semibold py-1">
                     Copyright &copy; {new Date().getFullYear()}{"  "}
-                    <Link
-                        href="#"
-                        className=" hover:text-gray-900"
-                    >
-                        Molad e Konsult
-                    </Link>. All rights reserved.
+                   . All rights reserved.
                     </div>
                 </div>
                 </div>
