@@ -12,6 +12,7 @@ import Navbar from './components/Navbar/Navbar';
 import { useData } from '@/firebase/dataContext';
 import Loader from './components/loader/Loader';
 import Saticfy from './components/satisfy/Saticfy';
+import Slider from './components/subCategoriesSlider/Slider';
 
 const index = () => {
   const [getter, setter] = useState([])
@@ -65,7 +66,12 @@ const index = () => {
 
           </div>
           <Saticfy/>
+
         </section>
+        <h1 className='heading text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto  mt-3 text-2xl shadow-lg'>  CATEGORIES</h1>
+<div className='bg-blue-900 w-[90%] m-auto rounded-xl px-5 '>
+<Slider/>
+</div>
 
         {/* <Contact/> */}
         <Footer />

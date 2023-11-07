@@ -8,11 +8,15 @@ import React, { useEffect, useState } from 'react'
 const index = () => {
   const router=useRouter()
   const {subcategory}=router.query
+const [isload,setisload]=useState(true)
   
   const [getter,setter]=useState([])
   const {getdata}=useData()
 
   useEffect(()=>{
+    setTimeout(()=>{
+      setisload(false)
+          },3000)
     async function fetchData() {
       
       const data=await getdata()
@@ -27,15 +31,20 @@ setter(data)
   return (
     <>
     {
-      qureydata.length===0?<Loader/>:
+      isload?<Loader/>:
       <div>
       <Navbar/>
-      <div className='flex justify-center items-center  mt-16 flex-wrap'>
+      {
+        qureydata.length===0?<div className='m-auto mt-[100px] text-center  text-gray-400 capitalize text-2xl'>no data found</div>:<>
+        <div className='flex justify-center items-center  mt-16 flex-wrap'>
 
-      {qureydata.map((elem)=>{
-        return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
-      })}
-      </div>
+{qureydata.map((elem)=>{
+  return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
+})}
+</div>
+        </>
+      }
+      
     </div>
     }
     </>

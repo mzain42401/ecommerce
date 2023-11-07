@@ -185,8 +185,8 @@ const links = [
       {
         Head: "Policies ",
         sublink: [
-          { name: "Shiping Policy", link: "/" },
-          { name: "Privacy Policy", link: "/" },
+          { name: "Shiping Policy", link: "/privacy/shoppingPolicy" },
+          { name: "Privacy Policy", link: "/privacy/PrivacyPolicy" },
           
 
         ],
@@ -208,6 +208,10 @@ const NavLinks = () => {
           <div className="px-3   text-left md:cursor-pointer group">
             <h1
               className="py-7  flex justify-between items-center md:pr-0 pr-5 group"
+              onClick={() => {
+                heading !== link.name ? setHeading(link.name) : setHeading("");
+                setSubHeading("");
+              }}
             >
               {link.name} <span className=" text-2xl cursor-pointer"><MdKeyboardArrowDown/></span>
               
@@ -261,7 +265,7 @@ const NavLinks = () => {
                     
 
                     }
-                    className=" py-4  rounded-lg mt-2 shadow-lg pl-7 font-semibold  flex justify-between items-center md:pr-0 pr-5"
+                    className=" py-4  rounded-lg mt-2 shadow pl-7 font-semibold  flex justify-between items-center md:pr-0 pr-5"
                   >
                     {slinks.Head} <div className="cursor-pointer text-2xl">
                       <MdKeyboardArrowDown/>

@@ -54,7 +54,7 @@ const ProductCard = ({ discount, Category, Name, productName, productPrice, prod
 
 
         <div className='absolute bottom-3   w-full px-6 flex justify-between'>
-          <Link href={`/products/${productmainCategory}/${productsubCategory}/${id}`}> <button className='bg-[#013289] hover:bg-transparent hover:text-[#013289] hover:border hover:border-[#013289] text-white rounded-lg px-4 py-1 text-base'>More</button></Link>
+          <Link href={`/products/${productmainCategory}/${productsubCategory}/${id}`}> <button className='bg-[#013289] hover:bg-transparent hover:text-[#013289] hover:border hover:border-[#013289] text-white rounded px-4 py-1 text-base'>More</button></Link>
           <button onClick={() => addToCart()} className='  border border-[#013289] px-2 py-2 text-[#013289] rounded-3xl text-xl hover:bg-[#013289] hover:text-white'><BsFillCartPlusFill /></button>
 
         </div>

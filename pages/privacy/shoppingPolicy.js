@@ -12,7 +12,7 @@ const shoppingPolicy = () => {
 
       <div className="bg-gray-200 min-h-screen py-10">
       <div className="container mx-auto p-6">
-        <h1 className="text-2xl font-semibold mb-4">shopping Policy</h1>
+        <h1 className="text-2xl font-semibold mb-4">Shipping Policy</h1>
         <p className="text-gray-700 mb-4">
         Orders received on Sundays and on Pakistan's National Holidays will be processed 
 and shipped on the next working day.

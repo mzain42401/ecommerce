@@ -93,7 +93,7 @@ const Signup = () => {
                                     type="text"
                                     ref={fullNameRef}
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900]  sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-blue-900 focus-visible:outline-blue-900  sm:text-sm sm:leading-6"
                                 />
                             </div>
                             <div>{NameError && <p className='text-red-500 text-xs mt-1'>{NameError}</p>}</div>
@@ -110,7 +110,7 @@ const Signup = () => {
                                     ref={emailRef}
                                     placeholder='Email'
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900]  sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-blue-900 focus-visible:outline-blue-900  sm:text-sm sm:leading-6"
                                 />
                             </div>
                             <div>{emailError && <p className='text-red-500 text-xs mt-1'>{emailError}</p>}</div>
@@ -126,20 +126,20 @@ const Signup = () => {
                                     type="password"
                                     placeholder='Password'
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#ff7900] focus-visible:outline-[#ff7900] sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-blue-900 focus-visible:outline-blue-900 sm:text-sm sm:leading-6"
                                 />
                             </div>
                             <div>{passwordError && <p className='text-red-500 text-xs mt-1'>{passwordError}</p>}</div>
 
                         </div>
                         <div className='text-sm mt-5 text-gray-500'>
-                                <Link href='/auth/login'>If you have an account, <span className='text-[#ff7900]'> Login</span></Link>
+                                <Link href='/auth/login'>If you have an account, <span className='text-blue-900'> Login</span></Link>
                             </div>
                         <div className='flex justify-center'>
                             <button
                                 type="submit"
 
-                                className="flex w-full     justify-center rounded-md bg-[#ff7900] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#ffa658] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 "
+                                className="flex w-full     justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#ffa658] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 "
                             >
                                 Signup
                             </button>
