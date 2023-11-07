@@ -8,7 +8,7 @@ export default function Example() {
 const {publishDoc}=  useData()
   const [productName, setProductName] = useState('')
   const [price,setPrice]=useState()
-  const [Discount,setDiscount]=useState()
+  const [Discount,setDiscount]=useState(0)
 
   const [productDiscription, setProductDiscription] = useState('')
   const [mainCategory, setMainCategory] = useState()
@@ -19,14 +19,6 @@ const {publishDoc}=  useData()
   const [Pic2,setPic2]=useState()
   const [Pic3,setPic3]=useState()
 
-  
-
-
-
-
-
-
-
 
 
   const addProduct = async(e) => {
@@ -35,7 +27,7 @@ const {publishDoc}=  useData()
       alert("Select Categgories")
       return
     }
-    await publishDoc(productName,price,productDiscription,mainCategory,subCategory,CoverPic,Pic1,Pic2,Pic3,Discount)
+    await publishDoc(productName,+price,productDiscription,mainCategory,subCategory,CoverPic,Pic1,Pic2,Pic3,+Discount)
     
 
 
@@ -132,7 +124,7 @@ const {publishDoc}=  useData()
                     value={Discount}
                     onChange={(e) => setDiscount(e.target.value)}
                     placeholder='Discount %'
-                    required
+                    
                   />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-600">Optional.</p>

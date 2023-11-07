@@ -11,6 +11,7 @@ import { useAuth } from '@/firebase/authContext';
 import Navbar from './components/Navbar/Navbar';
 import { useData } from '@/firebase/dataContext';
 import Loader from './components/loader/Loader';
+import Saticfy from './components/satisfy/Saticfy';
 
 const index = () => {
   const [getter, setter] = useState([])
@@ -50,32 +51,20 @@ const index = () => {
           <Category />
         </section>
         <section className='mt-20  '>
-          <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> POPULAR PRODUCTS</h1>
-
-          <div className='flex justify-center items-center flex-wrap mt-2'>
-            {/* {
-        products.map((elem)=>{
-          return  <ProductCard Category={elem.category} Name={elem.name}/>
-      
-        })
-      } */}
-            {getter.map((elem) => {
-              return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} />
-            })}
-
-          </div>
+          
           <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> OUR BEST SELLS</h1>
 
 
           <div className='flex justify-center items-center flex-wrap mt-2'>
 
-            {getter.map((elem) => {
-              return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
+            { getter.slice(0, 9).map((elem) => {
+              return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
             })}
 
 
 
           </div>
+          <Saticfy/>
         </section>
 
         {/* <Contact/> */}

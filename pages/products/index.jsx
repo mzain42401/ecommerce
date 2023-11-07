@@ -6,6 +6,7 @@ import { BiSolidUpArrow, BiSolidDownArrow } from 'react-icons/bi'
 import Navbar from '../components/Navbar/Navbar'
 import { useData } from '@/firebase/dataContext'
 import Loader from '../components/loader/Loader'
+import Saticfy from '../components/satisfy/Saticfy'
 const index = () => {
   const [getter,setter]=useState([])
   const {getdata}=useData()
@@ -62,10 +63,12 @@ setter(data)
 
       <div className='flex justify-center items-center  mt-16 flex-wrap'>
       {getter.map((elem)=>{
-        return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.Price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
+        return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
       })}
         
       </div>
+      <Saticfy/>
+
       <Footer />
     </div>
     }

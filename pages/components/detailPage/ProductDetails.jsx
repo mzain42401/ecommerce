@@ -39,10 +39,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function ProductDetails({Description,Discount,Pic1,Pic2,Pic3,coverImage,id,Price,mainCategory,subCategory,productName
+export default function ProductDetails({Description,Discount,Pic1,Pic2,Pic3,coverImage,id,price,mainCategory,subCategory,productName
 }) {
 //   const [selectedColor, setSelectedColor] = useState(product.colors[0])
 //   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+console.log(Description,Discount,Pic1,Pic2,Pic3,coverImage,id,price,mainCategory,subCategory,productName);
 const [url, setUrl] = useState(null)
 const [url1, setUrl1] = useState(null)
 const [url2, setUrl2] = useState(null)
@@ -183,7 +184,7 @@ useEffect(()=>{
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             {
-              Discount?<><div className='w-max mb-2 bg-[#FF4041] px-4 rounded text-white'>Discount {Discount}%</div> <p className="text-3xl tracking-tight text-gray-900">Rs.{Math.floor(Price - (Discount / 100 * Price))}/-</p><p className="text-xl tracking-tight text-gray-400 line-through">Rs.{Price}/-</p></>: <p className="text-3xl tracking-tight text-gray-900">Rs.{Price}/-</p>
+              Discount?<><div className='w-max mb-2 bg-[#FF4041] px-4 rounded text-white'>Discount {Discount}%</div> <p className="text-3xl tracking-tight text-gray-900">Rs.{Math.floor(price - (Discount / 100 * price))}/-</p><p className="text-xl tracking-tight text-gray-400 line-through">Rs.{price}/-</p></>: <p className="text-3xl tracking-tight text-gray-900">Rs.{price}/-</p>
             }
 
             {/* Reviews */}

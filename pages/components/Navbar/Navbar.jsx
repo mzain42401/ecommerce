@@ -48,7 +48,7 @@ const Navbar = () => {
           <div className="text-3xl  flex items-center md:hidden" onClick={() => setOpen(!open)}>
               <FaBars />
             </div>
-            <div className="mylogo flex justify-center   items-center"><Image src={logo} className=" md:cursor-pointer  h-[70px] w-24" />
+            <div className="mylogo flex justify-center   items-center"><Image src={logo} className=" md:cursor-pointer rounded-full h-[70px] w-20" />
               {/* <Image src={mylogo} className=" md:cursor-pointer  h-[70px]" /> */}
               </div>
 
@@ -152,7 +152,7 @@ const Navbar = () => {
         `}
           >
             <div onClick={() => setOpen(!open)} className="absolute top-8 right-4 text-3xl"><GrClose /></div>
-            <div onClick={() => setOpen(!open)} className="absolute top-4 left-4 w-24 "> <Image src={logo} className=" md:cursor-pointer  h-[70px]" /></div>
+            <div onClick={() => setOpen(!open)} className="absolute top-4 left-4 w-24 rounded-full"> <Image src={logo} className=" md:cursor-pointer rounded-full h-[80px] " /></div>
             <li>
               <Link href="/" className="py-7 px-3 inline-block">
                 Home

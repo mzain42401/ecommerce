@@ -101,8 +101,8 @@ const {authUser}=useAuth()
  */}
    
    <Navbar/>
-    <ProductDetails Description={getter.Description} Discount={getter.Discount}
-    Pic1={getter.Pic1} Pic2={getter.pic2} Pic3={getter.pic3} coverImage={getter.coverImage}  id={getter.id} Price={getter.Price} mainCategory={getter.mainCategory} subCategory={getter.subCategory} productName={getter.productName
+    <ProductDetails Description={getter.productDiscription} Discount={getter.Discount}
+    Pic1={getter.Pic1} Pic2={getter.pic2} Pic3={getter.pic3} coverImage={getter.coverImage}  id={getter.id} price={getter.price} mainCategory={getter.mainCategory} subCategory={getter.subCategory} productName={getter.productName
     }    />
     <Footer/>
    </>

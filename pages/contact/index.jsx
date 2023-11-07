@@ -138,8 +138,8 @@ const Contact = () => {
                                         <i className="fas fa-map-marker-alt pt-2 pr-2" />
                                     </div>
                                     <div className="flex flex-col">
-                                        <h2 className="text-2xl">Office Address</h2>
-                                        <p className="text-gray-400">xyz , address</p>
+                                        <h2 className="text-2xl">Homely Find</h2>
+                                        <p className="text-gray-400">Online Solution</p>
                                     </div>
                                 </div>
                     
@@ -150,7 +150,7 @@ const Contact = () => {
 
                         <div className="flex flex-col">
                         <h2 className="text-2xl">Call Us</h2>
-                        <p className="text-gray-400">Tel: 767868984406</p>
+                        <p className="text-gray-400">Tel: 0312 2320760</p>
                         
                             <div className='mt-5'>
                                 <h2 className="text-xl">Send an E-mail</h2>

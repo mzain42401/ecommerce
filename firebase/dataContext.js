@@ -10,24 +10,26 @@ const DataContext = createContext();
 export default function useDataFunc() {
 
     // publishDoc============
-    const publishDoc = async (productName, Price, Description, mainCategory, subCategory, coverPic, pic1, pic2, pic3) => {
+    const publishDoc = async (productName,price,productDiscription,mainCategory,subCategory,CoverPic,Pic1,Pic2,Pic3,Discount) => {
 
 
-        const coverimageRef = ref(myStorage, `images/${Date.now()}-${coverPic.name}`)
-        const coverImagePath = await uploadBytes(coverimageRef, coverPic)
-        const pic1Ref = ref(myStorage, `images/${Date.now()}-${pic1.name}`)
-        const pic1path = await uploadBytes(pic1Ref, pic1)
-        const pic2Ref = ref(myStorage, `images/${Date.now()}-${pic2.name}`)
-        const pic2path = await uploadBytes(pic2Ref, pic2)
-        const pic3Ref = ref(myStorage, `images/${Date.now()}-${pic3.name}`)
-        const pic3path = await uploadBytes(pic3Ref, pic3)
+        const coverimageRef = ref(myStorage, `images/${Date.now()}-${CoverPic.name}`)
+        const coverImagePath = await uploadBytes(coverimageRef, CoverPic)
+        const pic1Ref = ref(myStorage, `images/${Date.now()}-${Pic1.name}`)
+        const pic1path = await uploadBytes(pic1Ref, Pic1)
+        const pic2Ref = ref(myStorage, `images/${Date.now()}-${Pic2.name}`)
+        const pic2path = await uploadBytes(pic2Ref, Pic2)
+        const pic3Ref = ref(myStorage, `images/${Date.now()}-${Pic3.name}`)
+        const pic3path = await uploadBytes(pic3Ref, Pic3)
+        console.log(productName,price,productDiscription,mainCategory,subCategory);
         try {
-            const data = await addDoc(collection(db, "productsData",Date.now()), {
+            const data = await addDoc(collection(db, "productsData"), {
                 productName,
-                Price,
-                Description,
+                price,
+                productDiscription,
                 mainCategory,
                 subCategory,
+                Discount,
                 coverImage: coverImagePath.ref.fullPath,
                 Pic1: pic1path.ref.fullPath,
                 pic2: pic2path.ref.fullPath,
@@ -37,7 +39,7 @@ export default function useDataFunc() {
             })
 
         } catch (error) {
-            console.log(error);
+            console.log(error, productName,subCategory,mainCategory,price + " KKK");
         }
     }
 // getData============
