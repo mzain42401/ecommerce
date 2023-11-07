@@ -62,7 +62,7 @@ url:"products/Kitchen Accessories"
        
       >
         <Link href={slides[currentIndex].url}> 
-         <Image src={slides[currentIndex].img }/>
+         <Image className='imgslider' src={slides[currentIndex].img }/>
         </Link>
       </div>
       {/* Left Arrow */}

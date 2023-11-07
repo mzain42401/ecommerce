@@ -13,6 +13,9 @@ body{
 
 
 @media screen and (max-width: 770px) {
+    .imgslider{
+        height: 300px;
+    }
     .mylogo{
         z-index: 9;
     }.navBarLinks{
