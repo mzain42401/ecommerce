@@ -48,8 +48,9 @@ const Navbar = () => {
           <div className="text-3xl  flex items-center md:hidden" onClick={() => setOpen(!open)}>
               <FaBars />
             </div>
-            <div className="mylogo flex justify-center   items-center"><Image src={logo} className=" md:cursor-pointer rounded-full h-[70px] w-20" />
-              {/* <Image src={mylogo} className=" md:cursor-pointer  h-[70px]" /> */}
+            <div className="mylogo flex justify-center   items-center">
+             <Link href='/'> <Image src={logo} className=" md:cursor-pointer rounded-full h-[70px] w-20" /></Link>
+            
               </div>
 
             
@@ -77,7 +78,7 @@ const Navbar = () => {
 
 
               <div className=' px-3 cursor-pointer '>
-                <Link href='/auth/login'>
+                <Link href='auth/login'>
                   <Button />
                 </Link>
               </div>
@@ -95,12 +96,12 @@ const Navbar = () => {
 
             <NavLinks />
             <li>
-              <Link href='/products' className="py-7 px-3 inline-block">
+              <Link href='products' className="py-7 px-3 inline-block">
                 Products
               </Link>
             </li>
             <li>
-              <Link href='/contact' className="py-7 px-3 inline-block">
+              <Link href='contact' className="py-7 px-3 inline-block">
                 Contact
               </Link>
             </li>
@@ -112,13 +113,13 @@ const Navbar = () => {
               <>
               <div className="flex justify-center ">
                 <div className='px-2 text-3xl cursor-pointer'>
-                  <Link href='/profile'>
+                  <Link href='profile'>
                     <AiOutlineUser />
                   </Link>
                 </div>
 
                 <div className='px-1 text-3xl cursor-pointer relative'>
-                  <Link href='/cart'>
+                  <Link href='cart'>
                     <AiOutlineShoppingCart />
                     <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
                   </Link>
@@ -130,7 +131,7 @@ const Navbar = () => {
 
 
               <div className=' px-3 cursor-pointer '>
-                <Link href='/auth/login'>
+                <Link href='auth/login'>
                   <Button />
                 </Link>
               </div>
@@ -160,7 +161,7 @@ const Navbar = () => {
             </li>
             <NavLinks />
             <li>
-              <Link href='/products' className="py-7 px-3 inline-block">
+              <Link href='products' className="py-7 px-3 inline-block">
                 Products
               </Link>
             </li>
@@ -175,13 +176,13 @@ const Navbar = () => {
               <>
               <div className="flex justify-center">
                 <div className='px-2 text-2xl cursor-pointer'>
-                  <Link href='/profile'>
+                  <Link href='profile'>
                     <AiOutlineUser />
                   </Link>
                 </div>
 
                 <div className='px-1 text-2xl cursor-pointer relative'>
-                  <Link href='/cart'>
+                  <Link href='cart'>
                     <AiOutlineShoppingCart />
                     <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
                   </Link>
@@ -193,7 +194,7 @@ const Navbar = () => {
 
 
               <div className=' px-3 cursor-pointer'>
-                <Link href='/auth/login'>
+                <Link href='auth/login'>
                   <Button />
                 </Link>
               </div>

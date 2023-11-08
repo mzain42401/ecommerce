@@ -3,34 +3,35 @@ import Link from 'next/link'
 import logo from '../../../public/logo.png'
 import Image from 'next/image'
 import { useData } from '@/firebase/dataContext'
+import { useRouter } from 'next/router'
 
 export default function Example() {
-const {publishDoc}=  useData()
+  const { publishDoc } = useData()
   const [productName, setProductName] = useState('')
-  const [price,setPrice]=useState()
-  const [Discount,setDiscount]=useState(0)
+  const [price, setPrice] = useState()
+  const [Discount, setDiscount] = useState(0)
 
   const [productDiscription, setProductDiscription] = useState('')
   const [mainCategory, setMainCategory] = useState()
 
   const [subCategory, setSubCategory] = useState()
-  const [CoverPic,setCoverPic]=useState()
-  const [Pic1,setPic1]=useState()
-  const [Pic2,setPic2]=useState()
-  const [Pic3,setPic3]=useState()
+  const [CoverPic, setCoverPic] = useState()
+  const [Pic1, setPic1] = useState()
+  const [Pic2, setPic2] = useState()
+  const [Pic3, setPic3] = useState()
 
 
-
-  const addProduct = async(e) => {
+const route=useRouter()
+  const addProduct = async (e) => {
     e.preventDefault()
     if (!mainCategory || !subCategory) {
       alert("Select Categgories")
       return
     }
-    await publishDoc(productName,+price,productDiscription,mainCategory,subCategory,CoverPic,Pic1,Pic2,Pic3,+Discount)
-    
+    await publishDoc(productName, +price, productDiscription, mainCategory, subCategory, CoverPic, Pic1, Pic2, Pic3, +Discount)
 
 
+    route.push('/admin')
   }
   return (
 
@@ -38,7 +39,7 @@ const {publishDoc}=  useData()
 
       <nav className='flex justify-between items-center shadow-lg shadow-gray-300 px-4 '>
         <div><Image className='w-24 h-24' src={logo} /></div>
-        <div className='bg-red-900 text-white px-6 py-2 rounded-full'><Link href='/admin'>Back To Dashboard</Link> </div>
+        <div className='rounded bg-blue-900 text-white px-3 py-2'><Link href='/admin'>Back To Dashboard</Link> </div>
       </nav>
 
 
@@ -101,7 +102,7 @@ const {publishDoc}=  useData()
                 </label>
                 <div className="mt-2">
                   <input
-                  type='number'
+                    type='number'
                     className="block px-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 
                     value={price}
@@ -118,13 +119,13 @@ const {publishDoc}=  useData()
                 </label>
                 <div className="mt-2">
                   <input
-                  type='number'
+                    type='number'
                     className="block px-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 
                     value={Discount}
                     onChange={(e) => setDiscount(e.target.value)}
                     placeholder='Discount %'
-                    
+
                   />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-600">Optional.</p>
@@ -259,7 +260,7 @@ const {publishDoc}=  useData()
                     <div className="mt-4  flex text-sm leading-6 text-gray-600">
 
 
-                      <input onChange={(e)=>setCoverPic(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
+                      <input required onChange={(e) => setCoverPic(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
 
                     </div>
                   </div>
@@ -277,7 +278,7 @@ const {publishDoc}=  useData()
               <div className="text-center">
                 <div className="mt-4 flex text-sm leading-6 text-gray-600">
 
-                  <input onChange={(e)=>setPic1(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
+                  <input required onChange={(e) => setPic1(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
 
                 </div>
 
@@ -287,7 +288,7 @@ const {publishDoc}=  useData()
               <div className="text-center">
                 <div className="mt-4 flex text-sm leading-6 text-gray-600">
 
-                  <input onChange={(e)=>setPic2(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
+                  <input required onChange={(e) => setPic2(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
 
                 </div>
 
@@ -300,7 +301,7 @@ const {publishDoc}=  useData()
               <div className="text-center">
                 <div className="mt-4 flex text-sm leading-6 text-gray-600">
 
-                  <input onChange={(e)=>setPic3(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
+                  <input required onChange={(e) => setPic3(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
 
                 </div>
 
@@ -311,7 +312,7 @@ const {publishDoc}=  useData()
 
             <button
               type="submit"
-              className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded bg-blue-900 hover:bg-blue-800 text-white px-3 py-2 "
             >
               Publish
             </button>

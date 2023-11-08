@@ -11,8 +11,16 @@ body{
     transform: translate(-50%);
 }
 
+@media screen and (max-width: 1024px) {
+.SpecificImageSlider{
+    display: block;
+}
+}
 
 @media screen and (max-width: 770px) {
+    .adminData{
+        width: 97%;
+    }
     .imgslider{
         height: 300px;
     }

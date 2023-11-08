@@ -12,44 +12,44 @@ import Link from 'next/link';
 
 import Image from 'next/image';
 function ImageSlider() {
-  const  slides = [
+  const slides = [
     {
       img: sliderImg3,
-url:"products/Home & Living"
+      url: "products/Home & Living"
 
     },
-    
-   
+
+
     {
       img: sliderImg4,
-url:"/"
+      url: "/"
 
     },
     {
       img: sliderImg5,
-url:"products/Electronic Accessories"
+      url: "products/Electronic Accessories"
 
     },
     {
       img: sliderImg1,
-url:"products/Kitchen Accessories"
+      url: "products/Kitchen Accessories"
 
     },
     {
       img: sliderImg2,
-      url:"products/Décor"
+      url: "products/Décor"
 
     },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-  const isFirstSlide = currentIndex === 0;
-  const newIndex = isFirstSlide ? slides.length - 1 : currentIndex -1;
-  
 
- 
-  
+  const isFirstSlide = currentIndex === 0;
+  const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+
+
+
+
   const sliderTomeout = setTimeout(sliderFunc, 4000);
   function sliderFunc() {
     setCurrentIndex(newIndex)
@@ -59,10 +59,10 @@ url:"products/Kitchen Accessories"
     <div className=' h-max '>
       <div
         className='  bg-center bg-cover duration-500'
-       
+
       >
-        <Link href={slides[currentIndex].url}> 
-         <Image className='imgslider' src={slides[currentIndex].img }/>
+        <Link href={slides[currentIndex].url}>
+          <Image className='imgslider' src={slides[currentIndex].img} />
         </Link>
       </div>
       {/* Left Arrow */}

@@ -2,9 +2,13 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { useData } from '@/firebase/dataContext'
-import {AiOutlineShoppingCart} from "react-icons/ai"
+import { AiOutlineShoppingCart } from "react-icons/ai"
 import Link from 'next/link'
+import Image from 'next/image';
 
 const product = {
   name: 'Basic Tee 6-Pack',
@@ -39,101 +43,132 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function ProductDetails({Description,Discount,Pic1,Pic2,Pic3,coverImage,id,price,mainCategory,subCategory,productName
+export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3, coverImage, id, price, mainCategory, subCategory, productName
 }) {
-//   const [selectedColor, setSelectedColor] = useState(product.colors[0])
-//   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
-console.log(Description,Discount,Pic1,Pic2,Pic3,coverImage,id,price,mainCategory,subCategory,productName);
-const [url, setUrl] = useState(null)
-const [url1, setUrl1] = useState(null)
-const [url2, setUrl2] = useState(null)
-const [url3, setUrl3] = useState(null)
-console.log(coverImage,Pic1,Pic2,Pic3);
-const { getImageURL } = useData()
-useEffect(()=>{
+  //   const [selectedColor, setSelectedColor] = useState(product.colors[0])
+  //   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+  console.log(Description, Discount, Pic1, Pic2, Pic3, coverImage, id, price, mainCategory, subCategory, productName);
+  const [url, setUrl] = useState(null)
+  const [url1, setUrl1] = useState(null)
+  const [url2, setUrl2] = useState(null)
+  const [url3, setUrl3] = useState(null)
+  console.log(coverImage, Pic1, Pic2, Pic3);
+  const { getImageURL } = useData()
+  useEffect(() => {
     async function mydata() {
-        
 
-            const imgUrl = await coverImage
-            if (imgUrl) {
-                
-                await getImageURL(imgUrl).then((url) => setUrl(url))
-            }
+
+      const imgUrl = await coverImage
+      if (imgUrl) {
+
+        await getImageURL(imgUrl).then((url) => setUrl(url))
+      }
 
     }
     mydata()
     async function mydata1() {
 
-        const mypic1 = await Pic1
-        if (mypic1) {
-    
-            await getImageURL(mypic1).then((url) => setUrl1(url))
-        }
+      const mypic1 = await Pic1
+      if (mypic1) {
+
+        await getImageURL(mypic1).then((url) => setUrl1(url))
+      }
     }
     mydata1()
 
     async function mydata2() {
 
-        const mypic2 = await Pic2
-        if (mypic2) {
-            
-            await getImageURL(mypic2).then((url) => setUrl2(url))
-        }
+      const mypic2 = await Pic2
+      if (mypic2) {
+
+        await getImageURL(mypic2).then((url) => setUrl2(url))
+      }
     }
     mydata2()
     async function mydata3() {
-        const mypic3 = await Pic3
-        if (mypic3) {
-            await getImageURL(mypic3).then((url) => setUrl3(url))
-            
-        }
+      const mypic3 = await Pic3
+      if (mypic3) {
+        await getImageURL(mypic3).then((url) => setUrl3(url))
+
+      }
     }
     mydata3()
-      
-},[])
 
+  }, [])
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+   
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      }
+    ]
+  };
+
+  const data = [
+    {
+
+      img: url1,
+    },
+    {
+
+      img: url2,
+    },
+    {
+
+      img: url3,
+    },
+  ]
 
   return (
     <div className="bg-white">
       <div className="pt-6">
         <nav aria-label="Breadcrumb">
           <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-          <li className='cursor-pointer'>
-                <div className="flex items-center">
-                  <Link href={`/products/${mainCategory}`} className="mr-2 text-sm font-medium text-gray-900">
-                    {mainCategory}
-                  </Link>
-                  <svg
-                    width={16}
-                    height={20}
-                    viewBox="0 0 16 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    className="h-5 w-4 text-gray-300"
-                  >
-                    <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                  </svg>
-                </div>
-              </li>
-              <li className='cursor-pointer'>
-                <div className="flex items-center">
-                  <Link href={`/products/${mainCategory}/${subCategory}`} className="mr-2 text-sm font-medium text-gray-900">
-                    {subCategory}
-                  </Link>
-                  <svg
-                    width={16}
-                    height={20}
-                    viewBox="0 0 16 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    className="h-5 w-4 text-gray-300"
-                  >
-                    <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                  </svg>
-                </div>
-              </li>
+            <li className='cursor-pointer'>
+              <div className="flex items-center">
+                <Link href={`/products/${mainCategory}`} className="mr-2 text-sm font-medium text-gray-900">
+                  {mainCategory}
+                </Link>
+                <svg
+                  width={16}
+                  height={20}
+                  viewBox="0 0 16 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  className="h-5 w-4 text-gray-300"
+                >
+                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                </svg>
+              </div>
+            </li>
+            <li className='cursor-pointer'>
+              <div className="flex items-center">
+                <Link href={`/products/${mainCategory}/${subCategory}`} className="mr-2 text-sm font-medium text-gray-900">
+                  {subCategory}
+                </Link>
+                <svg
+                  width={16}
+                  height={20}
+                  viewBox="0 0 16 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  className="h-5 w-4 text-gray-300"
+                >
+                  <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                </svg>
+              </div>
+            </li>
             <li className="text-sm">
-              <p  className="font-medium text-gray-500 hover:text-gray-600">
+              <p className="font-medium text-gray-500 hover:text-gray-600">
                 {productName}
               </p>
             </li>
@@ -146,7 +181,7 @@ useEffect(()=>{
             <img
               src={url3}
               alt='ProductImage'
-              className="h-full w-full object-cover object-center"
+
             />
           </div>
           <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
@@ -154,14 +189,14 @@ useEffect(()=>{
               <img
                 src={url1}
                 alt='ProductImage'
-                className="h-full w-full object-cover object-center"
+
               />
             </div>
             <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
               <img
                 src={url2}
                 alt='ProductImage'
-                className="h-full w-full object-cover object-center"
+
               />
             </div>
           </div>
@@ -169,9 +204,29 @@ useEffect(()=>{
             <img
               src={url}
               alt='ProductImage'
-              className="h-full w-full object-cover object-center"
+
             />
           </div>
+        </div>
+<div className='w-[95%] px-3 m-auto SpecificImageSlider hidden  rounded-lg bg-blue-900'>
+        <div className='w-[90%]     m-auto'>
+          <div className="mt-10  ">
+            <Slider {...settings}>
+              {data.map((d) => (
+                <div key={d.url} className="  h-max  text-black p-2">
+                  <div className='h-56    flex justify-center items-center rounded-t-xl'>
+
+                    <img src={d.img} alt="hh" className="h-56 rounded-lg w-full  " />
+
+                  </div>
+
+
+                </div>
+              ))}
+            </Slider>
+          </div>
+
+        </div>
         </div>
 
         {/* Product info */}
@@ -184,7 +239,7 @@ useEffect(()=>{
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             {
-              Discount?<><div className='w-max mb-2 bg-[#FF4041] px-4 rounded text-white'>Discount {Discount}%</div> <p className="text-3xl tracking-tight text-gray-900">Rs.{Math.floor(price - (Discount / 100 * price))}/-</p><p className="text-xl tracking-tight text-gray-400 line-through">Rs.{price}/-</p></>: <p className="text-3xl tracking-tight text-gray-900">Rs.{price}/-</p>
+              Discount ? <><div className='w-max mb-2 bg-[#FF4041] px-4 rounded text-white'>Discount {Discount}%</div> <p className="text-3xl tracking-tight text-gray-900">Rs.{Math.floor(price - (Discount / 100 * price))}/-</p><p className="text-xl tracking-tight text-gray-400 line-through">Rs.{price}/-</p></> : <p className="text-3xl tracking-tight text-gray-900">Rs.{price}/-</p>
             }
 
             {/* Reviews */}
@@ -204,7 +259,7 @@ useEffect(()=>{
                   ))}
                 </div>
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
-                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                <a href={reviews.href} className="ml-3 text-sm font-medium text-blue-900 hover:text-blue-900">
                   {reviews.totalCount} reviews
                 </a>
               </div>
@@ -212,14 +267,14 @@ useEffect(()=>{
 
             <form className="mt-10">
               {/* Colors */}
-              
-             
+
+
 
               <button
                 type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-blue-900 px-8 py-3 text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2"
               >
-                <span className='text-3xl pr-4'><AiOutlineShoppingCart/></span>Add to Cart
+                <span className='text-3xl pr-4'><AiOutlineShoppingCart /></span>Add to Cart
               </button>
             </form>
           </div>
@@ -234,9 +289,9 @@ useEffect(()=>{
               </div>
             </div>
 
-            
 
-          
+
+
           </div>
         </div>
       </div>

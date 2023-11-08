@@ -35,10 +35,10 @@ const Footer = () => {
                             <Link href="/" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Home</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Products</Link>
+                            <Link href="products" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Products</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/contact" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Contact</Link>
+                            <Link href="contact" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Contact</Link>
                         </li>                            
                         </ul>
                     </div>
@@ -48,13 +48,13 @@ const Footer = () => {
                         <h6 className="text-[#013289] text-xl font-bold mb-4">Main Categories</h6>
                         <ul className="text-md">
                         <li className="mb-2">
-                            <Link href="/products/Kitchen Accessories" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Kitchen Accessories</Link>
+                            <Link href="products/Kitchen Accessories" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Kitchen Accessories</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products/Décor" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Home Décor</Link>
+                            <Link href="products/Décor" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Home Décor</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products/Home & Living" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Home & Living</Link>
+                            <Link href="products/Home & Living" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Home & Living</Link>
                         </li>
                         <li className="mb-2">
                             <Link href="products/Customize Product" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Customize Product</Link>

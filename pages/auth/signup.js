@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Header from '../components/header/Header'
-import { auth } from '../../firebase/firebase'
+import { auth, db } from '../../firebase/firebase'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useAuth } from '@/firebase/authContext'
 import { useRouter } from 'next/router'
 import Loader from '../components/loader/Loader'
 import Navbar from '../components/Navbar/Navbar'
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
 
 
 
@@ -15,10 +16,10 @@ const Signup = () => {
     const { authUser, isLoading, setAuthUser } = useAuth()
 
     useEffect(() => {
-        if (!isLoading && authUser) {
+        if (authUser) {
             route.push("/")
         }
-    }, [authUser, isLoading])
+    }, [authUser])
     const [NameError, setNameError] = useState('')
     const [emailError, setemailError] = useState('')
     const [passwordError, setpasswordError] = useState('')
@@ -36,46 +37,57 @@ const Signup = () => {
 
         try {
             const user = await createUserWithEmailAndPassword(auth, email, password)
+            console.log(user.user.uid);
             await updateProfile(auth.currentUser, {
                 displayName: fullName
             })
+            try {
+                await setDoc(doc(db, 'users', user.user.uid), {
+                    uid: user.user.uid,
+                    email: user.user.email,
+                    username: fullName
+
+                })
+            } catch (error) {
+                console.log(error);
+            }
+
             setAuthUser({
                 uid: user.uid,
                 email: user.email,
-                username: firstName + lastName
+                username: fullName
 
 
             })
+            route.push('/')
         } catch (err) {
-            if (err.code==="auth/email-already-in-use") {
+            if (err.code === "auth/email-already-in-use") {
                 setemailError("User already exists.")
-                setTimeout(()=>{
+                setTimeout(() => {
                     setemailError('')
                 }, 3000)
                 return;
             }
-            
-            else if(err.code==='auth/weak-password'){
+
+            else if (err.code === 'auth/weak-password') {
                 setpasswordError("must have 6 character")
-                setTimeout(()=>{
+                setTimeout(() => {
                     setpasswordError('')
                 }, 3000)
-                
+
             }
-           
+
 
         }
     }
 
 
 
-    return isLoading || (!isLoading && !!authUser) ? (
-        <Loader />
-    ) : (
+    return (
         <>
 
             {/* <Header /> */}
-            <Navbar/>
+            <Navbar />
 
             <div className="flex  min-h-full flex-1 flex-col justify-center  lg:px-8">
 
@@ -133,13 +145,13 @@ const Signup = () => {
 
                         </div>
                         <div className='text-sm mt-5 text-gray-500'>
-                                <Link href='/auth/login'>If you have an account, <span className='text-blue-900'> Login</span></Link>
-                            </div>
+                            <Link href='/auth/login'>If you have an account, <span className='text-blue-900'> Login</span></Link>
+                        </div>
                         <div className='flex justify-center'>
                             <button
                                 type="submit"
 
-                                className="flex w-full     justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#ffa658] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 "
+                                className="flex w-full     justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 "
                             >
                                 Signup
                             </button>

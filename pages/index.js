@@ -13,6 +13,8 @@ import { useData } from '@/firebase/dataContext';
 import Loader from './components/loader/Loader';
 import Saticfy from './components/satisfy/Saticfy';
 import Slider from './components/subCategoriesSlider/Slider';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '@/firebase/firebase';
 
 const index = () => {
   const [getter, setter] = useState([])
@@ -38,6 +40,31 @@ const index = () => {
     slidesToScroll: 1
   };
 
+  let myProducts;
+  const addCartData= async(elem)=>{
+
+    
+    
+
+    myProducts=elem
+     myProducts['qty']=1
+     myProducts['totalPrice']=myProducts.qty*elem.productPrice
+     
+     try {
+      
+       await setDoc(doc(db,"cart " + authUser.uid , "cart "+myProducts.id),{
+        myProducts
+       })
+     } catch (error) {
+      console.log(error);
+     }
+
+
+    
+
+  }
+
+
   return (
     <>
       {
@@ -59,7 +86,7 @@ const index = () => {
           <div className='flex justify-center items-center flex-wrap mt-2'>
 
             { getter.slice(0, 10).map((elem) => {
-              return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
+              return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  addCartData={addCartData} elem={elem} />
             })}
 
 
