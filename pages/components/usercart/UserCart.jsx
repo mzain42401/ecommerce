@@ -1,7 +1,7 @@
 import { useData } from '@/firebase/dataContext'
 import React, { useEffect, useState } from 'react'
 
-const UserCart = ({coverImg,productName,mainCategory,discountPrice,price,elem,increaseQty,dereaseQty}) => {
+const UserCart = ({coverImg,productName,mainCategory,discountPrice,price,elem,increaseQty,dereaseQty,qty,totalPrice}) => {
 
 
     const {getImageURL}=useData()
@@ -43,7 +43,7 @@ SetNum(!num)
                                 <h2 class="mb-2 text-xl font-bold text-gray-800">{productName}</h2>
                                 <p class="text-gray-500 dark:text-gray-400 ">{mainCategory}</p>
                                 {
-                              elem.Discount > 0 ?
+                              discountPrice<price  ?
                                 <>
                                   <p class="  text-gray-800 md:hidden ">Rs.{discountPrice}.00/-</p>
                                   <span class="text-xs text-red-500 line-through md:hidden  ">Rs.{price}/-</span>
@@ -60,7 +60,7 @@ SetNum(!num)
                           <div class="hidden px-4 lg:block lg:w-2/12">
 
                             {
-                              elem.Discount > 0 ?
+                              discountPrice<price ?
                                 <>
                                   <p class="text-lg font-bold  text-gray-800">Rs.{discountPrice}.00/-</p>
                                   <span class="text-xs text-red-500 line-through ">Rs.{price}/-</span>
@@ -82,7 +82,7 @@ SetNum(!num)
                               </button>
                               <p
                                 class="w-12  py-4  border-0 rounded-md  text-gray-400 text-center"
-                              >{elem.qty}</p>
+                              >{qty}</p>
                               <button onClick={()=>IncCart(elem)} class="py-2 hover: dark:text-gray-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                   fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -94,7 +94,7 @@ SetNum(!num)
                           </div>
                           <div class="w-auto px-4 text-right md:w-1/6 lg:w-2/12 ">
 
-                            <p class="text-lg font-bold text-gray-800">Rs.{elem.totalPrice}/-</p>
+                            <p class="text-lg font-bold text-gray-800">Rs.{totalPrice}/-</p>
                           </div>
                         </div>
 

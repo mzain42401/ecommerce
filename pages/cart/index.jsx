@@ -411,6 +411,9 @@ const index = () => {
                           discountPrice={elem.discountPrice}
                           price={elem.price}
                           elem={elem}
+                          qty={elem.qty}
+                          totalPrice={elem.totalPrice}
+
                           increaseQty={increaseQty}
                           dereaseQty={dereaseQty}
 
