@@ -4,7 +4,6 @@ import { RxDotFilled } from 'react-icons/rx';
 import sliderImg1 from '../../../public/banner/img (1).png'
 import sliderImg2 from '../../../public/banner/img (2).png'
 import sliderImg3 from '../../../public/banner/img (3).png'
-import sliderImg4 from '../../../public/banner/img (4).png'
 import sliderImg5 from '../../../public/banner/img (5).png'
 import Link from 'next/link';
 
@@ -20,11 +19,7 @@ function ImageSlider() {
     },
 
 
-    {
-      img: sliderImg4,
-      url: "/"
-
-    },
+    
     {
       img: sliderImg5,
       url: "products/Electronic Accessories"

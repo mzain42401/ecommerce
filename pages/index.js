@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductCard from './components/productCard/ProductCard';
 import Footer from './components/footer/Footer';
 import Contact from './contact';
+import Swal from 'sweetalert2';
+
 import ImageSlider from './components/imageslider/ImageSlider';
 import Category from './components/category/Category';
 import { useAuth } from '@/firebase/authContext';
@@ -18,10 +20,10 @@ import { db } from '@/firebase/firebase';
 
 const index = () => {
   const [getter, setter] = useState([])
-  const { authUser, isLoading, signOut, setAuthUse, products } = useAuth()
-  const { getdata } = useData()
+  const { getdata,addCartData } = useData()
 
   useEffect(() => {
+
     async function fetchData() {
 
       const data = await getdata()
@@ -40,78 +42,57 @@ const index = () => {
     slidesToScroll: 1
   };
 
-  let myProducts;
-  const addCartData= async(elem)=>{
 
-    
-    
-
-    myProducts=elem
-     myProducts['qty']=1
-     myProducts['totalPrice']=myProducts.qty*elem.productPrice
-     
-     try {
-      
-       await setDoc(doc(db,"cart " + authUser.uid , "cart "+myProducts.id),{
-        myProducts
-       })
-     } catch (error) {
-      console.log(error);
-     }
-
-
-    
-
-  }
+ 
 
 
   return (
     <>
       {
-        getter.length === 0 ? <Loader />:<>
-        <Navbar />
+        getter.length === 0 ? <Loader /> : <>
+          <Navbar />
 
-        <ImageSlider />
-        {/* CardSection */}
-        <section className='mt-20  '>
-          <h1 className='heading text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> POPULAR CATEGORIES</h1>
+          <ImageSlider />
+          {/* CardSection */}
+          <section className='mt-20  '>
+            <h1 className='heading text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> POPULAR CATEGORIES</h1>
 
-          <Category />
-        </section>
-        <section className='mt-20  '>
-          
-          <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> OUR BEST SELLS</h1>
+            <Category />
+          </section>
+          <section className='mt-20  '>
 
-
-          <div className='flex justify-center items-center flex-wrap mt-2'>
-
-            { getter.slice(0, 10).map((elem) => {
-              return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  addCartData={addCartData} elem={elem} />
-            })}
+            <h1 className='heading  text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto my-4 text-2xl shadow-lg'> OUR BEST SELLS</h1>
 
 
+            <div className='flex justify-center items-center flex-wrap mt-2'>
 
+              {getter.slice(0, 10).map((elem) => {
+                return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} elem={elem} discounPrice={elem.discountPrice} />
+              })}
+
+
+
+            </div>
+            <Saticfy />
+
+          </section>
+          <h1 className='heading text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto  mt-3 text-2xl shadow-lg'>  CATEGORIES</h1>
+          <div className='bg-blue-900 w-[90%] m-auto rounded-xl px-5 '>
+            <Slider />
           </div>
-          <Saticfy/>
 
-        </section>
-        <h1 className='heading text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto  mt-3 text-2xl shadow-lg'>  CATEGORIES</h1>
-<div className='bg-blue-900 w-[90%] m-auto rounded-xl px-5 '>
-<Slider/>
-</div>
-
-        {/* <Contact/> */}
-        <Footer />
+          {/* <Contact/> */}
+          <Footer />
         </>
-    }
+      }
       {/* <Header  /> */}
-      
-      </>
-      );
+
+    </>
+  );
 
 }
 
-      export default index
+export default index
 
 
 

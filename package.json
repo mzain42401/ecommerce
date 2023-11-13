@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -20,7 +21,8 @@
     "react-slick": "^0.29.0",
     "react-whatsapp": "^0.3.0",
     "slick-carousel": "^1.8.1",
-    "sweetalert2": "^11.7.32"
+    "sweetalert2": "^11.7.32",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10",

@@ -64,7 +64,7 @@ setter(data)
 
       <div className='flex justify-center items-center  mt-16 flex-wrap'>
       {getter.slice(0, 30).map((elem)=>{
-        return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
+        return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id} elem={elem} discounPrice={elem.discountPrice}   />
       })}
         
       </div>

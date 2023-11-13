@@ -54,7 +54,7 @@ function classNames(...classes) {
 }
 
 export default function index({productDetail}) {
-  // console.log(productDetail);
+  console.log(productDetail);
   
  
   const [getter,setter]=useState()
@@ -80,7 +80,8 @@ export default function index({productDetail}) {
     // }
     // mydata()
   },[])
-console.log(getter);
+  console.log(getter);
+
 const {authUser}=useAuth()
 
   const addtoCart=(e)=>{
@@ -102,8 +103,7 @@ const {authUser}=useAuth()
    
    <Navbar/>
     <ProductDetails Description={getter.productDiscription} Discount={getter.Discount}
-    Pic1={getter.Pic1} Pic2={getter.pic2} Pic3={getter.pic3} coverImage={getter.coverImage}  id={getter.id} price={getter.price} mainCategory={getter.mainCategory} subCategory={getter.subCategory} productName={getter.productName
-    }    />
+    Pic1={getter.Pic1} Pic2={getter.pic2} Pic3={getter.pic3} coverImage={getter.coverImage}  id={getter.id} price={getter.price} mainCategory={getter.mainCategory} subCategory={getter.subCategory} productName={getter.productName} discounPrice={getter.discountPrice}  elem={getter}   />
     <Footer/>
    </>
    

@@ -7,13 +7,13 @@ import { useData } from '@/firebase/dataContext';
 import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { db, myStorage } from '@/firebase/firebase';
 
-const ProductCard = ({ discount,  productName, productPrice, productCoverImage, productmainCategory, productsubCategory, id ,addCartData,elem}) => {
+const ProductCard = ({ discount,  productName, productPrice, productCoverImage, productmainCategory, productsubCategory, id ,elem,discounPrice}) => {
 
   // console.log(productCoverImage);
   const [url, setUrl] = useState(null)
 
   const { authUser } = useAuth()
-  const { getImageURL } = useData()
+  const { getImageURL,addCartData } = useData()
 
   useEffect(() => {
 
@@ -31,7 +31,7 @@ const ProductCard = ({ discount,  productName, productPrice, productCoverImage, 
       return;
     }
     else{
-addCartData(elem)
+      addCartData(elem,authUser)
     }
     
   }
@@ -47,7 +47,7 @@ addCartData(elem)
         <h1 style={{ "overflow-wrap": "break-word" }} className=' mt-2 text-center text-lg w-full productName text-black '>{productName}</h1>
         {
           discount>0 ? <div className=' font-bold disPrice text-[#FF4041] flex justify-evenly items-center'>
-            <div className='mt-2  '>Rs.{Math.floor(productPrice - (discount / 100 * productPrice))}/-
+            <div className='mt-2  '>Rs.{discounPrice}/-
             </div>
             <div className='font-bold text-gray-400 line-through	  mt-2'>Rs.{productPrice}/-
             </div>
@@ -57,7 +57,7 @@ addCartData(elem)
 
 
         <div className='absolute bottom-3   w-full px-6 flex justify-between'>
-          <Link href={`products/${productmainCategory}/${productsubCategory}/${id}`}> <button className='bg-[#013289] hover:bg-transparent hover:text-[#013289] hover:border hover:border-[#013289] text-white rounded px-4 py-1 text-base'>More</button></Link>
+          <Link href={`/products/${productmainCategory}/${productsubCategory}/${id}`}> <button className='bg-[#013289] hover:bg-transparent hover:text-[#013289] hover:border hover:border-[#013289] text-white rounded px-4 py-1 text-base'>More</button></Link>
           <button onClick={() => addToCart(elem)} className='  border border-[#013289] px-2 py-2 text-[#013289] rounded-3xl text-xl hover:bg-[#013289] hover:text-white'><BsFillCartPlusFill /></button>
 
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaBars } from "react-icons/fa"
 import { PiSignOutBold } from "react-icons/pi"
@@ -12,9 +12,13 @@ import NavLinks from "./NavLinks";
 import Image from "next/image";
 import { useAuth } from '@/firebase/authContext'
 import { useRouter } from "next/router";
+import { useData } from "@/firebase/dataContext";
+import { auth } from "@/firebase/firebase";
 
 const Navbar = () => {
   const route = useRouter()
+  const {cartData}=useData()
+  const [CartLength, setCartLength] = useState(0);
 
   const [open, setOpen] = useState(false);
   const { signOut, authUser } = useAuth()
@@ -23,6 +27,17 @@ const Navbar = () => {
     route.push("/")
 
   }
+  useEffect(() => {
+
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        
+        const productsData= await cartData(user.uid)
+        setCartLength(productsData.length)
+
+      }
+    })
+  }, [])
 
   return (
     <>
@@ -68,7 +83,7 @@ const Navbar = () => {
                 <div className='px-1 text-3xl cursor-pointer relative'>
                   <Link href='/cart'>
                     <AiOutlineShoppingCart />
-                    <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
+                    <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>{CartLength}</sup>
                   </Link>
                 </div>
                 <p onClick={() => signOutFunction()} className='ml-[20px] text-3xl  cursor-pointer'><PiSignOutBold /></p>
@@ -78,7 +93,7 @@ const Navbar = () => {
 
 
               <div className=' px-3 cursor-pointer '>
-                <Link href='auth/login'>
+                <Link href='/auth/login'>
                   <Button />
                 </Link>
               </div>
@@ -96,12 +111,12 @@ const Navbar = () => {
 
             <NavLinks />
             <li>
-              <Link href='products' className="py-7 px-3 inline-block">
+              <Link href='/products' className="py-7 px-3 inline-block">
                 Products
               </Link>
             </li>
             <li>
-              <Link href='contact' className="py-7 px-3 inline-block">
+              <Link href='/contact' className="py-7 px-3 inline-block">
                 Contact
               </Link>
             </li>
@@ -113,15 +128,15 @@ const Navbar = () => {
               <>
               <div className="flex justify-center ">
                 <div className='px-2 text-3xl cursor-pointer'>
-                  <Link href='profile'>
+                  <Link href='/profile'>
                     <AiOutlineUser />
                   </Link>
                 </div>
 
                 <div className='px-1 text-3xl cursor-pointer relative'>
-                  <Link href='cart'>
+                  <Link href='/cart'>
                     <AiOutlineShoppingCart />
-                    <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
+                    <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>{CartLength}</sup>
                   </Link>
                 </div>
                 <p onClick={() => signOutFunction()} className='ml-[20px] text-3xl  cursor-pointer'><PiSignOutBold /></p>
@@ -131,7 +146,7 @@ const Navbar = () => {
 
 
               <div className=' px-3 cursor-pointer '>
-                <Link href='auth/login'>
+                <Link href='/auth/login'>
                   <Button />
                 </Link>
               </div>
@@ -161,12 +176,12 @@ const Navbar = () => {
             </li>
             <NavLinks />
             <li>
-              <Link href='products' className="py-7 px-3 inline-block">
+              <Link href='/products' className="py-7 px-3 inline-block">
                 Products
               </Link>
             </li>
             <li>
-              <Link href="/" className="py-7 px-3 inline-block">
+              <Link href="/contact" className="py-7 px-3 inline-block">
                 contact
               </Link>
             </li>
@@ -176,15 +191,15 @@ const Navbar = () => {
               <>
               <div className="flex justify-center">
                 <div className='px-2 text-2xl cursor-pointer'>
-                  <Link href='profile'>
+                  <Link href='/profile'>
                     <AiOutlineUser />
                   </Link>
                 </div>
 
                 <div className='px-1 text-2xl cursor-pointer relative'>
-                  <Link href='cart'>
+                  <Link href='/cart'>
                     <AiOutlineShoppingCart />
-                    <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>2</sup>
+                    <sup className='absolute bg-slate-200 h-4 w-4 right-[-5px] top-[-12px] rounded-full flex justify-center items-center text-xs'>{CartLength}</sup>
                   </Link>
                 </div>
                 <p onClick={() => signOutFunction()} className='ml-[20px] text-2xl  cursor-pointer'><PiSignOutBold /></p>
@@ -194,7 +209,7 @@ const Navbar = () => {
 
 
               <div className=' px-3 cursor-pointer'>
-                <Link href='auth/login'>
+                <Link href='/auth/login'>
                   <Button />
                 </Link>
               </div>

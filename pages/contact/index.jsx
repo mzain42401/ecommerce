@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
+import emailjs from '@emailjs/browser';
 // import NavBar from '../components/Navbar/NavBar';
 // import Footer from '../components/Footer';
 // import {useDocTitle} from '../components/CustomHook';
@@ -31,8 +32,26 @@ const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
-     
+
+
+        const templateParams = {
+            from_name: firstName + " " + lastName,
+            to_name: "Homely Find",
+            email: "Email: " + email,
+            phoneNumber: "Phone Number: " + phone,
+            message: message
+      
+          }
+          emailjs.send('service_bo4cy0l', 'template_w4m08sa', templateParams, 'vzH3WDbnM4FQOJaYo')
+            .then(function (response) {
+              console.log('SUCCESS!', response.status, response.text);
+            }, function (err) {
+              console.log('FAILED...', err);
+            });
+
+     clearInput()
     }
+
     return (
         <>
         {/* <Header/> */}
@@ -50,6 +69,7 @@ const Contact = () => {
                         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
                                 <div>
                                     <input 
+                                    required
                                         name="first_name" 
                                         className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                                         type="text" 
@@ -65,6 +85,7 @@ const Contact = () => {
                                 
                                 <div>
                                     <input 
+                                    required
                                         name="last_name" 
                                         className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                                         type="text" 
@@ -80,6 +101,7 @@ const Contact = () => {
 
                                 <div>
                                     <input 
+                                    required
                                         name="email"
                                         className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                                         type="email" 
@@ -95,6 +117,7 @@ const Contact = () => {
 
                                 <div>
                                     <input
+                                    required
                                         name="phone_number" 
                                         className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                                         type="number" 
@@ -110,6 +133,7 @@ const Contact = () => {
                         </div>
                         <div className="my-4">
                             <textarea 
+                            required
                                 name="message" 
                                 placeholder="Message*" 
                                 className="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"

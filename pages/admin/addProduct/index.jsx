@@ -20,15 +20,16 @@ export default function Example() {
   const [Pic2, setPic2] = useState()
   const [Pic3, setPic3] = useState()
 
-
-const route=useRouter()
+  const route=useRouter()
   const addProduct = async (e) => {
     e.preventDefault()
     if (!mainCategory || !subCategory) {
       alert("Select Categgories")
       return
     }
-    await publishDoc(productName, +price, productDiscription, mainCategory, subCategory, CoverPic, Pic1, Pic2, Pic3, +Discount)
+
+    let discountPrice=Discount>0?Math.floor(price - (Discount / 100 * price)):price;
+    await publishDoc(productName, price, productDiscription, mainCategory, subCategory, CoverPic, Pic1, Pic2, Pic3, Discount,discountPrice)
 
 
     route.push('/admin')
@@ -106,7 +107,7 @@ const route=useRouter()
                     className="block px-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 
                     value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    onChange={(e) => setPrice(Number(e.target.value))}
                     placeholder='Product Price'
                     required
                   />
@@ -123,7 +124,7 @@ const route=useRouter()
                     className="block px-1 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
 
                     value={Discount}
-                    onChange={(e) => setDiscount(e.target.value)}
+                    onChange={(e) => setDiscount(Number(e.target.value))}
                     placeholder='Discount %'
 
                   />

@@ -39,7 +39,7 @@ setter(data)
         <div className='flex justify-center items-center  mt-16 flex-wrap'>
 
 {qureydata.map((elem)=>{
-  return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  />
+  return <ProductCard discount={elem.Discount} productName={elem.productName} productPrice={elem.price} productCoverImage={elem.coverImage} productmainCategory={elem.mainCategory} productsubCategory={elem.subCategory} id={elem.id}  discounPrice={elem.discountPrice} elem={elem}  />
 })}
 </div>
         </>

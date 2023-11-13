@@ -56,7 +56,7 @@ const people = [
         lastSeen: null,
     },
 ]
-const index = ({ coverImage, subCategory, productName, price, mainCategory, id, Discount }) => {
+const index = ({ coverImage, subCategory, productName, price, mainCategory, id, Discount,discountPrice }) => {
 
     const [getter, setter] = useState([])
     const { getImageURL } = useData()
@@ -71,47 +71,9 @@ const index = ({ coverImage, subCategory, productName, price, mainCategory, id, 
         }
         mydata()
     }, [])
-    console.log(getter);
     return (
         <>
-
-
             <div>
-                {/* 
-
-      Discount
-: 
-0
-Pic1
-: 
-"images/1699341139818-WhatsApp Image 2023-10-27 at 7.41.46 PM.jpeg"
-coverImage
-: 
-"images/1699341130763-WhatsApp Image 2023-10-27 at 7.41.46 PM (1).jpeg"
-id
-: 
-1699341157046
-mainCategory
-: 
-"Home & Living"
-pic2
-: 
-"images/1699341142712-WhatsApp Image 2023-10-27 at 7.41.45 PM.jpeg"
-pic3
-: 
-"images/1699341151012-WhatsApp Image 2023-10-27 at 7.41.44 PM.jpeg"
-price
-: 
-900
-productDiscription
-: 
-"Feature 1: Waterproof and mildew proof seam stickers\nFeature 2: PVC tape for bathroom and kitchen\nFeature 3: Easy to clean, no dirt\nFeature 4: Good self-adhesive effect\nFeature 5: 90° bending at the center line\n\nPattern: 3D\nStyle: Modern\n\nSize: 3.2mx 3.8cm"
-productName
-: 
-"Sealing Tape Printed"
-subCategory */}
-
-
                 <ul role="list" className=" divide-y adminData w-[65%] m-auto divide-gray-100">
 
                     <li key={id} className="flex justify-between gap-x-6 py-5">
@@ -124,8 +86,8 @@ subCategory */}
                         </div>
                         <div className=" shrink-0 flex  flex-col  items-end">
                             {
-                                Discount ?
-                                    <p className="text-sm leading-6 text-red-500 "><span> -{Discount}%</span> <span className='text-gray-400 line-through'> {price}</span>  Rs.{Math.floor(price - (Discount / 100 * price))}/-</p> :
+                                Discount>0 ?
+                                    <p className="text-sm leading-6 text-red-500 "><span> -{Discount}%</span> <span className='text-gray-400 line-through'> {price}</span>  Rs.{discountPrice}/-</p> :
                                     <p className="text-sm leading-6 text-gray-900 ">Rs.{price}/-</p>
                             }
 

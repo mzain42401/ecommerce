@@ -30,45 +30,13 @@ const index = () => {
       </nav>
 
       
-        {/* 
-
-      Discount
-: 
-0
-Pic1
-: 
-"images/1699341139818-WhatsApp Image 2023-10-27 at 7.41.46 PM.jpeg"
-coverImage
-: 
-"images/1699341130763-WhatsApp Image 2023-10-27 at 7.41.46 PM (1).jpeg"
-id
-: 
-1699341157046
-mainCategory
-: 
-"Home & Living"
-pic2
-: 
-"images/1699341142712-WhatsApp Image 2023-10-27 at 7.41.45 PM.jpeg"
-pic3
-: 
-"images/1699341151012-WhatsApp Image 2023-10-27 at 7.41.44 PM.jpeg"
-price
-: 
-900
-productDiscription
-: 
-"Feature 1: Waterproof and mildew proof seam stickers\nFeature 2: PVC tape for bathroom and kitchen\nFeature 3: Easy to clean, no dirt\nFeature 4: Good self-adhesive effect\nFeature 5: 90° bending at the center line\n\nPattern: 3D\nStyle: Modern\n\nSize: 3.2mx 3.8cm"
-productName
-: 
-"Sealing Tape Printed"
-subCategory */}
+        
 <h1 className='mt-4 ml-5'>Total Products : {getter.length}</h1>
 
 {
   getter.map((elem)=>{
     return (
-<Admin coverImage={elem.coverImage} subCategory={elem.subCategory} price={elem.price} mainCategory={elem.mainCategory} id={elem.id} productName={elem.productName} Discount={elem.Discount}   />
+<Admin coverImage={elem.coverImage} subCategory={elem.subCategory} price={elem.price} mainCategory={elem.mainCategory} id={elem.id} productName={elem.productName} Discount={elem.Discount} discountPrice={elem.discountPrice}   />
     )
   })
 }
