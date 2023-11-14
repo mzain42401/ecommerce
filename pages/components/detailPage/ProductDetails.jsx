@@ -106,7 +106,6 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
 
   }, [])
 
-  console.log("commentDatta  "+ commetsData);
   const addNewComment = (e) => {
     e.preventDefault()
 
@@ -117,8 +116,15 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
 
 
   const addData = () => {
+    if (!authUser) {
+      // alert("sign in now")
+      Swal.fire('Please login your account!')
+      return;
+    }
+    else{
+      addCartData(elem, authUser)
+    }
 
-    addCartData(elem, authUser)
   }
   const settings = {
     dots: true,
