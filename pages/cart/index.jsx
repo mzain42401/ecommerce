@@ -240,7 +240,8 @@
 
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar/Navbar'
-import { collection, doc, getDocs, query, updateDoc } from 'firebase/firestore'
+import Swal from 'sweetalert2';
+import { collection, doc, getDocs, query, updateDoc, deleteDoc } from 'firebase/firestore'
 import { useAuth } from '@/firebase/authContext'
 import { auth, db } from '@/firebase/firebase'
 import { useData } from '@/firebase/dataContext'
@@ -298,6 +299,19 @@ const index = () => {
 
     setwase(!wase)
   }
+
+
+  const deleteItem = (elem) => {
+    auth.onAuthStateChanged(async (user) => {
+
+      const delRef = doc(db, "cart " + user.uid, "id " + elem.id)
+      await deleteDoc(delRef)
+      window.location.reload()
+    })
+    setwase(!wase)
+
+  }
+
 
 
   const dereaseQty = (elem) => {
@@ -365,7 +379,6 @@ const index = () => {
       address: "Address: " + address,
       message: arrayString,
       total: `Grand Total = Rs.${totalprice}/-  `
-
     }
     emailjs.send('service_429ubk1', 'template_8k2u4bd', templateParams, 'vzH3WDbnM4FQOJaYo')
       .then(function (response) {
@@ -373,6 +386,10 @@ const index = () => {
       }, function (err) {
         console.log('FAILED...', err);
       });
+
+    setPhone('')
+    setaddress('')
+    Swal.fire('Successfully Order Placed!')
 
   }
 
@@ -402,73 +419,80 @@ const index = () => {
               </div>
               <div class="py-4 mb-8 border-t border-b border-gray-200 dark:border-gray-700">
                 {
-                  cartdata.map((elem) => {
-                    return (
-                      <>
-                        <UserCart coverImg={elem.coverImage}
-                          productName={elem.productName}
-                          mainCategory={elem.mainCategory}
-                          discountPrice={elem.discountPrice}
-                          price={elem.price}
-                          elem={elem}
-                          qty={elem.qty}
-                          totalPrice={elem.totalPrice}
+                  cartdata.length > 0 ?
+                    cartdata.map((elem) => {
+                      return (
+                        <>
+                          <UserCart coverImg={elem.coverImage}
+                            productName={elem.productName}
+                            mainCategory={elem.mainCategory}
+                            discountPrice={elem.discountPrice}
+                            price={elem.price}
+                            elem={elem}
+                            qty={elem.qty}
+                            totalPrice={elem.totalPrice}
+                            deleteItem={deleteItem}
+                            increaseQty={increaseQty}
+                            dereaseQty={dereaseQty}
 
-                          increaseQty={increaseQty}
-                          dereaseQty={dereaseQty}
-
-                        />
-                      </>
-                    )
-                  })
+                          />
+                        </>
+                      )
+                    }) : <h1 className='text-center'>Your cart is empty </h1>
                 }
               </div>
 
               {/* ============================================ */}
             </div>
 
+            {
+              cartdata.length > 0 ?
+                <>
+                  <div class="flex flex-wrap justify-center">
 
-            <div class="flex flex-wrap justify-center">
+                    <div class="w-full px-4 mb-4 lg:w-1/2 ">
+                      <div class="p-6 border border-blue-100 bg-gray-300 rounded  md:p-8">
+                        <h2 class="mb-8 text-3xl font-bold  text-gray-900">Order Summary</h2>
+                        <div
+                          class="flex items-center justify-between pb-4 mb-4 border-b border-gray-300 dark:border-gray-700 ">
+                          <span class=" text-gray-900">Subtotal</span>
+                          <span class="text-xl font-bold text-gray-900 ">Rs.{totalprice}/- </span>
+                        </div>
+                        <div class="flex items-center justify-between pb-4 mb-4 ">
+                          <span class=" text-gray-900 ">Shipping</span>
+                          <span class="text-xl font-bold  text-gray-900 ">Free</span>
+                        </div>
+                        <div class="flex items-center justify-between pb-4 mb-4 ">
+                          <span class=" text-gray-900">Order Total</span>
+                          <span class="text-xl font-bold text-gray-900">Rs.{totalprice}/-</span>
+                        </div>
 
-              <div class="w-full px-4 mb-4 lg:w-1/2 ">
-                <div class="p-6 border border-blue-100 bg-gray-300 rounded  md:p-8">
-                  <h2 class="mb-8 text-3xl font-bold  text-gray-900">Order Summary</h2>
-                  <div
-                    class="flex items-center justify-between pb-4 mb-4 border-b border-gray-300 dark:border-gray-700 ">
-                    <span class=" text-gray-900">Subtotal</span>
-                    <span class="text-xl font-bold text-gray-900 ">Rs.{totalprice}/- </span>
+                        <div class="flex items-center justify-between ">
+                          <form onSubmit={(e) => sendEmail(e)} className='w-full'>
+
+                            <div ><input value={phone} onChange={(e) => setPhone(e.target.value)} className='bg-gray-200 outline-none p-2 shadow-lg border w-full my-4 rounded-lg' placeholder='Enter your phone number' required type="number" /></div>
+                            <div ><textarea value={address} onChange={(e) => setaddress(e.target.value)} className='bg-gray-200 outline-none p-4 shadow-lg border w-full my-4 rounded-lg' placeholder='Enter your address on which you will receive your products.' required cols="30" rows="10"></textarea></div>
+
+                            {
+                              cartdata.length == 0 ?
+                                <button
+                                  disabled={true}
+                                  class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-blue-900 rounded hover:bg-blue-800">Order Now</button> :
+                                <button
+                                  type='submit'
+                                  class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-blue-900 rounded hover:bg-blue-800">Order Now</button>
+                            }
+                          </form>
+
+
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="flex items-center justify-between pb-4 mb-4 ">
-                    <span class=" text-gray-900 ">Shipping</span>
-                    <span class="text-xl font-bold  text-gray-900 ">Free</span>
-                  </div>
-                  <div class="flex items-center justify-between pb-4 mb-4 ">
-                    <span class=" text-gray-900">Order Total</span>
-                    <span class="text-xl font-bold text-gray-900">Rs.{totalprice}/-</span>
-                  </div>
-
-                  <div class="flex items-center justify-between ">
-                    <form onSubmit={(e) => sendEmail(e)} className='w-full'>
-
-                      <div ><input value={phone} onChange={(e) => setPhone(e.target.value)} className='bg-gray-200 outline-none p-2 shadow-lg border w-full my-4 rounded-lg' placeholder='Enter your phone number' required type="number" /></div>
-                      <div ><textarea value={address} onChange={(e) => setaddress(e.target.value)} className='bg-gray-200 outline-none p-4 shadow-lg border w-full my-4 rounded-lg' placeholder='Enter your address on which you will receive your products.' required cols="30" rows="10"></textarea></div>
-
-                      {
-                        cartdata.length == 0 ?
-                          <button
-                            disabled={true}
-                            class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-blue-900 rounded hover:bg-blue-800">Order Now</button> :
-                          <button
-                            type='submit'
-                            class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-blue-900 rounded hover:bg-blue-800">Order Now</button>
-                      }
-                    </form>
+                </> : null
+            }
 
 
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

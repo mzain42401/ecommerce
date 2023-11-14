@@ -90,13 +90,12 @@ const index = ({ coverImage, subCategory, productName, price, mainCategory, id, 
                                     <p className="text-sm leading-6 text-red-500 "><span> -{Discount}%</span> <span className='text-gray-400 line-through'> {price}</span>  Rs.{discountPrice}/-</p> :
                                     <p className="text-sm leading-6 text-gray-900 ">Rs.{price}/-</p>
                             }
-
+{/* 
                             <div className="mt-1 text-center  flex items-center gap-x-1.5">
-                                {/* <div className="flex-none rounded-full bg-emerald-500/20 p-1"> */}
                                    <p className='text-xs leading-5 text-gray-500 hover:text-black hover:cursor-pointer hover:underline'>Edit </p>
                                 <span className='text-xs leading-5 text-gray-500'> / </span>
                                 <p className="text-xs leading-5 text-gray-500 hover:text-black hover:cursor-pointer hover:underline">Delete</p>
-                            </div>
+                            </div> */}
 
 
 

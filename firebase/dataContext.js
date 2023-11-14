@@ -17,6 +17,8 @@ export default function useDataFunc() {
     const publishDoc = async (productName,price,productDiscription,mainCategory,subCategory,CoverPic,Pic1,Pic2,Pic3,Discount,discountPrice) => {
 
 
+         
+ 
         const coverimageRef = ref(myStorage, `images/${Date.now()}-${CoverPic.name}`)
         const coverImagePath = await uploadBytes(coverimageRef, CoverPic)
         const pic1Ref = ref(myStorage, `images/${Date.now()}-${Pic1.name}`)
@@ -43,6 +45,7 @@ export default function useDataFunc() {
                 id
 
             })
+            Swal.fire("Product Added")
 
         } catch (error) {
             console.log(error, productName,subCategory,mainCategory,price + " KKK");
@@ -67,6 +70,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
         userName:username,
         comment
     })
+    window.location.reload()
 }
 
 // getCommentdata==============

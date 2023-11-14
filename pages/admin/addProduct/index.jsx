@@ -313,7 +313,7 @@ export default function Example() {
 
             <button
               type="submit"
-              className="rounded bg-blue-900 hover:bg-blue-800 text-white px-3 py-2 "
+              className="rounded active:bg-transparent active:text-black active:border-2 bg-blue-900 hover:bg-blue-800 text-white px-3 py-2 "
             >
               Publish
             </button>

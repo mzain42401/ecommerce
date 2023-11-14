@@ -1,7 +1,8 @@
 import { useData } from '@/firebase/dataContext'
 import React, { useEffect, useState } from 'react'
+import {FaTrash} from 'react-icons/fa'
 
-const UserCart = ({coverImg,productName,mainCategory,discountPrice,price,elem,increaseQty,dereaseQty,qty,totalPrice}) => {
+const UserCart = ({coverImg,productName,mainCategory,discountPrice,price,deleteItem,elem,increaseQty,dereaseQty,qty,totalPrice}) => {
 
 
     const {getImageURL}=useData()
@@ -26,6 +27,13 @@ SetNum(!num)
                 dereaseQty(elem)
             }
     
+const deleteCartItem=(elem)=>{
+  SetNum(!num)
+  deleteItem(elem)
+  SetNum(!num)
+
+}
+
   return (
     <>
       
@@ -42,6 +50,8 @@ SetNum(!num)
                               <div class="w-2/3 px-4">
                                 <h2 class="mb-2 text-xl font-bold text-gray-800">{productName}</h2>
                                 <p class="text-gray-500 dark:text-gray-400 ">{mainCategory}</p>
+                            <div onClick={()=>deleteCartItem(elem)} className=' text-red-600 cursor-pointer mt-2  flex  items-center '> <span className='mr-1'>Delete</span> <FaTrash /></div>
+
                                 {
                               discountPrice<price  ?
                                 <>
@@ -92,9 +102,10 @@ SetNum(!num)
                               </button>
                             </div>
                           </div>
-                          <div class="w-auto px-4 text-right md:w-1/6 lg:w-2/12 ">
+                          <div class="w-auto px-4 text-right md:w-1/6 lg:w-2/12  ">
 
                             <p class="text-lg font-bold text-gray-800">Rs.{totalPrice}/-</p>
+
                           </div>
                         </div>
 

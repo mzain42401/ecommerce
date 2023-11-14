@@ -8,7 +8,7 @@ import Image from 'next/image'
 function Saticfy() {
   return (
     <>
-      <section className='flex m-auto justify-evenly flex-wrap items-center p-4 rounded-lg bg-gray-200 py-12 w-[95%]'>
+      <section className='flex mt-6 m-auto justify-evenly flex-wrap items-center p-4 rounded-lg bg-gray-200 py-12 w-[95%]'>
 
 <div className=' flex flex-col justify-center  m-5 w-80 items-center'>
     <div className='rounded-full  text-5xl  h-28 mb-5 w-28 flex  justify-center  items-center' ><Image src={img2}/></div>
