@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 import Slider from "react-slick";
+import Swal from 'sweetalert2';
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useData } from '@/firebase/dataContext'
