@@ -15,8 +15,8 @@ const index = () => {
 
   const editProduct=(elem)=>{
     if (elem) {
-      setEdit(true)
       setEditData(elem)
+      setEdit(true)
     }
   }
 
