@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Header from '../components/header/Header'
-import { FcGoogle } from "react-icons/fc"
 import { auth } from '@/firebase/firebase'
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { useAuth } from '@/firebase/authContext'
@@ -77,7 +76,7 @@ useEffect(()=>{
                                     ref={emailRef}
                                     placeholder='Email'
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-blue-900 focus-visible:outline-blue-900  sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#1f91d8] focus-visible:outline-[#1f91d8]  sm:text-sm sm:leading-6"
                                 />
                             </div>
                         </div>
@@ -92,21 +91,21 @@ useEffect(()=>{
                                     type="password"
                                     placeholder='Password'
                                     required
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-blue-900 focus-visible:outline-blue-900 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#1f91d8] focus-visible:outline-[#1f91d8] sm:text-sm sm:leading-6"
                                 />
                             </div>
                             <div>{Error && <p className='text-red-500 text-xs mt-1'>{Error}</p>}</div>
 
                         </div>
                         <div className='text-sm mt-5 text-gray-500'>
-                            <Link href='/auth/signup'>If you don't have an account, <span className='text-blue-900'> Signup</span></Link>
+                            <Link href='/auth/signup'>If you don't have an account, <span className='text-[#1f91d8]'> Signup</span></Link>
                         </div>
 
                         <div className='flex justify-center'>
                             <button
                                 type="submit"
 
-                                className="flex w-full     justify-center rounded-md bg-blue-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 "
+                                className="flex w-full     justify-center rounded-md bg-[#1f91d8] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700 "
                             >
                                 Login
                             </button>

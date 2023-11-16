@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
 import { useData } from '@/firebase/dataContext'
 import Swal from 'sweetalert2';
 
@@ -251,7 +250,7 @@ export default function Edit({ editData }) {
 
                         <button
                             type="submit"
-                            className="rounded active:bg-transparent active:text-black active:border-2 bg-blue-900 hover:bg-blue-800 text-white px-3 py-2 "
+                            className="rounded active:bg-transparent active:text-black active:border-2 bg-[#1f91d8] hover:bg-blue-800 text-white px-3 py-2 "
                         >
                             Update
                         </button>
