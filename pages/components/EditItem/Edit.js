@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
-import Link from 'next/link'
-import logo from '../../../public/logo.png'
 import Image from 'next/image'
 import { useData } from '@/firebase/dataContext'
-import { useRouter } from 'next/router'
 import Swal from 'sweetalert2';
 
-export default function Example({ editData }) {
+export default function Edit({ editData }) {
     
-    const {  editProductData,deleteProduct} = useData()
-    const [productName, setProductName] = useState(editData.productName)
-    const [price, setPrice] = useState(editData.price)
-    const [Discount, setDiscount] = useState(editData.Discount)
+    const {  editProductData} = useData()
+    const [productName, setProductName] = useState(editData?editData.productName:null)
+    const [price, setPrice] = useState(editData?editData.price:null)
+    const [Discount, setDiscount] = useState(editData?editData.Discount:null)
 
-    const [productDiscription, setProductDiscription] = useState(editData.productDiscription
+    const [productDiscription, setProductDiscription] = useState(editData?editData.productDiscription:null
     )
-    const [mainCategory, setMainCategory] = useState(editData.mainCategory)
+    const [mainCategory, setMainCategory] = useState(editData?editData.mainCategory:null)
 
-    const [subCategory, setSubCategory] = useState(editData.subCategory)
+    const [subCategory, setSubCategory] = useState(editData?editData.subCategory:null)
 
 
     const addProduct = async (e) => {
