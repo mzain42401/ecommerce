@@ -5,7 +5,7 @@ import { PiSignOutBold } from "react-icons/pi"
 import { GrClose } from "react-icons/gr"
 import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai'
 import { BsTelephoneFill, BsWhatsapp } from "react-icons/bs"
-import logo from '../../../public/logo.png'
+import logo from '../../../public/logoimg.png'
 // import mylogo from '../../../public/mylogo1.png'
 import Button from "../Button";
 import NavLinks from "./NavLinks";
@@ -43,7 +43,7 @@ const Navbar = () => {
     <>
       <div className='bg-black h-8 flex justify-between items-center'>
         <marquee className='text-white w-max overflow-hidden ml-2 '>
-          WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.3000/-
+          WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.1999/-
         </marquee>
         <div className='flex justify-between items-center top-header text-white'>
 
@@ -64,7 +64,7 @@ const Navbar = () => {
               <FaBars />
             </div>
             <div className="mylogo flex justify-center   items-center">
-             <Link href='/'> <Image src={logo} className=" md:cursor-pointer rounded-full h-[70px] w-20" /></Link>
+             <Link href='/'> <Image src={logo} className=" md:cursor-pointer my-1 h-[80px] w-24 " /></Link>
             
               </div>
 
@@ -168,7 +168,7 @@ const Navbar = () => {
         `}
           >
             <div onClick={() => setOpen(!open)} className="absolute top-8 right-4 text-3xl"><GrClose /></div>
-            <div onClick={() => setOpen(!open)} className="absolute top-4 left-4 w-24 rounded-full"> <Image src={logo} className=" md:cursor-pointer rounded-full h-[80px] " /></div>
+            <div onClick={() => setOpen(!open)} className="absolute top-4 left-4 w-24 rounded-full"> <Image src={logo} className=" md:cursor-pointer  h-[80px] " /></div>
             <li>
               <Link href="/" className="py-7 px-3 inline-block">
                 Home

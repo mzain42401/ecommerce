@@ -242,7 +242,7 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
               />
             </div>
           </div>
-          <div className='w-[95%] px-3 m-auto SpecificImageSlider hidden  rounded-lg bg-blue-900'>
+          <div className='w-[95%] px-3 m-auto SpecificImageSlider hidden  rounded-lg bg-[#1f91d8]'>
             <div className='w-[90%]     m-auto'>
               <div className="mt-10  ">
                 <Slider {...settings}>
@@ -293,7 +293,7 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
                     ))}
                   </div>
                   <p className="sr-only">{reviews.average} out of 5 stars</p>
-                  <a href={reviews.href} className="ml-3 text-sm font-medium text-blue-900 hover:text-blue-900">
+                  <a href={reviews.href} className="ml-3 text-sm font-medium text-[#1f91d8] hover:text-[#1f91d8]">
                     {commetsData.length} reviews
                   </a>
                 </div>
@@ -304,7 +304,7 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
 
               <button
                 onClick={addData}
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-blue-900 px-8 py-3 text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-900 focus:ring-offset-2"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#1f91d8] px-8 py-3 text-base font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-[#1f91d8] focus:ring-offset-2"
               >
                 <span className='text-3xl pr-4'><AiOutlineShoppingCart /></span>Add to Cart
               </button>
@@ -331,7 +331,7 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
       <section class="bg-gray-100 py-8 lg:py-16 antialiased">
         <div class="max-w-2xl mx-auto px-4">
           <div class="flex justify-between items-center mb-6">
-            <h2 class="text-lg lg:text-2xl font-bold text-blue-900">Reviews </h2>
+            <h2 class="text-lg lg:text-2xl font-bold text-[#1f91d8]">Reviews </h2>
           </div>
           {
 
@@ -343,7 +343,7 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
                   placeholder="Write a comment..." required></textarea>
               </div>
               <button type="submit"
-                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 bg-blue-900">
+                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 bg-[#1f91d8]">
                 Post comment
               </button>
             </form> : null
@@ -359,7 +359,7 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
         <article class="p-6 mb-3 text-base  border-t shadow-lg bg-white rounded-xl">
             <footer class="flex justify-between items-center mb-2">
               <div class="flex items-center">
-                <p class="inline-flex items-center mr-3 text-sm text-blue-900 font-semibold"><Image
+                <p class="inline-flex items-center mr-3 text-sm text-[#1f91d8] font-semibold"><Image
                   class="mr-2 w-6 h-6 rounded-full"
                   src={user}
                   alt="Bonnie Green" />{elem.userName}</p>

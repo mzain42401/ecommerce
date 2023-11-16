@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from "next/image";
-import logo from '../../../public/logo.png'
+import logo from '../../../public/logoimg.png'
 import {BiLogoFacebook} from "react-icons/bi"
 import {BsWhatsapp} from "react-icons/bs"
 import {BiLogoTiktok,BiLogoInstagram} from "react-icons/bi"
@@ -16,8 +16,8 @@ const Footer = () => {
 
                     {/* 1st block */}
                     <div className="col-span-12 lg:col-span-4">
-                        <div className="box-border border-b-4 border-blue-900 p-8 bg-gray-200 text-gray-600 text-center rounded-lg xl:w-80 mx-auto">
-                            <h3 className="font-bold text-4xl flex justify-center mb-4"><Image className='h-24 w-24 rounded-full' src={logo}/></h3>
+                        <div className="box-border border-b-4 border-[#1f91d8] p-8 bg-gray-200 text-gray-600 text-center rounded-lg xl:w-80 mx-auto">
+                            <h3 className="font-bold text-4xl flex justify-center mb-4"><Image className='h-24 w-24 ' src={logo}/></h3>
                             <div className=' text-gray-600'>
                                 <h2 className='text-3xl font-bold'>HomelyFind</h2>
                                 
@@ -29,51 +29,51 @@ const Footer = () => {
 
                     {/* 2nd block */}
                     <div className="col-span-6 md:col-span-6 lg:col-span-1 ml-7 mx-auto">
-                        <h6 className="text-[#013289] text-xl font-bold mb-4">Links</h6>
+                        <h6 className="text-[#1f91d8] text-xl font-bold mb-4">Links</h6>
                         <ul className="text-md">
                         <li className="mb-2">
-                            <Link href="/" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Home</Link>
+                            <Link href="/" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Home</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Products</Link>
+                            <Link href="/products" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Products</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/contact" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Contact</Link>
+                            <Link href="/contact" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Contact</Link>
                         </li>    
                         <li className="mb-2">
-                            <Link href="/privacy/shoppingPolicy" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Shipping policy</Link>
+                            <Link href="/privacy/shoppingPolicy" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Shipping policy</Link>
                         </li> 
                         <li className="mb-2">
-                            <Link href="/privacy/PrivacyPolicy" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Privacy policy</Link>
+                            <Link href="/privacy/PrivacyPolicy" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Privacy policy</Link>
                         </li>                         
                         </ul>
                     </div>
 
                     {/* 3rd block */}
                     <div className="col-span-6 md:col-span-6 lg:col-span-4 mx-auto">
-                        <h6 className="text-[#013289] text-xl font-bold mb-4">Main Categories</h6>
+                        <h6 className="text-[#1f91d8] text-xl font-bold mb-4">Main Categories</h6>
                         <ul className="text-md">
                        
                         <li className="mb-2">
-                            <Link href="/products/Décor" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Home Décor</Link>
+                            <Link href="/products/Décor" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Home Décor</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products/Men's Fashion" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Men's Fashion</Link>
+                            <Link href="/products/Men's Fashion" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Men's Fashion</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products/Home & Living" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Home & Living</Link>
+                            <Link href="/products/Home & Living" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Home & Living</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products/Baby, Kids & Toys" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Baby, Kids & Toys</Link>
+                            <Link href="/products/Baby, Kids & Toys" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Baby, Kids & Toys</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products/Customize Product" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Customize Product</Link>
+                            <Link href="/products/Customize Product" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Customize Product</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products/Kitchen Accessories" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Kitchen Accessories</Link>
+                            <Link href="/products/Kitchen Accessories" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Kitchen Accessories</Link>
                         </li>
                         <li className="mb-2">
-                            <Link href="/products/Electronic Accessories" className="text-[#013289] hover:underline  transition duration-250 ease-in-out">Electronic Accessories</Link>
+                            <Link href="/products/Electronic Accessories" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Electronic Accessories</Link>
                         </li>
                        
                         
@@ -83,7 +83,7 @@ const Footer = () => {
                     </div>
 
                     {/* 4th block */}
-                    <div className="col-span-12 text-center mx-auto lg:col-span-3 font-bold uppercase text-blue-900">
+                    <div className="col-span-12 text-center mx-auto lg:col-span-3 font-bold uppercase text-[#1f91d8]">
                         <div className="text-xl mb-6">
                             Social Media Links.
                         </div>
@@ -94,22 +94,22 @@ const Footer = () => {
                         <div className="mx-auto text-center mt-2">
                                 <ul className="flex justify-center mb-4 md:mb-0">
                                     <li className="mx-1">
-                                        <Link href="https://www.facebook.com/profile.php?id=61552682378217" target='_blank' className="flex justify-center items-center text-blue-900 hover:text-gray-500 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 p-3 ease-in-out" aria-label="Twitter">
+                                        <Link href="https://www.facebook.com/profile.php?id=61552682378217" target='_blank' className="flex justify-center items-center text-[#1f91d8] hover:text-gray-500 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 p-3 ease-in-out" aria-label="Twitter">
                                         <BiLogoFacebook/>
                                         </Link>
                                     </li>
                                     <li className="mx-1">
-                                        <Link href="https://wa.me/923122320760" target='_blank' className="flex justify-center items-center text-blue-900 hover:text-gray-500 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 p-3 ease-in-out" aria-label="Twitter">
+                                        <Link href="https://wa.me/923122320760" target='_blank' className="flex justify-center items-center text-[#1f91d8] hover:text-gray-500 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 p-3 ease-in-out" aria-label="Twitter">
                                         <BsWhatsapp/>
                                         </Link>
                                     </li>
                                     <li className="mx-1">
-                                        <Link target='_blank'  href="https://www.tiktok.com/@homelyfind?is_from_webapp=1&sender_device=pc" className="flex justify-center items-center text-blue-900 hover:text-gray-500 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 p-3 ease-in-out" aria-label="Twitter">
+                                        <Link target='_blank'  href="https://www.tiktok.com/@homelyfind?is_from_webapp=1&sender_device=pc" className="flex justify-center items-center text-[#1f91d8] hover:text-gray-500 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 p-3 ease-in-out" aria-label="Twitter">
                                         <BiLogoTiktok/>
                                         </Link>
                                     </li>
                                     <li className="mx-1">
-                                        <Link href="https://www.instagram.com/homelyfind/" target='_blank' className="flex justify-center items-center text-blue-900 hover:text-gray-500 p-3 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="Facebook">
+                                        <Link href="https://www.instagram.com/homelyfind/" target='_blank' className="flex justify-center items-center text-[#1f91d8] hover:text-gray-500 p-3 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="Facebook">
                                         <BiLogoInstagram/>
                                         </Link>
                                     </li>

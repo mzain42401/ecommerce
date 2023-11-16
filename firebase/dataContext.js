@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { createContext, useContext, useState, useEffect } from "react";
 import { db, myStorage } from "./firebase";
 import { v4 as uuidv4 } from 'uuid';
@@ -27,7 +27,6 @@ export default function useDataFunc() {
         const pic2path = await uploadBytes(pic2Ref, Pic2)
         const pic3Ref = ref(myStorage, `images/${Date.now()}-${Pic3.name}`)
         const pic3path = await uploadBytes(pic3Ref, Pic3)
-        console.log(productName,price,productDiscription,mainCategory,subCategory);
         try {
             const id=uuidv4()
             const data = await setDoc(doc(db, "productsData",id), {
@@ -48,7 +47,7 @@ export default function useDataFunc() {
             Swal.fire("Product Added")
 
         } catch (error) {
-            console.log(error, productName,subCategory,mainCategory,price + " KKK");
+            console.log(error);
         }
     }
 
@@ -64,7 +63,6 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
   year: 'numeric'
 }).format(currentDate);
 
-    // console.log(comment,productId,username);
     await addDoc(collection(db,`productsData/${productId}/produtComments`),{
         date:formattedDate,
         userName:username,
@@ -162,6 +160,31 @@ const increment=async(user,elem)=>{
 
 }
 
+// Edit Product
+let editProduct;
+const editProductData=async(editData,productName,price,Discount,productDiscription,mainCategory,subCategory)=>{
+
+    editProduct=editData
+editProduct.productName=productName
+editProduct.price=price
+editProduct.Discount=Discount
+editProduct.discountPrice=Discount>0?Math.floor(price - (Discount / 100 * price)):price
+editProduct.productDiscription=productDiscription
+editProduct.mainCategory=mainCategory
+editProduct.subCategory=subCategory
+const updateRef = doc(db, "productsData" , editData.id);
+
+await updateDoc(updateRef, editProduct);
+
+
+}
+const deleteProduct=async(id)=>{
+    
+const updateRef = doc(db, "productsData" , id);
+
+await deleteDoc(updateRef);
+}
+
 
     // getImageURL================
 
@@ -195,7 +218,9 @@ const increment=async(user,elem)=>{
         addCartData,
         increment,
         addComment,
-        getCommentdata
+        getCommentdata,
+        editProductData,
+        deleteProduct
     }
 }
 

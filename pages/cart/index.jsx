@@ -25,7 +25,7 @@
 
 //     </div>
 //     <div>
-//       <button className='flex justify-center items-center bg-blue-900 px-10 py-2 text-xl text-white  rounded'>Remove <span className='mx-4'> <HiOutlineTrash/></span></button>
+//       <button className='flex justify-center items-center bg-[#1f91d8] px-10 py-2 text-xl text-white  rounded'>Remove <span className='mx-4'> <HiOutlineTrash/></span></button>
 //     </div>
 //   </div>
 
@@ -91,7 +91,7 @@
 //                   <span>Total cost</span>
 //                   <span>$600</span>
 //                 </div>
-//                 <button className="bg-blue-900 font-semibold hover:bg-blue-800 rounded  py-3 text-sm text-white uppercase w-full">Checkout</button>
+//                 <button className="bg-[#1f91d8] font-semibold hover:bg-blue-800 rounded  py-3 text-sm text-white uppercase w-full">Checkout</button>
 //               </div>
 //             </div>
 //           </div>
@@ -225,7 +225,7 @@
 //               <span>Total cost</span>
 //               <span>Rs.600/-</span>
 //             </div>
-//             <button className="bg-blue-900 font-semibold hover:bg-blue-800 rounded   py-3 text-sm text-white uppercase w-full">Order Now</button>
+//             <button className="bg-[#1f91d8] font-semibold hover:bg-blue-800 rounded   py-3 text-sm text-white uppercase w-full">Order Now</button>
 //           </div>
 //         </div>
 //       </div>
@@ -460,13 +460,14 @@ const index = () => {
                         </div>
                         <div class="flex items-center justify-between pb-4 mb-4 ">
                           <span class=" text-gray-900 ">Shipping</span>
-                          <span class="text-xl font-bold  text-gray-900 ">Free</span>
+                          <span class="text-xl font-bold  text-gray-900 ">{totalprice>1999?"Free":"charge"}</span>
                         </div>
                         <div class="flex items-center justify-between pb-4 mb-4 ">
                           <span class=" text-gray-900">Order Total</span>
                           <span class="text-xl font-bold text-gray-900">Rs.{totalprice}/-</span>
                         </div>
 
+<div className='text-center text-gray-500 text-xs'>WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.1999/-</div>
                         <div class="flex items-center justify-between ">
                           <form onSubmit={(e) => sendEmail(e)} className='w-full'>
 
@@ -477,10 +478,10 @@ const index = () => {
                               cartdata.length == 0 ?
                                 <button
                                   disabled={true}
-                                  class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-blue-900 rounded hover:bg-blue-800">Order Now</button> :
+                                  class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-[#1f91d8] rounded hover:bg-blue-800">Order Now</button> :
                                 <button
                                   type='submit'
-                                  class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-blue-900 rounded hover:bg-blue-800">Order Now</button>
+                                  class="block w-full py-4 font-bold text-center text-gray-100 uppercase bg-[#1f91d8] rounded hover:bg-blue-800">Order Now</button>
                             }
                           </form>
 

@@ -41,7 +41,7 @@ const index = () => {
                 </div>
                
            
-              {/* <div onClick={dropCategory} className='categorysearchBtn  relative mx-2 w-[200px]  rounded-lg  flex  bg-[#013289] hover:bg-[#0f4095] items-center'>
+              {/* <div onClick={dropCategory} className='categorysearchBtn  relative mx-2 w-[200px]  rounded-lg  flex  bg-[#1f91d8] hover:bg-[#0f4095] items-center'>
           <button className=' px-3 py-2 cursor-pointer   text-white  '>Search By Category </button>
           <div className='text-white'>{
             drop ? <BiSolidUpArrow /> : <BiSolidDownArrow />
@@ -81,7 +81,7 @@ const index = () => {
 
             </div>
             <Saticfy />
-            <h1 className='heading text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#013289] text-white tracking-wide m-auto  mt-3 text-2xl shadow-lg'>  CATEGORIES</h1>
+            <h1 className='heading text-center font-extrabold w-max py-2 px-6 rounded-lg bg-[#1f91d8] text-white tracking-wide m-auto  mt-3 text-2xl shadow-lg'>  CATEGORIES</h1>
             <div className='bg-blue-900 w-[90%] m-auto rounded-xl px-5 '>
               <Slider />
             </div>

@@ -56,13 +56,19 @@ const people = [
         lastSeen: null,
     },
 ]
-const index = ({ coverImage, subCategory, productName, price, mainCategory, id, Discount,discountPrice }) => {
+const index = ({ editProduct, coverImage, elem, subCategory, productName, price, mainCategory, id, Discount, discountPrice }) => {
 
     const [getter, setter] = useState([])
-    const { getImageURL } = useData()
+    const { getImageURL ,deleteProduct} = useData()
     const [url, setUrl] = useState(null)
 
-
+    const editItem = (elem) => {
+        editProduct(elem)
+    }
+    const deleted = async (elem) => {
+       
+       await deleteProduct(elem.id)
+    }
 
     useEffect(() => {
         async function mydata() {
@@ -86,16 +92,16 @@ const index = ({ coverImage, subCategory, productName, price, mainCategory, id, 
                         </div>
                         <div className=" shrink-0 flex  flex-col  items-end">
                             {
-                                Discount>0 ?
+                                Discount > 0 ?
                                     <p className="text-sm leading-6 text-red-500 "><span> -{Discount}%</span> <span className='text-gray-400 line-through'> {price}</span>  Rs.{discountPrice}/-</p> :
                                     <p className="text-sm leading-6 text-gray-900 ">Rs.{price}/-</p>
                             }
-{/* 
+
                             <div className="mt-1 text-center  flex items-center gap-x-1.5">
-                                   <p className='text-xs leading-5 text-gray-500 hover:text-black hover:cursor-pointer hover:underline'>Edit </p>
+                                <p onClick={() => editItem(elem)} className='text-xs leading-5 text-gray-500 hover:text-black hover:cursor-pointer hover:underline'>Edit </p>
                                 <span className='text-xs leading-5 text-gray-500'> / </span>
-                                <p className="text-xs leading-5 text-gray-500 hover:text-black hover:cursor-pointer hover:underline">Delete</p>
-                            </div> */}
+                                <p onClick={() => deleted(elem)} className="text-xs leading-5 text-gray-500 hover:text-black hover:cursor-pointer hover:underline">Delete</p>
+                            </div>
 
 
 

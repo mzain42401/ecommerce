@@ -53,11 +53,11 @@ function ImageSlider() {
   return (
     <div className=' h-max '>
       <div
-        className='  bg-center bg-cover duration-500'
+        className='  bg-center bg-cover duration-500 '
 
       >
         <Link href={slides[currentIndex].url}>
-          <Image className='imgslider' src={slides[currentIndex].img} />
+          <Image className='imgslider w-full' src={slides[currentIndex].img} />
         </Link>
       </div>
       {/* Left Arrow */}

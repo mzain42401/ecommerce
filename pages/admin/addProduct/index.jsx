@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import logo from '../../../public/logo.png'
+import logo from '../../../public/logoimg.png'
 import Image from 'next/image'
 import { useData } from '@/firebase/dataContext'
 import { useRouter } from 'next/router'
@@ -40,7 +40,7 @@ export default function Example() {
 
       <nav className='flex justify-between items-center shadow-lg shadow-gray-300 px-4 '>
         <div><Image className='w-24 h-24' src={logo} /></div>
-        <div className='rounded bg-blue-900 text-white px-3 py-2'><Link href='/admin'>Back To Dashboard</Link> </div>
+        <div className='rounded bg-[#1f91d8] text-white px-3 py-2'><Link href='/admin'>Back To Dashboard</Link> </div>
       </nav>
 
 
@@ -313,7 +313,7 @@ export default function Example() {
 
             <button
               type="submit"
-              className="rounded active:bg-transparent active:text-black active:border-2 bg-blue-900 hover:bg-blue-800 text-white px-3 py-2 "
+              className="rounded active:bg-transparent active:text-black active:border-2 bg-[#1f91d8] hover:bg-blue-800 text-white px-3 py-2 "
             >
               Publish
             </button>
