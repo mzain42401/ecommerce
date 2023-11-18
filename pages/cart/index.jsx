@@ -253,13 +253,16 @@ import emailjs from '@emailjs/browser';
 
 
 const index = () => {
-  const { cartData, increment, getImageURL } = useData()
+  const { cartData, getShipingdata, shippingFee } = useData()
   const { authUser } = useAuth()
 
   const [cartdata, setcartdata] = useState([])
   const [wase, setwase] = useState(true)
   const [phone, setPhone] = useState('')
   const [address, setaddress] = useState('')
+  const [freeshipping, setfreeshipping] = useState('')
+
+
 
 
 
@@ -267,6 +270,11 @@ const index = () => {
 
 
   useEffect(() => {
+
+    const shipping = async () => {
+      getShipingdata().then((data) => setfreeshipping(data)).catch((err) => console.log(err))
+    }
+    shipping()
 
     auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -366,6 +374,7 @@ const index = () => {
     product Discount Price = Rs.${obj.discountPrice}/- ::
 
     
+    
     product Total  Price = Rs.${obj.totalPrice}/- ::
 
     `).join('<------------Next Product------------>')
@@ -378,7 +387,8 @@ const index = () => {
       phoneNumber: "Phone Number: " + phone,
       address: "Address: " + address,
       message: arrayString,
-      total: `Grand Total = Rs.${totalprice}/-  `
+      shipping:    ` Shipping =Rs.${totalprice>freeshipping.freeamount?"Free":freeshipping.feeamount}/-`,
+      total: `Grand Total = Rs.${totalprice > freeshipping.freeamount?totalprice:totalprice+freeshipping.feeamount}/-  `
     }
     emailjs.send('service_429ubk1', 'template_8k2u4bd', templateParams, 'vzH3WDbnM4FQOJaYo')
       .then(function (response) {
@@ -460,14 +470,14 @@ const index = () => {
                         </div>
                         <div class="flex items-center justify-between pb-4 mb-4 ">
                           <span class=" text-gray-900 ">Shipping</span>
-                          <span class="text-xl font-bold  text-gray-900 ">{totalprice>1999?"Free":"charge"}</span>
+                          <span class="text-xl font-bold  text-gray-900 ">{totalprice > freeshipping.freeamount ? "Free" : freeshipping.feeamount}</span>
                         </div>
                         <div class="flex items-center justify-between pb-4 mb-4 ">
                           <span class=" text-gray-900">Order Total</span>
                           <span class="text-xl font-bold text-gray-900">Rs.{totalprice}/-</span>
                         </div>
 
-<div className='text-center text-gray-500 text-xs'>WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.1999/-</div>
+                        <div className='text-center text-gray-500 text-xs'>WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.{freeshipping.amount}/-</div>
                         <div class="flex items-center justify-between ">
                           <form onSubmit={(e) => sendEmail(e)} className='w-full'>
 

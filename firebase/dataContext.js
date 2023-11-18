@@ -103,6 +103,23 @@ const getCommentdata = async (productId) => {
         return productsData
     }
 
+    // shipping data
+    const getShipingdata = async () => {
+        const path = doc(db, 'shipping','free-fee-shipping')
+        const q = await getDoc(path)
+        return q.data()
+  
+    }
+
+
+
+// shippingFee
+
+    // const shippingFee = async () => {
+    //     const path = doc(db, 'shipping','shippingfee')
+    //     const q = await getDoc(path)
+    //     return q.data()
+    // }
 
 
 
@@ -220,7 +237,9 @@ await deleteDoc(updateRef);
         addComment,
         getCommentdata,
         editProductData,
-        deleteProduct
+        deleteProduct,
+        getShipingdata,
+        // shippingFee
     }
 }
 

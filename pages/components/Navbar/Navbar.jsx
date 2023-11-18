@@ -17,9 +17,11 @@ import { auth } from "@/firebase/firebase";
 
 const Navbar = () => {
   const route = useRouter()
-  const {cartData}=useData()
+  const {cartData,getShipingdata}=useData()
   const [CartLength, setCartLength] = useState(0);
+  const [freeshipping, setfreeshipping] = useState('');
 
+  
   const [open, setOpen] = useState(false);
   const { signOut, authUser } = useAuth()
   const signOutFunction = () => {
@@ -28,7 +30,12 @@ const Navbar = () => {
 
   }
   useEffect(() => {
-
+const shipping=async()=>{
+getShipingdata().then((data)=>setfreeshipping(data)).catch((err)=>console.log(err))
+    
+}
+shipping()
+    
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         
@@ -43,7 +50,7 @@ const Navbar = () => {
     <>
       <div className='bg-black h-8 flex justify-between items-center'>
         <marquee className='text-white w-max overflow-hidden ml-2 '>
-          WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.1999/-
+          WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.{freeshipping.freeamount}/-
         </marquee>
         <div className='flex justify-between items-center top-header text-white'>
 
