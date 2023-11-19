@@ -200,6 +200,7 @@ const deleteProduct=async(id)=>{
 const updateRef = doc(db, "productsData" , id);
 
 await deleteDoc(updateRef);
+window.location.reload()
 }
 
 
