@@ -282,7 +282,7 @@ const NavLinks = ({openFunc}) => {
                   >
                     {slinks.sublink.map((slink) => (
                       <li className="py-3 w-[80%]  shadow-lg  m-auto text-center rounded-lg my-2">
-                        <Link onClick={openFunc} href={slink.link}>{slink.name}</Link>
+                        <Link href={slink.link} onClick={openFunc} >{slink.name}</Link>
                       </li>
                     ))}
                   </div>
