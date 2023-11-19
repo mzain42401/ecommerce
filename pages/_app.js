@@ -1,11 +1,17 @@
 import { AuthUserProvider } from '@/firebase/authContext'
 import '@/styles/globals.css'
 import Image from 'next/image'
+import Head from 'next/head'
 import whatsapp from '../public/whatsapp.png'
 import { DataProvider } from '@/firebase/dataContext'
 export default function App({ Component, pageProps }) {
   return(
+<>
+    <Head>
+    <link rel="icon" href="/favicon.jpg" />
+        <title>Homelyfind</title>
 
+      </Head>
     <AuthUserProvider>
       <DataProvider>
       <a href="https://wa.me/923122320760" target="_blank">
@@ -15,5 +21,6 @@ export default function App({ Component, pageProps }) {
    <Component {...pageProps} />
    </DataProvider>
    </AuthUserProvider>
+   </>
   )
 }

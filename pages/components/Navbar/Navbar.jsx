@@ -29,6 +29,10 @@ const Navbar = () => {
     route.push("/")
 
   }
+
+  const openFunc=()=>{
+    setOpen(!open)
+  }
   useEffect(() => {
 const shipping=async()=>{
 getShipingdata().then((data)=>setfreeshipping(data)).catch((err)=>console.log(err))
@@ -181,7 +185,7 @@ shipping()
                 Home
               </Link>
             </li>
-            <NavLinks />
+            <NavLinks  openFunc={openFunc} />
             <li>
               <Link href='/products' className="py-7 px-3 inline-block">
                 Products

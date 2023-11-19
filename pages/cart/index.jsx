@@ -474,7 +474,7 @@ const index = () => {
                         </div>
                         <div class="flex items-center justify-between pb-4 mb-4 ">
                           <span class=" text-gray-900">Order Total</span>
-                          <span class="text-xl font-bold text-gray-900">Rs.{totalprice}/-</span>
+                          <span class="text-xl font-bold text-gray-900">Rs.{totalprice > freeshipping.freeamount ? totalprice : totalprice+freeshipping.feeamount}/-</span>
                         </div>
 
                         <div className='text-center text-gray-500 text-xs'>WE OFFER FREE SHIPPING ON ALL ORDERS ABOVE RS.{freeshipping.amount}/-</div>

@@ -199,7 +199,7 @@ const links = [
 ];
 
 
-const NavLinks = () => {
+const NavLinks = ({openFunc}) => {
 
   const [heading, setHeading] = useState("");
   const [subHeading, setSubHeading] = useState("");
@@ -282,7 +282,7 @@ const NavLinks = () => {
                   >
                     {slinks.sublink.map((slink) => (
                       <li className="py-3 w-[80%]  shadow-lg  m-auto text-center rounded-lg my-2">
-                        <Link href={slink.link}>{slink.name}</Link>
+                        <Link onClick={openFunc} href={slink.link}>{slink.name}</Link>
                       </li>
                     ))}
                   </div>
