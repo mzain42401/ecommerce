@@ -14,6 +14,58 @@ import Image from 'next/image';
 import user from '../../../public/user.png'
 import { useAuth } from '@/firebase/authContext';
 
+const products = {
+  name: 'Basic Tee 6-Pack',
+  price: '$192',
+  href: '#',
+  breadcrumbs: [
+    { id: 1, name: 'Men', href: '#' },
+    { id: 2, name: 'Clothing', href: '#' },
+  ],
+  images: [
+    {
+      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
+      alt: 'Two each of gray, white, and black shirts laying flat.',
+    },
+    {
+      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg',
+      alt: 'Model wearing plain black basic tee.',
+    },
+    {
+      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg',
+      alt: 'Model wearing plain gray basic tee.',
+    },
+    {
+      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg',
+      alt: 'Model wearing plain white basic tee.',
+    },
+  ],
+  colors: [
+    { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
+    { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
+    { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
+  ],
+  sizes: [
+    { name: 'XXS' },
+    { name: 'XS' },
+    { name: 'S' },
+    { name: 'M' },
+    { name: 'L' },
+    { name: 'XL' }, 
+    { name: '2XL' },
+    { name: '3XL' },
+  ],
+  description:
+    'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
+  highlights: [
+    'Hand cut and sewn locally',
+    'Dyed with our proprietary colors',
+    'Pre-washed & pre-shrunk',
+    'Ultra-soft 100% cotton',
+  ],
+  details:
+    'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
+}
 const product = {
   name: 'Basic Tee 6-Pack',
   price: '$192',
@@ -53,42 +105,34 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
   const [url1, setUrl1] = useState(null)
   const [url2, setUrl2] = useState(null)
   const [url3, setUrl3] = useState(null)
-
-  const { getImageURL, addCartData, addComment ,getCommentdata} = useData()
+  const { getImageURL, addCartData, addComment, getCommentdata } = useData()
   const { authUser } = useAuth()
   const [comment, setcomment] = useState('')
+  const [selectedColor, setSelectedColor] = useState(products.colors[0])
+  const [selectedSize, setSelectedSize] = useState(products.sizes[2])
   const [commetsData, setcommetsData] = useState('')
-
 
   useEffect(() => {
     async function mydata() {
-
-      const commets=await getCommentdata(elem.id)
+      const commets = await getCommentdata(elem.id)
       setcommetsData(commets)
       const imgUrl = await coverImage
       if (imgUrl) {
-
         await getImageURL(imgUrl).then((url) => setUrl(url))
       }
 
     }
-
     mydata()
     async function mydata1() {
-
       const mypic1 = await Pic1
       if (mypic1) {
-
         await getImageURL(mypic1).then((url) => setUrl1(url))
       }
     }
     mydata1()
-
     async function mydata2() {
-
       const mypic2 = await Pic2
       if (mypic2) {
-
         await getImageURL(mypic2).then((url) => setUrl2(url))
       }
     }
@@ -101,38 +145,25 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
       }
     }
     mydata3()
-
-
-    
-
-
   }, [])
-
   const addNewComment = (e) => {
     e.preventDefault()
-
     addComment(comment, elem.id, authUser.username)
-    // console.log(comment,elem.id)
-
   }
-
 
   const addData = () => {
     if (!authUser) {
-      // alert("sign in now")
       Swal.fire('Please login your account!')
       return;
     }
-    else{
+    else {
       addCartData(elem, authUser)
     }
-
   }
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-
     responsive: [
       {
         breakpoint: 1024,
@@ -285,7 +316,7 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
                       <StarIcon
                         key={rating}
                         className={classNames(
-                          commetsData.length> 0 ? 'text-gray-900' : 'text-gray-200',
+                          commetsData.length > 0 ? 'text-gray-900' : 'text-gray-200',
                           'h-5 w-5 flex-shrink-0'
                         )}
                         aria-hidden="true"
@@ -299,7 +330,102 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
                 </div>
               </div>
 
+              <div>
+                <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
+                <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
+                  <RadioGroup.Label className="sr-only">Choose a color</RadioGroup.Label>
+                  <div className="flex items-center space-x-3">
+                    {products.colors.map((color) => (
+                      <RadioGroup.Option
+                        key={color.name}
+                        value={color}
+                        className={({ active, checked }) =>
+                          classNames(
+                            color.selectedClass,
+                            active && checked ? 'ring ring-offset-1' : '',
+                            !active && checked ? 'ring-2' : '',
+                            'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
+                          )
+                        }
+                      >
+                        <RadioGroup.Label as="span" className="sr-only">
+                          {color.name}
+                        </RadioGroup.Label>
+                        <span
+                          aria-hidden="true"
+                          className={classNames(
+                            color.class,
+                            'h-8 w-8 rounded-full border border-black border-opacity-10'
+                          )}
+                        />
+                      </RadioGroup.Option>
+                    ))}
+                  </div>
+                </RadioGroup>
+              </div>
+
+              {/* Sizes */}
+              <div className="mt-10">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-medium text-gray-900">Size</h3>
+                  <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                    Size guide
+                  </a>
+                </div>
+
+                <RadioGroup value={selectedSize} onChange={setSelectedSize} className="mt-4">
+                  <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
+                  <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+                    {products.sizes.map((size) => (
+                      <RadioGroup.Option
+                        key={size.name}
+                        value={size}
+                        disabled={!size.inStock}
+                        className={({ active }) =>
+                          classNames(
+                            size.inStock
+                              ? 'cursor-pointer bg-white text-gray-900 shadow-sm'
+                              : 'cursor-not-allowed bg-gray-50 text-gray-200',
+                            active ? 'ring-2 ring-indigo-500' : '',
+                            'group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6'
+                          )
+                        }
+                      >
+                        {({ active, checked }) => (
+                          <>
+                            <RadioGroup.Label as="span">{size.name}</RadioGroup.Label>
+                            {size.inStock ? (
+                              <span
+                                className={classNames(
+                                  active ? 'border' : 'border-2',
+                                  checked ? 'border-indigo-500' : 'border-transparent',
+                                  'pointer-events-none absolute -inset-px rounded-md'
+                                )}
+                                aria-hidden="true"
+                              />
+                            ) : (
+                              <span
+                                aria-hidden="true"
+                                className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                              >
+                                <svg
+                                  className="absolute inset-0 h-full w-full stroke-2 text-gray-200"
+                                  viewBox="0 0 100 100"
+                                  preserveAspectRatio="none"
+                                  stroke="currentColor"
+                                >
+                                  <line x1={0} y1={100} x2={100} y2={0} vectorEffect="non-scaling-stroke" />
+                                </svg>
+                              </span>
+                            )}
+                          </>
+                        )}
+                      </RadioGroup.Option>
+                    ))}
+                  </div>
+                </RadioGroup>
+              </div>
 
 
               <button
@@ -320,10 +446,6 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
                   <p className="text-base text-gray-900">{Description}</p>
                 </div>
               </div>
-
-
-
-
             </div>
           </div>
         </div>
@@ -349,40 +471,37 @@ export default function ProductDetails({ Description, Discount, Pic1, Pic2, Pic3
             </form> : null
           }
 
-{
-  commetsData.length>0?
-  <>
-  {
-    commetsData.map((elem)=>{
-      return(
-        <>
-        <article class="p-6 mb-3 text-base  border-t shadow-lg bg-white rounded-xl">
-            <footer class="flex justify-between items-center mb-2">
-              <div class="flex items-center">
-                <p class="inline-flex items-center mr-3 text-sm text-[#1f91d8] font-semibold"><Image
-                  class="mr-2 w-6 h-6 rounded-full"
-                  src={user}
-                  alt="Bonnie Green" />{elem.userName}</p>
-                <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-03-12"
-                  title="March 12th, 2022">{elem.date}</time></p>
-              </div>
+          {
+            commetsData.length > 0 ?
+              <>
+                {
+                  commetsData.map((elem) => {
+                    return (
+                      <>
+                        <article class="p-6 mb-3 text-base  border-t shadow-lg bg-white rounded-xl">
+                          <footer class="flex justify-between items-center mb-2">
+                            <div class="flex items-center">
+                              <p class="inline-flex items-center mr-3 text-sm text-[#1f91d8] font-semibold"><Image
+                                class="mr-2 w-6 h-6 rounded-full"
+                                src={user}
+                                alt="Bonnie Green" />{elem.userName}</p>
+                              <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-03-12"
+                                title="March 12th, 2022">{elem.date}</time></p>
+                            </div>
 
-              
-            </footer>
-            <p class="text-gray-500 dark:text-gray-400">{elem.comment}</p>
 
-          </article>
-        </>
-      )
-    })
-  }
-  
-  </>
-  :<> <h1 className='text-gray-500 w-full text-center text-xl'>No Reviews</h1></>
-}
+                          </footer>
+                          <p class="text-gray-500 dark:text-gray-400">{elem.comment}</p>
 
-          
+                        </article>
+                      </>
+                    )
+                  })
+                }
 
+              </>
+              : <> <h1 className='text-gray-500 w-full text-center text-xl'>No Reviews</h1></>
+          }
         </div>
       </section>
     </>

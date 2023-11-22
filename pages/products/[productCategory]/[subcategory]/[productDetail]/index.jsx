@@ -1,13 +1,9 @@
-import { StarIcon } from '@heroicons/react/20/solid'
 import Footer from '@/pages/components/footer/Footer'
 import { useAuth } from '@/firebase/authContext'
 import Navbar from '@/pages/components/Navbar/Navbar'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useData } from '@/firebase/dataContext'
 import Loader from '@/pages/components/loader/Loader'
-import { doc, getDoc } from 'firebase/firestore'
-import { db } from '@/firebase/firebase'
 import ProductDetails from '@/pages/components/detailPage/ProductDetails'
 
 const product = {
@@ -53,38 +49,26 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function index({productDetail}) {
-  console.log(productDetail);
-  
- 
-  const [getter,setter]=useState()
-  const {getdata,getSpecificData,getImageURL}=useData()
-  const [url, setUrl] = useState(null)
+export default function index({ productDetail }) {
+
+  const [getter, setter] = useState()
+  const { getSpecificData } = useData()
 
 
-  useEffect(()=>{
-    async function doo(){
-     const data= await getSpecificData(productDetail)
-     setter(data)
+  useEffect(() => {
+    async function doo() {
+      const data = await getSpecificData(productDetail)
+      setter(data)
 
     }
     doo()
-    // async function mydata() {
-    //   if (getter) {
-    //     const imgUrl = await getter.coverImage
-    //     console.log(imgUrl + " img");
-    //   await getImageURL(imgUrl).then((url) => setUrl(url))
-    //   }
-    //   // const myyimg=await getter.coverImage
-      
-    // }
-    // mydata()
-  },[])
+
+  }, [])
   console.log(getter);
 
-const {authUser}=useAuth()
+  const { authUser } = useAuth()
 
-  const addtoCart=(e)=>{
+  const addtoCart = (e) => {
     e.preventDefault()
     if (!authUser) {
       alert("login now")
@@ -94,28 +78,22 @@ const {authUser}=useAuth()
   return (
     <>
 
-    {
-      !getter?<Loader />:
-   <>
-   {/*
-
- */}
-   
-   <Navbar/>
-    <ProductDetails Description={getter.productDiscription} Discount={getter.Discount}
-    Pic1={getter.Pic1} Pic2={getter.pic2} Pic3={getter.pic3} coverImage={getter.coverImage}  id={getter.id} price={getter.price} mainCategory={getter.mainCategory} subCategory={getter.subCategory} productName={getter.productName} discounPrice={getter.discountPrice}  elem={getter}   />
-    <Footer/>
-   </>
-   
-    
-  }
+      {
+        !getter ? <Loader /> :
+          <>
+            <Navbar />
+            <ProductDetails Description={getter.productDiscription} Discount={getter.Discount}
+              Pic1={getter.Pic1} Pic2={getter.pic2} Pic3={getter.pic3} coverImage={getter.coverImage} id={getter.id} price={getter.price} mainCategory={getter.mainCategory} subCategory={getter.subCategory} productName={getter.productName} discounPrice={getter.discountPrice} elem={getter} />
+            <Footer />
+          </>
+      }
     </>
   )
 }
 
 export function getServerSideProps({ params }) {
   const { productDetail } = params
-  
-  return { props: {  productDetail } }
+
+  return { props: { productDetail } }
 }
 

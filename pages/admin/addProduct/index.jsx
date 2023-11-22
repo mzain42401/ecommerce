@@ -20,7 +20,7 @@ export default function Example() {
   const [Pic2, setPic2] = useState()
   const [Pic3, setPic3] = useState()
 
-  const route=useRouter()
+  const route = useRouter()
   const addProduct = async (e) => {
     e.preventDefault()
     if (!mainCategory || !subCategory) {
@@ -28,10 +28,8 @@ export default function Example() {
       return
     }
 
-    let discountPrice=Discount>0?Math.floor(price - (Discount / 100 * price)):price;
-    await publishDoc(productName, price, productDiscription, mainCategory, subCategory, CoverPic, Pic1, Pic2, Pic3, Discount,discountPrice)
-
-
+    let discountPrice = Discount > 0 ? Math.floor(price - (Discount / 100 * price)) : price;
+    await publishDoc(productName, price, productDiscription, mainCategory, subCategory, CoverPic, Pic1, Pic2, Pic3, Discount, discountPrice)
     route.push('/admin')
   }
   return (
@@ -137,13 +135,10 @@ export default function Example() {
                 </label>
                 <div className="mt-2">
                   <select
-
-
                     autoComplete="country-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     value={mainCategory}
                     onChange={(e) => setMainCategory(e.target.value)}
-
                     required
                   >
                     <option>Customize Product</option>
@@ -158,9 +153,6 @@ export default function Example() {
                     <option>Décor</option>
                     <option>Electronic Accessories</option>
                     <option>Baby, Kids & Toys</option>
-
-
-
                   </select>
                 </div>
               </div>
@@ -170,7 +162,6 @@ export default function Example() {
                 </label>
                 <div className="mt-2">
                   <select
-
                     autoComplete="country-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     required
@@ -242,16 +233,9 @@ export default function Example() {
                     <option>Pen</option>
                     <option>Table Clock</option>
                     <option>Others</option>
-
-
-
-
-
                   </select>
                 </div>
               </div>
-
-
               <div className="col-span-full">
                 <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
                   Product cover photo
@@ -259,58 +243,40 @@ export default function Example() {
                 <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                   <div className="text-center">
                     <div className="mt-4  flex text-sm leading-6 text-gray-600">
-
-
                       <input required onChange={(e) => setCoverPic(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
           <div className="mb-0 text-sm font-medium  text-gray-900">
             Product  photo
           </div>
           <div className='flex  flex-wrap items-center justify-center '>
-
             <div className="mt-2   mx-2  flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
               <div className="text-center">
                 <div className="mt-4 flex text-sm leading-6 text-gray-600">
-
                   <input required onChange={(e) => setPic1(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
-
                 </div>
-
               </div>
             </div>
             <div className="mt-2   mx-2  flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
               <div className="text-center">
                 <div className="mt-4 flex text-sm leading-6 text-gray-600">
-
                   <input required onChange={(e) => setPic2(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
-
                 </div>
-
               </div>
             </div>
-
-
-
             <div className="mt-2   mx-2  flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
               <div className="text-center">
                 <div className="mt-4 flex text-sm leading-6 text-gray-600">
-
                   <input required onChange={(e) => setPic3(e.target.files[0])} id="file-upload" name="file-upload" type="file" />
-
                 </div>
-
               </div>
             </div>
           </div>
           <div className="mt-6 flex items-center justify-end gap-x-6">
-
             <button
               type="submit"
               className="rounded active:bg-transparent active:text-black active:border-2 bg-[#1f91d8] hover:bg-blue-800 text-white px-3 py-2 "

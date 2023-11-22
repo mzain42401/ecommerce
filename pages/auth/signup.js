@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import Header from '../components/header/Header'
 import { auth, db } from '../../firebase/firebase'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useAuth } from '@/firebase/authContext'
 import { useRouter } from 'next/router'
-import Loader from '../components/loader/Loader'
 import Navbar from '../components/Navbar/Navbar'
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
-
+import { doc, setDoc } from 'firebase/firestore'
 
 
 const Signup = () => {
@@ -20,15 +17,11 @@ const Signup = () => {
             route.push("/")
         }
     }, [authUser])
-    const [NameError, setNameError] = useState('')
     const [emailError, setemailError] = useState('')
     const [passwordError, setpasswordError] = useState('')
-
-
     const fullNameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
-
     const onFormSubmit = async (e) => {
         e.preventDefault()
         const fullName = fullNameRef.current.value
@@ -74,29 +67,16 @@ const Signup = () => {
                 setTimeout(() => {
                     setpasswordError('')
                 }, 3000)
-
             }
-
-
         }
     }
-
-
-
     return (
         <>
-
-            {/* <Header /> */}
             <Navbar />
-
             <div className="flex  min-h-full flex-1 flex-col justify-center  lg:px-8">
-
-
                 <div className="p-6 bg-white  border border-gray-200  border-solid rounded-xl mx-4  mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-
                     <form className="space-y-6" onSubmit={onFormSubmit} >
                         <div>
-
                             <div className="mt-2">
                                 <input
                                     id="text"
@@ -108,12 +88,8 @@ const Signup = () => {
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-[#1f91d8] focus-visible:outline-[#1f91d8]  sm:text-sm sm:leading-6"
                                 />
                             </div>
-                            <div>{NameError && <p className='text-red-500 text-xs mt-1'>{NameError}</p>}</div>
-
                         </div>
-
                         <div>
-
                             <div className="mt-2">
                                 <input
                                     id="email"
@@ -127,9 +103,7 @@ const Signup = () => {
                             </div>
                             <div>{emailError && <p className='text-red-500 text-xs mt-1'>{emailError}</p>}</div>
                         </div>
-
                         <div>
-
                             <div className="mt-2">
                                 <input
                                     id="password"
@@ -142,7 +116,6 @@ const Signup = () => {
                                 />
                             </div>
                             <div>{passwordError && <p className='text-red-500 text-xs mt-1'>{passwordError}</p>}</div>
-
                         </div>
                         <div className='text-sm mt-5 text-gray-500'>
                             <Link href='/auth/login'>If you have an account, <span className='text-[#1f91d8]'> Login</span></Link>
@@ -168,18 +141,3 @@ export default Signup
 
 
 
-// if (firstName.length < 3) {
-//   return setfirstNameError("name must be greater then 3")
-// }
-// if (lastName.length < 3) {
-//   return setlastNameError("lastname must be greater then 3")
-// }
-// if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
-//   return setpasswordError("length  must be greater then 8 and uper case lower")
-// }
-
-
-
-// if (password !== repeatpassword) {
-//   return setrepeatpasswordError("must be same")
-// }

@@ -48,70 +48,55 @@ function App() {
                                 <Image src={d.img} alt="" className="h-56 rounded-lg w-full  " />
                                 </Link>
                             </div>
-
-                            
                         </div>
                     ))}
                 </Slider>
             </div>
-
         </div>
     );
 }
 
 const data = [
     {
-        
         img: sliderImg1,
         url:'/products/Décor/Home Décor',
     },
     {
-        
         img: sliderImg2,
         url:'/products/Baby, Kids & Toys/Baby Products',
     },
     {
-        
         img: sliderImg3,
         url:'/products/Baby, Kids & Toys/Education Toys',
     },
-    
     {
-        
         img: sliderImg5,
         url:'/products/Electronic Accessories/Machines',
     },
     {
-        
         img: sliderImg6,
         url:'/products/Cleaning Products/Brush',
     },
     {
-        
         img: sliderImg7,
         url:'/products/Electronic Accessories/Mouse Pad',
     },
     {
-        
         img: sliderImg8,
         url:'/products/Décor/Lighting',
     },
     {
-        
         img: sliderImg9,
         url:'/products/Electronic Accessories/Car Accessories',
     },
     {
-        
         img: sliderImg10,
         url:'/products/Décor/Wall Stickers',
     },
     ,{
-        
         img: sliderImg11,
         url:'/products/Décor/Lighting',
     },
-
 ];
 
 export default App;

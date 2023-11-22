@@ -19,11 +19,6 @@ const index = () => {
   const [myshippingData, setmyshippingData] = useState()
   const [showShipping, setshowShipping] = useState(false)
 
-
-
-
-
-
   const editProduct = (elem) => {
     if (elem) {
       setEditData(elem)
@@ -84,7 +79,7 @@ const index = () => {
                         <input value={freeshipping} onChange={(e) => setfreeshipping(Number(e.target.value))} required id='freeshipping' className='rounded px-3 mt-2' type="number" placeholder='free shipping' />
                       </div>
                     </div>
-                    <div className='mt-4 text-right'><button onClick={()=>setshowShipping(false)} className=' bg-white py-1 px-2 rounded'>Cancle</button> <button type='submit' className=' bg-white py-1 px-2 rounded'>Update</button></div>
+                    <div className='mt-4 text-right'><button onClick={() => setshowShipping(false)} className=' bg-white py-1 px-2 rounded'>Cancle</button> <button type='submit' className=' bg-white py-1 px-2 rounded'>Update</button></div>
                   </div>
                 </form>
               </> :
@@ -101,12 +96,7 @@ const index = () => {
                   </div>
                 </>
             }
-
-
-
             <h1 className='bg-[#1f91d8] px-4 py-1 mt-4 m-auto w-max text-white rounded'>Total Products : {getter.length}</h1>
-
-
             {
               getter.map((elem) => {
                 return (
@@ -115,11 +105,7 @@ const index = () => {
               })
             }
           </>
-
       }
-
-
-
     </>
   )
 }

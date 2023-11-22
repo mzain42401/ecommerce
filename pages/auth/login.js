@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import Header from '../components/header/Header'
 import { auth } from '@/firebase/firebase'
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { useAuth } from '@/firebase/authContext'
@@ -38,9 +37,7 @@ useEffect(()=>{
                 return;
             }
         }
-       
     }
-
     const signInWithGoogle = async () => {
         try {
             const user = await signInWithPopup(auth, provider)
@@ -48,26 +45,16 @@ useEffect(()=>{
         } catch (err) {
             console.log(err);
         }
-
     }
-
     return isLoading || (!isLoading && !!authUser) ? (
         <Loader />
     ) :  (
         <>
-            {/* <div className='bg-white shadow text-2xl font-bold p-2  shadow-gray-400'>
-        <h1>Signup</h1>
-      </div> */}
-            {/* <Header /> */}
             <Navbar/>
             <div className="flex min-h-full flex-1 flex-col justify-center  mt-20  lg:px-8">
-
-
                 <div className="p-6 bg-white mx-4  border border-gray-200  border-solid rounded-xl   sm:mx-auto sm:w-full sm:max-w-sm">
-
                     <form className="space-y-6" onSubmit={onFormSubmit} >
                         <div>
-
                             <div className="mt-2">
                                 <input
                                     id="email"
@@ -80,9 +67,7 @@ useEffect(()=>{
                                 />
                             </div>
                         </div>
-
                         <div>
-
                             <div className="mt-2">
                                 <input
                                     id="password"
@@ -95,12 +80,10 @@ useEffect(()=>{
                                 />
                             </div>
                             <div>{Error && <p className='text-red-500 text-xs mt-1'>{Error}</p>}</div>
-
                         </div>
                         <div className='text-sm mt-5 text-gray-500'>
                             <Link href='/auth/signup'>If you don't have an account, <span className='text-[#1f91d8]'> Signup</span></Link>
                         </div>
-
                         <div className='flex justify-center'>
                             <button
                                 type="submit"
@@ -112,18 +95,7 @@ useEffect(()=>{
                         </div>
                     </form>
                 </div>
-                {/* <div className='flex justify-center' onClick={signInWithGoogle}>
-                    <button
-                        type="submit"
-
-                        className="flex  mt-5   justify-center items-center rounded-md bg-white  px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:shadow-lg  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700  sm:mx-auto sm:w-full sm:max-w-sm "
-                    >
-                        <span className='mx-5 text-2xl' ><FcGoogle /></span>
-                        Login with Google
-                    </button>
-                </div> */}
             </div>
-
         </>
     )
 }

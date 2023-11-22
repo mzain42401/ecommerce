@@ -75,9 +75,6 @@ const Footer = () => {
                         <li className="mb-2">
                             <Link href="/products/Electronic Accessories" className="text-[#1f91d8] hover:underline  transition duration-250 ease-in-out">Electronic Accessories</Link>
                         </li>
-                       
-                        
-                        
                         
                         </ul>
                     </div>
@@ -87,7 +84,6 @@ const Footer = () => {
                         <div className="text-xl mb-6">
                             Social Media Links.
                         </div>
-
                                 <div className="text-md font-medium mb-6">
                                     Follow us on social media.
                                 </div>
@@ -129,7 +125,6 @@ const Footer = () => {
                 </div>
 
                 </div>
-                
             </footer>
 
     </>

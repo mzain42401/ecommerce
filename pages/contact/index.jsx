@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
 
-// import NavBar from '../components/Navbar/NavBar';
-// import Footer from '../components/Footer';
-// import {useDocTitle} from '../components/CustomHook';
-// import axios from 'axios';
-// import emailjs from 'emailjs-com';
-// import Notiflix from 'notiflix';
 
 const Contact = () => {
     const [firstName, setFirstName] = useState('')

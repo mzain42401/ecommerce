@@ -3,36 +3,24 @@ import { useData } from '@/firebase/dataContext'
 import Swal from 'sweetalert2';
 
 export default function Edit({ editData }) {
-    
     const {  editProductData} = useData()
     const [productName, setProductName] = useState(editData?editData.productName:null)
     const [price, setPrice] = useState(editData?editData.price:null)
     const [Discount, setDiscount] = useState(editData?editData.Discount:null)
-
     const [productDiscription, setProductDiscription] = useState(editData?editData.productDiscription:null
     )
     const [mainCategory, setMainCategory] = useState(editData?editData.mainCategory:null)
-
     const [subCategory, setSubCategory] = useState(editData?editData.subCategory:null)
-
 
     const addProduct = async (e) => {
         e.preventDefault()
        await editProductData(editData,productName,price,Discount,productDiscription,mainCategory,subCategory)
        Swal.fire('Product Updated Successfully!')
-
         window.location.reload()
     }
-    
-
 
     return (
-
         <>
-
-
-
-
             <form onSubmit={addProduct} className=' w-[90%] sm:w-[70%] border p-4 border-gray-300 rounded-lg mb-20 m-auto mt-10'>
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
@@ -126,13 +114,10 @@ export default function Edit({ editData }) {
                                 </label>
                                 <div className="mt-2">
                                     <select
-
-
                                         autoComplete="country-name"
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                         value={mainCategory}
                                         onChange={(e) => setMainCategory(e.target.value)}
-
                                         required
                                     >
                                         <option>Customize Product</option>
@@ -147,9 +132,6 @@ export default function Edit({ editData }) {
                                         <option>Décor</option>
                                         <option>Electronic Accessories</option>
                                         <option>Baby, Kids & Toys</option>
-
-
-
                                     </select>
                                 </div>
                             </div>
@@ -231,23 +213,12 @@ export default function Edit({ editData }) {
                                         <option>Pen</option>
                                         <option>Table Clock</option>
                                         <option>Others</option>
-
-
-
-
-
                                     </select>
                                 </div>
                             </div>
-
-
-                            
                         </div>
                     </div>
-
-                    
                     <div className="mt-6 flex items-center justify-end gap-x-6">
-
                         <button
                             type="submit"
                             className="rounded active:bg-transparent active:text-black active:border-2 bg-[#1f91d8] hover:bg-blue-800 text-white px-3 py-2 "
